@@ -1,0 +1,71 @@
+/* GENERAL */
+
+h2 {
+	text-align: center;
+	text-decoration: underline solid black;
+}
+
+/* HEADER */
+
+header {
+	height: 100vh;
+	background-image: url('../images/bg_header.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#fullSizeHeader {
+	height: 100%;
+}
+
+#headerContent {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+/* NAV */
+
+.navbar {
+	background-color: rgba(255,255,255,0.5);
+}
+
+.nav-item {
+	border: 2px solid white;
+	border-radius: 15px;
+}
+
+.nav-item:hover {
+	border-top: 2px solid green;
+	border-bottom: 2px solid brown;
+}
+
+/* CONTRACT SECTION */
+
+#contracts button {
+	width: 50%;
+}
+
+#textualDescription {
+	background-color: aqua;
+}
+
+#visualDescription {
+	height: 400px;
+	background-image: url('../images/wc_paint_purple.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+/* MEDIA */
+
+@media all and (max-width : 992px) {
+    #contractDescription {
+		flex-wrap: wrap-reverse;
+	}
+}
+
+@media all and (max-width : 576px) {
+}
