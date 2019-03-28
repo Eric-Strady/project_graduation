@@ -20,24 +20,11 @@
 	<section class="container-fluid mt-5" id="contracts">
 		<h2>Les contrats</h2>
 		<div class="row justify-content-center text-center mt-5" id="contractsName">
-			<div class="col-lg-2 col-md-4 mb-2">
-				<button class="btn btn-info">Contrat 1</button>
-			</div>
-			<div class="col-lg-2 col-md-4 mb-2">
-				<button class="btn btn-info">Contrat 2</button>
-			</div>
-			<div class="col-lg-2 col-md-4 mb-2">
-				<button class="btn btn-info">Contrat 3</button>
-			</div>
-			<div class="col-lg-2 col-md-4 mb-2">
-				<button class="btn btn-info">Contrat 4</button>
-			</div>
-			<div class="col-lg-2 col-md-4 mb-2">
-				<button class="btn btn-info">Contrat 5</button>
-			</div>
-			<div class="col-lg-2 col-md-4 mb-2">
-				<button class="btn btn-info">Contrat 6</button>
-			</div>
+			{% for contract in contracts %}
+				<div class="col-lg-2 col-md-4 mb-2">
+					<button class="btn btn-info">{{ contract.name }}</button>
+				</div>
+			{% endfor %}
 		</div>
 
 		<div class="row justify-content-center mt-5" id="contractDescription">
