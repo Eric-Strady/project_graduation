@@ -22,14 +22,50 @@ class Contract
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="text")
      */
-    private $price;
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $grower_name;
 
     /**
      * @ORM\Column(type="text")
      */
-    private $description;
+    private $summary;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $starting_season_at;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $ending_season_at;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $grower_gps_lat;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $grower_gps_lng;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image_title;
+
+    /**
+     * @ORM\Column(type="string", length=4)
+     */
+    private $image_ext;
+
 
     public function getId(): ?int
     {
@@ -48,18 +84,6 @@ class Contract
         return $this;
     }
 
-    public function getPrice(): ?int
-    {
-        return $this->price;
-    }
-
-    public function setPrice(int $price): self
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -68,6 +92,102 @@ class Contract
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getGrowerName(): ?string
+    {
+        return $this->grower_name;
+    }
+
+    public function setGrowerName(string $grower_name): self
+    {
+        $this->grower_name = $grower_name;
+
+        return $this;
+    }
+
+    public function getSummary(): ?string
+    {
+        return $this->summary;
+    }
+
+    public function setSummary(string $summary): self
+    {
+        $this->summary = $summary;
+
+        return $this;
+    }
+
+    public function getStartingSeasonAt(): ?\DateTimeInterface
+    {
+        return $this->starting_season_at;
+    }
+
+    public function setStartingSeasonAt(?\DateTimeInterface $starting_season_at): self
+    {
+        $this->starting_season_at = $starting_season_at;
+
+        return $this;
+    }
+
+    public function getEndingSeasonAt(): ?\DateTimeInterface
+    {
+        return $this->ending_season_at;
+    }
+
+    public function setEndingSeasonAt(?\DateTimeInterface $ending_season_at): self
+    {
+        $this->ending_season_at = $ending_season_at;
+
+        return $this;
+    }
+
+    public function getGrowerGpsLat(): ?float
+    {
+        return $this->grower_gps_lat;
+    }
+
+    public function setGrowerGpsLat(float $grower_gps_lat): self
+    {
+        $this->grower_gps_lat = $grower_gps_lat;
+
+        return $this;
+    }
+
+    public function getGrowerGpsLng(): ?float
+    {
+        return $this->grower_gps_lng;
+    }
+
+    public function setGrowerGpsLng(float $grower_gps_lng): self
+    {
+        $this->grower_gps_lng = $grower_gps_lng;
+
+        return $this;
+    }
+
+    public function getImageTitle(): ?string
+    {
+        return $this->image_title;
+    }
+
+    public function setImageTitle(string $image_title): self
+    {
+        $this->image_title = $image_title;
+
+        return $this;
+    }
+
+    public function getImageExt(): ?string
+    {
+        return $this->image_ext;
+    }
+
+    public function setImageExt(string $image_ext): self
+    {
+        $this->image_ext = $image_ext;
 
         return $this;
     }
