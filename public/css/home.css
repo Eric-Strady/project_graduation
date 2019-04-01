@@ -43,14 +43,18 @@ header {
 /* CONTRACT SECTION */
 
 #contracts button {
-	width: 50%;
-}
-
-#textualDescription {
 	background-color: aqua;
 }
 
-#visualDescription {
+#contracts button:hover, .active{
+	background-color: grey!important;
+}
+
+.summary {
+	background-color: aqua;
+}
+
+.contractThumbnail {
 	height: 400px;
 	background-image: url('../images/wc_paint_purple.jpg');
 	background-position: center;
