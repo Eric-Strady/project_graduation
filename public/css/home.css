@@ -62,6 +62,15 @@ header {
 	background-size: cover;
 }
 
+/* SIMULATOR BANNER SECTION */
+
+#simulatorBanner {
+	background-color: black;
+}
+
+#simulatorBanner h3, #simulatorBanner p {
+	color: white;
+}
 
 /* MEDIA */
 
