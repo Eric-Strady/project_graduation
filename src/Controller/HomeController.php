@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 use App\Entity\Contract;
+use App\Entity\Post;
 
 class HomeController extends AbstractController
 {
@@ -15,12 +16,12 @@ class HomeController extends AbstractController
 	 */
     public function index()
     {
-    	$repository = $this->getDoctrine()->getRepository(Contract::class);
-
-    	$contracts = $repository->findAll();
+    	$contracts = $this->getDoctrine()->getRepository(Contract::class)->findAll();
+    	$lastPosts = $this->getDoctrine()->getRepository(Post::class)->findLastPosts();
 
         return $this->render('pages/home.html.twig', [
-        	'contracts' => $contracts
+        	'contracts' => $contracts,
+        	'lastPosts' => $lastPosts
         ]);
     }
 }
