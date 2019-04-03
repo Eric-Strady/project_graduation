@@ -1,0 +1,21 @@
+/* GENERAL */
+
+
+/* HEADER */
+
+header {
+	margin-top: 100px;
+}
+
+#contractImage {
+	max-width: 100%;
+	height: 40vh;
+}
+
+/* MEDIA */
+
+@media all and (max-width : 992px) {
+}
+
+@media all and (max-width : 576px) {
+}
