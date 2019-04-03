@@ -8,12 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 use App\Entity\Contract;
 
-class ContractController extends AbstractController
+class ContractsController extends AbstractController
 {
 	/**
-	 * @Route("/contract/{id}", name="contract")
+	 * @Route("/contract/{id}", name="contract.show")
 	 */
-    public function index(Contract $contract)
+    public function show(Contract $contract)
     {
         if (!$contract) {
             throw $this->createNotFoundException('Ce contrat n\'existe pas');
