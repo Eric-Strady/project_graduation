@@ -7,13 +7,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 
-class SimulatorController extends AbstractController
+class ContactController extends AbstractController
 {
     /**
-     * @Route("/simulateur", name="simulator")
+     * @Route("/contact", name="contact")
      */
     public function index()
     {
-        return $this->render('front/simulator.html.twig');
+        return $this->render('front/contact.html.twig');
     }
 }
