@@ -11,7 +11,7 @@ use App\Entity\Contract;
 class ContractsController extends AbstractController
 {
     /**
-     * @Route("/contract", name="contract.index")
+     * @Route("/contrats", name="contract.index")
      */
     public function index()
     {
@@ -23,7 +23,7 @@ class ContractsController extends AbstractController
     }
 
 	/**
-	 * @Route("/contract/{id}", name="contract.show")
+	 * @Route("/contrat/{id}", name="contract.show")
 	 */
     public function show(Contract $contract)
     {

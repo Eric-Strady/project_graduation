@@ -10,6 +10,18 @@ use App\Entity\Post;
 
 class PostsController extends AbstractController
 {
+    /**
+     * @Route("/blog", name="article.index")
+     */
+    public function index()
+    {
+        $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
+
+        return $this->render('front/posts.html.twig', [
+            'posts' => $posts
+        ]);
+    }
+
 	/**
 	 * @Route("/article/{id}", name="article.show")
 	 */
