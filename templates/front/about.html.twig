@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AMAP Pré-vert - A propos{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/about.css') }}">
+{% endblock %}
+
+{% block body %}
+	<header class="container">
+		<div class="row text-center">
+			<div class="col-lg-12">
+				<h2>A propos de l'AMAP Pré-vert</h2>
+			</div>
+			<div class="col-lg-12 mt-5">
+				<img src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes" id="aboutImage">
+			</div>
+		</div>
+	</header>
+
+	<section class="container mt-4 mb-4" id="keyNumbers">
+		<div class="row text-center">
+			<div class="col-lg-4 mt-4">
+				<span>Chiffre clé</span>
+				<h4>Contrats</h4>
+			</div>
+			<div class="col-lg-4 mt-4">
+				<span>Chiffre clé</span>
+				<h4>Membres</h4>
+			</div>
+			<div class="col-lg-4 mt-4">
+				<span>Chiffre clé</span>
+				<h4>Années d'existance</h4>
+			</div>
+		</div>
+	</section>
+
+	<section class="container mt-4" id="about">
+		<div class="row">
+			<div class="col-lg-12">
+				<p>Déscription de l'AMAP Pré-vert, son historique, son fonctionnement, etc.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="container" id="links">
+		<div class="row text-center">
+			<div class="col-lg-4 mt-4">
+				<span>icône fontawesome</span>
+				<a href="#">AMAP IDF</a>
+			</div>
+			<div class="col-lg-4 mt-4">
+				<span>icône fontawesome</span>
+				<a href="#">Page Facebook</a>
+			</div>
+			<div class="col-lg-4 mt-4">
+				<span>icône fontawesome</span>
+				<a href="#">Page de contact</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="container-fluid mt-4 mb-4" id="amapLocation">
+		<div class="row text-center">
+			<div class="col-lg-12" id="map">
+				<p>Map</p>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
