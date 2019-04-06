@@ -10,6 +10,18 @@ use App\Entity\Contract;
 
 class ContractsController extends AbstractController
 {
+    /**
+     * @Route("/contract", name="contract.index")
+     */
+    public function index()
+    {
+        $contracts = $this->getDoctrine()->getRepository(Contract::class)->findAll();
+
+        return $this->render('front/contracts.html.twig', [
+            'contracts' => $contracts
+        ]);
+    }
+
 	/**
 	 * @Route("/contract/{id}", name="contract.show")
 	 */
@@ -19,7 +31,7 @@ class ContractsController extends AbstractController
             throw $this->createNotFoundException('Ce contrat n\'existe pas');
         }
 
-        return $this->render('pages/contract.html.twig', [
+        return $this->render('front/contract.html.twig', [
         	'contract' => $contract
         ]);
     }

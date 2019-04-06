@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AMAP Pré-vert - Nos contrats{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/contracts.css') }}">
+{% endblock %}
+
+{% block body %}
+	<header class="container">
+		<div class="row text-center">
+			<div class="col-lg-12">
+				<h2>Nos contrats</h2>
+			</div>
+		</div>
+	</header>
+
+	<section class="container-fluid" id="contractsList">
+		{% for key, contract in contracts %}
+			<div class="row justify-content-center mt-5">
+				<div class="col-lg-6 col-md-12 text-justify align-self-center summary {% if key is odd %} order-last {% endif %}">
+					<h3>Contrat {{ contract.name }}</h3>
+					<p>{{ contract.summary }}</p>
+					<div class="row">
+						<div class="col-lg-12 text-center">
+							<a class="btn btn-primary" href="{{ path('contract.show', {id: contract.id}) }}">En savoir plus</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-12 text-center mb-2 contractThumbnail">
+					<img src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes">
+				</div>
+			</div>
+		{% endfor %}
+	</section>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

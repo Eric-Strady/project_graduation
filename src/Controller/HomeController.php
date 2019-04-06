@@ -19,7 +19,7 @@ class HomeController extends AbstractController
     	$contracts = $this->getDoctrine()->getRepository(Contract::class)->findAll();
     	$lastPosts = $this->getDoctrine()->getRepository(Post::class)->findLastPosts();
 
-        return $this->render('pages/home.html.twig', [
+        return $this->render('front/home.html.twig', [
         	'contracts' => $contracts,
         	'lastPosts' => $lastPosts
         ]);

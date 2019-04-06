@@ -7,15 +7,9 @@ header {
 	margin-top: 100px;
 }
 
-/* CONTRACTS LIST */
-
-.summary {
-	background-color: aqua;
-}
-
-.contractThumbnail img{
-	height: 40vh;
+#contractImage {
 	max-width: 100%;
+	height: 40vh;
 }
 
 /* MEDIA */

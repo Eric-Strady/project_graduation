@@ -19,7 +19,7 @@ class PostsController extends AbstractController
             throw $this->createNotFoundException('Ce contrat n\'existe pas');
         }
 
-        return $this->render('pages/post.html.twig', [
+        return $this->render('front/post.html.twig', [
         	'post' => $post
         ]);
     }
