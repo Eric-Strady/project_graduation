@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>{% block title %}{% endblock %}</title>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-    	{% block nav %}
-	    	<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>{% block title %}{% endblock %}</title>
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+		{% block stylesheets %}{% endblock %}
+	</head>
+	<body>
+		{% block nav %}
+			<nav class="navbar navbar-expand-lg navbar-light fixed-top">
 				<a class="navbar-brand" href="{{ path('home') }}">AMAP Pré-vert</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -38,17 +38,19 @@
 			</nav>
 		{% endblock %}
 
-        {% block body %}{% endblock %}
+		{% block body %}{% endblock %}
 
-        <footer class="footer mt-3 mb-3">
-			<div class="container text-center">
-				<span class="text-muted">&copy; AMAP Pré-vert</span>
-			</div>
-		</footer>
+		{% block footer %}
+			<footer class="footer mt-3 mb-3">
+				<div class="container text-center">
+					<span class="text-muted">&copy; AMAP Pré-vert</span>
+				</div>
+			</footer>
+		{% endblock %}
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="{{ asset('js/Nav.js') }}"></script>
 		{% block javascripts %}{% endblock %}
-    </body>
+	</body>
 </html>

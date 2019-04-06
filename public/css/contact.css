@@ -1,0 +1,26 @@
+/* GENERAL */
+
+
+/* HEADER */
+
+header {
+	margin-top: 100px;
+}
+
+/* CONTACT */
+
+#contactArea {
+	border: 2px solid grey;
+	border-radius: 15px;
+	padding: 15px;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+/* MEDIA */
+
+@media all and (max-width : 992px) {
+}
+
+@media all and (max-width : 576px) {
+}
