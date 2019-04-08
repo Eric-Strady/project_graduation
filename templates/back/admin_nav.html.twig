@@ -18,9 +18,13 @@
 			<li class="nav-item">
 				<a class="nav-link" href="#">L'historique</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Compte</a>
-			</li>
+			<li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">AMAP Pré-vert</a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="#">Gérer le compte</a>
+					<a class="dropdown-item" href="{{ path('logout') }}">Se déconnecter</a>
+		        </div>
+		    </li>
 		</ul>
 	</div>
 </nav>
