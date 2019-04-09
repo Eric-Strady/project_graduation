@@ -1,5 +1,8 @@
 /* GENERAL */
 
+.container-fluid {
+	background-color: lightgrey;
+}
 
 /* HEADER */
 

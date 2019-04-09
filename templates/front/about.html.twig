@@ -7,63 +7,88 @@
 {% endblock %}
 
 {% block body %}
-	<header class="container">
-		<div class="row text-center">
-			<div class="col-lg-12">
-				<h2>A propos de l'AMAP Pré-vert</h2>
+	<div class="container">
+		<header>
+			<div class="row text-center">
+				<div class="col-lg-12">
+					<h2>A propos de l'AMAP Pré-vert</h2>
+				</div>
+				<div class="col-lg-12 mt-5">
+					<img src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes" id="aboutImage">
+				</div>
 			</div>
-			<div class="col-lg-12 mt-5">
-				<img src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes" id="aboutImage">
-			</div>
-		</div>
-	</header>
+		</header>
 
-	<section class="container mt-4 mb-4" id="keyNumbers">
-		<div class="row text-center">
-			<div class="col-lg-4 mt-4">
-				<span>Chiffre clé</span>
-				<h4>Contrats</h4>
+		<section class="mt-4 mb-4" id="aboutUs">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h3>Qui sommes-nous?</h3>
+				</div>
+				<div class="col-lg-12 text-justify">
+					<p>Déscription de l'AMAP Pré-vert, son historique, son fonctionnement, etc.</p>
+				</div>
+				<div class="col-lg-12 text-center" id="map">
+					<p>Map</p>
+				</div>
 			</div>
-			<div class="col-lg-4 mt-4">
-				<span>Chiffre clé</span>
-				<h4>Membres</h4>
-			</div>
-			<div class="col-lg-4 mt-4">
-				<span>Chiffre clé</span>
-				<h4>Années d'existance</h4>
-			</div>
-		</div>
-	</section>
+		</section>
+	</div>
 
-	<section class="container mt-4" id="about">
+	<section class="container-fluid mt-4 mb-4" id="keyNumbers">
 		<div class="row">
-			<div class="col-lg-12">
-				<p>Déscription de l'AMAP Pré-vert, son historique, son fonctionnement, etc.</p>
+			<div class="col-lg-12 text-center">
+				<h3>L'AMAP Pré-vert en quelques chiffres</h3>
+			</div>
+		</div>
+		<div class="row text-center">
+			<div class="col-lg-3 mt-4 mb-4">
+				<span>0</span>
+				<p>Contrats</p>
+			</div>
+			<div class="col-lg-3 mt-4 mb-4">
+				<span>0</span>
+				<p>Membres</p>
+			</div>
+			<div class="col-lg-3 mt-4 mb-4">
+				<span>0</span>
+				<p>Années d'existance</p>
+			</div>
+			<div class="col-lg-3 mt-4 mb-4">
+				<span>0 €</span>
+				<p>Adhésion annuelle</p>
 			</div>
 		</div>
 	</section>
 
-	<section class="container" id="links">
+	<section class="container mt-4 mb-4" id="joinUs">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h3>Comment nous rejoindre?</h3>
+			</div>
+			<div class="col-lg-12 text-justify">
+				<p>Texte décrivant les différentes démarches pour rejoindre l'AMAP Pré-vert.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="container-fluid mt-4 mb-4" id="links">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h3>En apprendre plus</h3>
+			</div>
+		</div>
 		<div class="row text-center">
-			<div class="col-lg-4 mt-4">
+			<div class="col-lg-4 mt-4 mb-4">
 				<span>icône fontawesome</span>
 				<a href="#">AMAP IDF</a>
 			</div>
-			<div class="col-lg-4 mt-4">
+			<div class="col-lg-4 mt-4 mb-4">
 				<span>icône fontawesome</span>
 				<a href="#">Page Facebook</a>
 			</div>
-			<div class="col-lg-4 mt-4">
+			<div class="col-lg-4 mt-4 mb-4">
 				<span>icône fontawesome</span>
 				<a href="{{ path('contact') }}">Page de contact</a>
-			</div>
-		</div>
-	</section>
-
-	<section class="container-fluid mt-4 mb-4" id="amapLocation">
-		<div class="row text-center">
-			<div class="col-lg-12" id="map">
-				<p>Map</p>
 			</div>
 		</div>
 	</section>
