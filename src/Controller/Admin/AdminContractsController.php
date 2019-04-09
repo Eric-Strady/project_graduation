@@ -36,7 +36,29 @@ class AdminContractsController extends AbstractController
     }
 
     /**
-	 * @Route("/admin/contrat/{id}", name="admin.contract.update")
+	 * @Route("/admin/contrat/creer", name="admin.contract.create")
+	 */
+    public function create(Request $request)
+    {
+    	$contract = new Contract();
+
+        $form = $this->createForm(ContractType::class, $contract);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+        	$this->em->persist($contract);
+        	$this->em->flush();
+        	return $this->redirectToRoute('admin.contracts');
+        }
+
+        return $this->render('back/admin_contract_create.html.twig', [
+        	'form' => $form->createView()
+        ]);
+    }
+
+    /**
+	 * @Route("/admin/contrat/modifier/{id}", name="admin.contract.update")
 	 */
     public function update(Contract $contract, Request $request)
     {
@@ -53,9 +75,23 @@ class AdminContractsController extends AbstractController
         	return $this->redirectToRoute('admin.contracts');
         }
 
-        return $this->render('back/admin_contract.html.twig', [
-        	'contract' => $contract,
+        return $this->render('back/admin_contract_update.html.twig', [
         	'form' => $form->createView()
         ]);
+    }
+
+    /**
+	 * @Route("/admin/contrat/supprimer/{id}", name="admin.contract.delete")
+	 */
+    public function delete(Contract $contract)
+    {
+    	if (!$contract) {
+            throw $this->createNotFoundException('Ce contrat n\'existe pas');
+        }
+
+        $this->em->remove($contract);
+        $this->em->flush();
+
+        return $this->redirectToRoute('admin.contracts');
     }
 }
