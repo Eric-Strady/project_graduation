@@ -6,6 +6,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
+use App\Entity\Contract;
 
 class AdminHomeController extends AbstractController
 {
@@ -14,6 +15,10 @@ class AdminHomeController extends AbstractController
 	 */
     public function index()
     {
-        return $this->render('back/admin_home.html.twig');
+        $contracts = $this->getDoctrine()->getRepository(Contract::class)->findAll();
+        
+        return $this->render('back/admin_home.html.twig', [
+            'contracts' => $contracts
+        ]);
     }
 }
