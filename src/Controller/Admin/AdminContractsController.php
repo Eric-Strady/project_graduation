@@ -5,17 +5,22 @@ namespace App\Controller\Admin;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
 
 use App\Repository\ContractRepository;
 use App\Entity\Contract;
+use App\Form\ContractType;
 
 class AdminContractsController extends AbstractController
 {
+	private $em;
 	private $repository;
 
-	public function __construct(ContractRepository $repository)
+	public function __construct(ContractRepository $repository, EntityManagerInterface $entityManager)
 	{
-		return $this->repository = $repository;
+		$this->em = $entityManager;
+		$this->repository = $repository;
 	}
 
 	/**
@@ -33,14 +38,24 @@ class AdminContractsController extends AbstractController
     /**
 	 * @Route("/admin/contrat/{id}", name="admin.contract.update")
 	 */
-    public function update(Contract $contract)
+    public function update(Contract $contract, Request $request)
     {
     	if (!$contract) {
             throw $this->createNotFoundException('Ce contrat n\'existe pas');
         }
 
+        $form = $this->createForm(ContractType::class, $contract);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+        	$this->em->flush();
+        	return $this->redirectToRoute('admin.contracts');
+        }
+
         return $this->render('back/admin_contract.html.twig', [
-        	'contract' => $contract
+        	'contract' => $contract,
+        	'form' => $form->createView()
         ]);
     }
 }
