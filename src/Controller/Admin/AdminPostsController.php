@@ -14,7 +14,7 @@ class AdminPostsController extends AbstractController
 
 	public function __construct(PostRepository $repository)
 	{
-		return $this->repository = $repository;
+		$this->repository = $repository;
 	}
 
 	/**
