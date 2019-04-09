@@ -33,7 +33,7 @@
 						<td>Contrat {{ contract.name }}</td>
 						<td>
 							<a href="{{ path('contract.show', {id: contract.id}) }}" class="btn btn-success">Visualiser</a>
-							<a href="#" class="btn btn-warning">Modifier</a>
+							<a href="{{ path('admin.contract.update', {id: contract.id}) }}" class="btn btn-warning">Modifier</a>
 							<a href="#" class="btn btn-danger">Supprimer</a>
 						</td>
 					</tr>

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 use App\Repository\ContractRepository;
+use App\Entity\Contract;
 
 class AdminContractsController extends AbstractController
 {
@@ -26,6 +27,20 @@ class AdminContractsController extends AbstractController
 
         return $this->render('back/admin_contracts.html.twig', [
         	'contracts' => $contracts
+        ]);
+    }
+
+    /**
+	 * @Route("/admin/contrat/{id}", name="admin.contract.update")
+	 */
+    public function update(Contract $contract)
+    {
+    	if (!$contract) {
+            throw $this->createNotFoundException('Ce contrat n\'existe pas');
+        }
+
+        return $this->render('back/admin_contract.html.twig', [
+        	'contract' => $contract
         ]);
     }
 }
