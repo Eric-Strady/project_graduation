@@ -19,22 +19,13 @@ class AboutRepository extends ServiceEntityRepository
         parent::__construct($registry, About::class);
     }
 
-    // /**
-    //  * @return About[] Returns an array of About objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findAbout()
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
+            ->getSingleResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?About
