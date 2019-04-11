@@ -20,8 +20,6 @@ class ContractType extends AbstractType
             ->add('ending_season_at')
             ->add('grower_gps_lat')
             ->add('grower_gps_lng')
-            ->add('image_title')
-            ->add('image_ext')
         ;
     }
 

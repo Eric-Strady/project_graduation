@@ -41,16 +41,6 @@ class Post
      */
     private $tag;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $image_title;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $image_ext;
-
     public function __construct()
     {
         $this->created_at = new \DateTime();
@@ -117,30 +107,6 @@ class Post
     public function setTag(string $tag): self
     {
         $this->tag = $tag;
-
-        return $this;
-    }
-
-    public function getImageTitle(): ?string
-    {
-        return $this->image_title;
-    }
-
-    public function setImageTitle(string $image_title): self
-    {
-        $this->image_title = $image_title;
-
-        return $this;
-    }
-
-    public function getImageExt(): ?string
-    {
-        return $this->image_ext;
-    }
-
-    public function setImageExt(string $image_ext): self
-    {
-        $this->image_ext = $image_ext;
 
         return $this;
     }

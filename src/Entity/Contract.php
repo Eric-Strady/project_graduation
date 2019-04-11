@@ -56,16 +56,6 @@ class Contract
      */
     private $grower_gps_lng;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $image_title;
-
-    /**
-     * @ORM\Column(type="string", length=4)
-     */
-    private $image_ext;
-
 
     public function getId(): ?int
     {
@@ -164,30 +154,6 @@ class Contract
     public function setGrowerGpsLng(float $grower_gps_lng): self
     {
         $this->grower_gps_lng = $grower_gps_lng;
-
-        return $this;
-    }
-
-    public function getImageTitle(): ?string
-    {
-        return $this->image_title;
-    }
-
-    public function setImageTitle(string $image_title): self
-    {
-        $this->image_title = $image_title;
-
-        return $this;
-    }
-
-    public function getImageExt(): ?string
-    {
-        return $this->image_ext;
-    }
-
-    public function setImageExt(string $image_ext): self
-    {
-        $this->image_ext = $image_ext;
 
         return $this;
     }
