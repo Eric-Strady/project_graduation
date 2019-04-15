@@ -16,8 +16,12 @@ class ContractType extends AbstractType
             ->add('description')
             ->add('grower_name')
             ->add('summary')
-            ->add('starting_season_at')
-            ->add('ending_season_at')
+            ->add('starting_season_at', null, [
+                'widget' => 'single_text'
+            ])
+            ->add('ending_season_at', null, [
+                'widget' => 'single_text'
+            ])
             ->add('grower_gps_lat')
             ->add('grower_gps_lng')
         ;
@@ -27,6 +31,7 @@ class ContractType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Contract::class,
+            'translation_domain' => 'contracts'
         ]);
     }
 }
