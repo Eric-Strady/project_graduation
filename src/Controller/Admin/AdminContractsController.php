@@ -17,7 +17,7 @@ class AdminContractsController extends AbstractController
 	private $em;
 	private $repository;
 
-	public function __construct(ContractRepository $repository, EntityManagerInterface $entityManager)
+	public function __construct(EntityManagerInterface $entityManager, ContractRepository $repository)
 	{
 		$this->em = $entityManager;
 		$this->repository = $repository;

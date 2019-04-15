@@ -11,7 +11,7 @@ use App\Entity\Post;
 class PostsController extends AbstractController
 {
     /**
-     * @Route("/blog", name="article.index")
+     * @Route("/blog", name="posts.index")
      */
     public function index()
     {
@@ -23,7 +23,7 @@ class PostsController extends AbstractController
     }
 
 	/**
-	 * @Route("/article/{id}", name="article.show")
+	 * @Route("/article/{id}", name="post.show")
 	 */
     public function show(Post $post)
     {

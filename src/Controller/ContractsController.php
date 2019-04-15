@@ -11,7 +11,7 @@ use App\Entity\Contract;
 class ContractsController extends AbstractController
 {
     /**
-     * @Route("/contrats", name="contract.index")
+     * @Route("/contrats", name="contracts.index")
      */
     public function index()
     {

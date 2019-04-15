@@ -59,16 +59,16 @@
 							<td>{{ post.createdAt|date("d/m/Y") }}</td>
 							<td>{% if post.updatedAt is not empty %} {{ post.updatedAt|date("d/m/Y") }} {% else %} - {% endif %}</td>
 							<td>
-								<a href="{{ path('article.show', {id: post.id}) }}" class="btn btn-success">Visualiser</a>
-								<a href="#" class="btn btn-warning">Modifier</a>
-								<a href="#" class="btn btn-danger">Supprimer</a>
+								<a href="{{ path('post.show', {id: post.id}) }}" class="btn btn-success">Visualiser</a>
+								<a href="{{ path('admin.post.update', {id: post.id}) }}" class="btn btn-warning">Modifier</a>
+								<a href="{{ path('admin.post.delete', {id: post.id}) }}" class="btn btn-danger">Supprimer</a>
 							</td>
 						</tr>
 					{% endfor %}
 				</tbody>
 			</table>
 			<div class="text-left">
-				<a href="#" class="btn btn-primary">Ajouter un nouvel article</a>
+				<a href="{{ path('admin.post.create') }}" class="btn btn-primary">Ajouter un nouvel article</a>
 			</div>
 		</section>
 	</div>
