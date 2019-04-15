@@ -14,7 +14,6 @@ class AboutType extends AbstractType
         $builder
             ->add('description')
             ->add('how_join_us')
-            ->add('created_at')
             ->add('amap_gps_lat')
             ->add('amap_gps_lng')
             ->add('nb_members')
@@ -27,6 +26,7 @@ class AboutType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => About::class,
+            'translation_domain' => 'forms'
         ]);
     }
 }

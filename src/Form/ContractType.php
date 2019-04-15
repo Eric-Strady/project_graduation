@@ -31,7 +31,7 @@ class ContractType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Contract::class,
-            'translation_domain' => 'contracts'
+            'translation_domain' => 'forms'
         ]);
     }
 }
