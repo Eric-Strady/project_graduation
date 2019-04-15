@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block nav %}
-	{% include('back/admin_nav.html.twig') %}
+	{% include 'back/admin_nav.html.twig' %}
 {% endblock %}
 
 {% block body %}
@@ -20,11 +20,8 @@
 			</div>
 		</header>
 
-		<section id="updateForm">
-			{{ form_start(form) }}
-				{{ form_widget(form) }}
-				<button type="submit" class="btn btn-primary">Modifier</button>
-			{{ form_end(form )}}
+		<section class="mt-4 mb-4" id="updateForm">
+			{% include 'back/admin_contract_form.html.twig' with { button: 'Modifier' } %}
 		</section>
 	</div>
 	
