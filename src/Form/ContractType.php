@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Contract;
+use App\Form\ImageType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,6 +25,7 @@ class ContractType extends AbstractType
             ])
             ->add('grower_gps_lat')
             ->add('grower_gps_lng')
+            ->add('image', ImageType::class)
         ;
     }
 
