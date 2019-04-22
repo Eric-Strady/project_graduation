@@ -29,4 +29,13 @@ class PostRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    public function countPosts()
+    {
+        return $this->createQueryBuilder('p')
+            ->select('count(p)')
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
 }
