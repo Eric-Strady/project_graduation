@@ -21,10 +21,7 @@
 		</header>
 
 		<section id="updateForm">
-			{{ form_start(form) }}
-				{{ form_widget(form) }}
-				<button type="submit" class="btn btn-primary">Modifier</button>
-			{{ form_end(form )}}
+			{% include 'back/admin_post_form.html.twig' with { button: 'Modifier' } %}
 		</section>
 	</div>
 	

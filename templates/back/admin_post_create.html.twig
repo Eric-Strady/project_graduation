@@ -21,10 +21,7 @@
 		</header>
 
 		<section id="createForm">
-			{{ form_start(form) }}
-				{{ form_widget(form) }}
-				<button type="submit" class="btn btn-primary">Créer</button>
-			{{ form_end(form )}}
+			{% include 'back/admin_post_form.html.twig' with { button: 'Créer' } %}
 		</section>
 	</div>
 	
