@@ -19,6 +19,10 @@ header {
 	border-radius: 10px;
 }
 
+.leaflet-popup-content {
+	font-weight: bold;
+}
+
 /* MEDIA */
 
 @media all and (max-width : 992px) {

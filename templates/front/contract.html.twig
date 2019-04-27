@@ -53,6 +53,7 @@
 	<script type="text/javascript">
 		let latitude = {{ contract.growerGpsLat }};
 		let longitude = {{ contract.growerGpsLng }};
+		let markerTitle = "{{ contract.growerName }}";
 	</script>
 	{% include 'front/openStreetMap.html.twig' %}
 {% endblock %}

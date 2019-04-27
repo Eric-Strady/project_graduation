@@ -1,8 +1,9 @@
 class Map {
-	constructor(container, lat, lng) {
+	constructor(container, lat, lng, markerTitle) {
 		this.container = container;
 		this.lat = lat;
 		this.lng = lng;
+		this.markerTitle = markerTitle;
 		this.map;
 		this.generateMap();
 	}
@@ -24,10 +25,10 @@ class Map {
 	generateMarkers() {
 		let marker = L.marker([this.lat, this.lng])
 			.addTo(this.map)
-			/*.on('click', generateForm)*/;
+			.bindPopup(this.markerTitle).openPopup();
 	}
 }
 
 $(function() {
-	const map = new Map('map', latitude, longitude);
+	const map = new Map('map', latitude, longitude, markerTitle);
 });
