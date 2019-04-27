@@ -12,6 +12,13 @@ header {
 	height: 40vh;
 }
 
+/* MAP */
+
+#map {
+	height: 400px;
+	border-radius: 10px;
+}
+
 /* MEDIA */
 
 @media all and (max-width : 992px) {

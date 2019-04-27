@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/about.css') }}">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
 {% endblock %}
 
 {% block body %}
@@ -26,9 +27,6 @@
 				</div>
 				<div class="col-lg-12 text-justify">
 					<p>{{ about.description }}</p>
-				</div>
-				<div class="col-lg-12 text-center" id="map">
-					<p>Map</p>
 				</div>
 			</div>
 		</section>
@@ -93,7 +91,15 @@
 		</div>
 	</section>
 
+	<section id="amapMap">
+		<div id="map"></div>
+	</section>
 {% endblock %}
 
 {% block javascripts %}
+	<script type="text/javascript">
+		let latitude = {{ about.amapGpsLat }};
+		let longitude = {{ about.amapGpsLng }};
+	</script>
+	{% include 'front/openStreetMap.html.twig' %}
 {% endblock %}
