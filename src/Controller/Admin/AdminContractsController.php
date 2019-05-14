@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 use App\Repository\ContractRepository;
 use App\Entity\Contract;
+use App\Entity\Product;
 use App\Form\ContractType;
 
 class AdminContractsController extends AbstractController
@@ -41,12 +42,17 @@ class AdminContractsController extends AbstractController
     public function create(Request $request)
     {
     	$contract = new Contract();
-
+        
         $form = $this->createForm(ContractType::class, $contract);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            foreach ($contract->getProducts() as $product)
+            {
+                $product->setContract($contract);
+                $this->em->persist($product);
+            }
         	$this->em->persist($contract);
         	$this->em->flush();
         	return $this->redirectToRoute('admin.contracts');
