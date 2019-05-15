@@ -77,6 +77,11 @@ class AdminContractsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            foreach ($contract->getProducts() as $product)
+            {
+                $product->setContract($contract);
+                $this->em->persist($product);
+            }
         	$this->em->flush();
         	return $this->redirectToRoute('admin.contracts');
         }
