@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Product;
+use App\Entity\FoodType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,6 +21,12 @@ class ProductType extends AbstractType
             ->add('fixed_price')
             ->add('min_price')
             ->add('max_price')
+            ->add('food_types', EntityType::class, [
+                'class' => FoodType::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => false
+            ])
         ;
     }
 
