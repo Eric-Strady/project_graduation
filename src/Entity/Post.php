@@ -41,12 +41,6 @@ class Post
      */
     private $tag;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $image;
-
     public function __construct()
     {
         $this->created_at = new \DateTime();
@@ -113,18 +107,6 @@ class Post
     public function setTag(string $tag): self
     {
         $this->tag = $tag;
-
-        return $this;
-    }
-
-    public function getImage(): ?Image
-    {
-        return $this->image;
-    }
-
-    public function setImage(Image $image): self
-    {
-        $this->image = $image;
 
         return $this;
     }

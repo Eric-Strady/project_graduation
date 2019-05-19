@@ -59,12 +59,6 @@ class Contract
     private $grower_gps_lng;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $image;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="contract", orphanRemoval=true)
      */
     private $products;
@@ -172,18 +166,6 @@ class Contract
     public function setGrowerGpsLng(float $grower_gps_lng): self
     {
         $this->grower_gps_lng = $grower_gps_lng;
-
-        return $this;
-    }
-
-    public function getImage(): ?Image
-    {
-        return $this->image;
-    }
-
-    public function setImage(Image $image): self
-    {
-        $this->image = $image;
 
         return $this;
     }

@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Contract;
-use App\Form\ImageType;
 use App\Form\ProductType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\AbstractType;
@@ -27,7 +26,6 @@ class ContractType extends AbstractType
             ])
             ->add('grower_gps_lat')
             ->add('grower_gps_lng')
-            ->add('image', ImageType::class)
             ->add('products', CollectionType::class, [
                 'entry_type' => ProductType::class,
                 'entry_options' => ['label' => false],
