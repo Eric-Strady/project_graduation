@@ -1,11 +1,19 @@
 Name: Nom
 Description: Description
 Summary: Résumé
+Image file: Image
 Grower name: Nom du producteur
 Starting season at: Début du contrat
 Ending season at: Fin du contrat
 Grower gps lat: Latitude
 Grower gps lng: Longitude
+Is fixed delivery: Les livraisons sont-elles au choix pour le client?
+Nb delivery: Nombre maximal de livraison
+Is fixed price: Le produit a t-il un prix fixe?
+Fixed price: Prix fixe
+Min price: Prix minimum
+Max price: Prix maximum
+Food types: Types d'alimentation autorisés
 
 Title: Titre
 Content: Contenu

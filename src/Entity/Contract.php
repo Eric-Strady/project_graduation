@@ -5,9 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContractRepository")
+ * @Vich\Uploadable
  */
 class Contract
 {
@@ -57,6 +61,23 @@ class Contract
      * @ORM\Column(type="float")
      */
     private $grower_gps_lng;
+
+    /**
+     * @Vich\UploadableField(mapping="contract_image", fileNameProperty="image_name")
+     * 
+     * @var File
+     */
+    private $image_file;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image_name;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updated_at;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="contract", orphanRemoval=true)
@@ -166,6 +187,44 @@ class Contract
     public function setGrowerGpsLng(float $grower_gps_lng): self
     {
         $this->grower_gps_lng = $grower_gps_lng;
+
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->image_file;
+    }
+
+    public function setImageFile(?File $image_file = null): self
+    {
+        $this->image_file = $image_file;
+        if ($this->image_file instanceof UploadedFile) {
+            $this->updated_at = new \DateTime('now');
+        }
+
+        return $this;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->image_name;
+    }
+
+    public function setImageName(?string $image_name): self
+    {
+        $this->image_name = $image_name;
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }
