@@ -14,7 +14,11 @@
 				<p>{{ post.tag }}</p>
 			</div>
 			<div class="col-lg-12 mt-5">
-				<img src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes" id="postImage">
+				{% if post.imageName %}
+					<img src="{{ asset('images/posts/'~ post.imageName ~'') }}" alt="Image article {{ post.Title }}" id="postImage">
+				{% else %}
+					<img src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes" id="postImage">
+				{% endif %}
 			</div>
 		</div>
 	</header>

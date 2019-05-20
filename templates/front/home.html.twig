@@ -67,7 +67,11 @@
 			{% for post in lastPosts %}
 				<div class="col-lg-4 text-center">
 					<div class="card">
-						<img class="card-img-top" src="..." alt="titre image">
+						{% if post.imageName %}
+							<img class="card-img-top" src="{{ asset('images/posts/'~ post.imageName ~'') }}" alt="Image article {{ post.Title }}">
+						{% else %}
+							<img class="card-img-top" src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes">
+						{% endif %}
 						<div class="card-body">
 							<h5 class="card-title">{{ post.title }}</h5>
 							<p>Publié le {{ post.createdAt|date("d/m/Y") }}</p>

@@ -28,7 +28,11 @@
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-12 text-center mb-2 contractThumbnail">
-					<img src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes">
+					{% if contract.imageName %}
+						<img src="{{ asset('images/contracts/'~ contract.imageName ~'') }}" alt="Image contrat {{ contract.name }}">
+					{% else %}
+						<img src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes">
+					{% endif %}
 				</div>
 			</div>
 		{% endfor %}

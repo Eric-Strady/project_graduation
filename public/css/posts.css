@@ -20,7 +20,9 @@ header {
 
 /* POSTS LIST */
 
-
+.card-img-top {
+	height: 230px;
+}
 
 /* MEDIA */
 

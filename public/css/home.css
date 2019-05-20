@@ -91,6 +91,10 @@ header {
 	padding-bottom: 100px;
 }
 
+.card-img-top {
+	height: 230px;
+}
+
 /* MEDIA */
 
 @media all and (max-width : 992px) {
