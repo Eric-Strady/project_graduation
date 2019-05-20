@@ -41,11 +41,6 @@ class Post
     private $updated_at;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $tag;
-
-    /**
      * @Vich\UploadableField(mapping="post_image", fileNameProperty="image_name")
      * 
      * @var File
@@ -53,9 +48,15 @@ class Post
     private $image_file;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image_name;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\PostCategory", inversedBy="post", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
 
     public function __construct()
     {
@@ -115,18 +116,6 @@ class Post
         return $this;
     }
 
-    public function getTag(): ?string
-    {
-        return $this->tag;
-    }
-
-    public function setTag(string $tag): self
-    {
-        $this->tag = $tag;
-
-        return $this;
-    }
-
     public function getImageFile(): ?File
     {
         return $this->image_file;
@@ -150,6 +139,18 @@ class Post
     public function setImageName(?string $image_name): self
     {
         $this->image_name = $image_name;
+        return $this;
+    }
+
+    public function getCategory(): ?PostCategory
+    {
+        return $this->category;
+    }
+
+    public function setCategory(PostCategory $category): self
+    {
+        $this->category = $category;
+
         return $this;
     } 
 }

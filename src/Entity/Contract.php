@@ -70,7 +70,7 @@ class Contract
     private $image_file;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image_name;
 
