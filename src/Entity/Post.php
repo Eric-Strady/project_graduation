@@ -3,9 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
+ * @Vich\Uploadable
  */
 class Post
 {
@@ -40,6 +44,18 @@ class Post
      * @ORM\Column(type="string", length=255)
      */
     private $tag;
+
+    /**
+     * @Vich\UploadableField(mapping="post_image", fileNameProperty="image_name")
+     * 
+     * @var File
+     */
+    private $image_file;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image_name;
 
     public function __construct()
     {
@@ -110,4 +126,30 @@ class Post
 
         return $this;
     }
+
+    public function getImageFile(): ?File
+    {
+        return $this->image_file;
+    }
+
+    public function setImageFile(?File $image_file = null): self
+    {
+        $this->image_file = $image_file;
+        if ($this->image_file instanceof UploadedFile) {
+            $this->updated_at = new \DateTime('now');
+        }
+
+        return $this;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->image_name;
+    }
+
+    public function setImageName(?string $image_name): self
+    {
+        $this->image_name = $image_name;
+        return $this;
+    } 
 }
