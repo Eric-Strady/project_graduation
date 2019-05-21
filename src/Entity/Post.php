@@ -53,7 +53,7 @@ class Post
     private $image_name;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\PostCategory", inversedBy="post", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\PostCategory", inversedBy="posts")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
@@ -147,10 +147,10 @@ class Post
         return $this->category;
     }
 
-    public function setCategory(PostCategory $category): self
+    public function setCategory(?PostCategory $category): self
     {
         $this->category = $category;
 
         return $this;
-    } 
+    }
 }
