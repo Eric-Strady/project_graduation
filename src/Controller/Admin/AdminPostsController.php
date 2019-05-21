@@ -83,14 +83,16 @@ class AdminPostsController extends AbstractController
     /**
 	 * @Route("/admin/article/supprimer/{id}", name="admin.post.delete")
 	 */
-    public function delete(Post $post)
+    public function delete(Post $post, Request $request)
     {
     	if (!$post) {
             throw $this->createNotFoundException('Cet article n\'existe pas');
         }
 
-        $this->em->remove($post);
-        $this->em->flush();
+        if ($this->isCsrfTokenValid('delete' . $post->getId(), $request->get('_token'))) {
+            $this->em->remove($post);
+            $this->em->flush();
+        }
 
         return $this->redirectToRoute('admin.posts');
     }

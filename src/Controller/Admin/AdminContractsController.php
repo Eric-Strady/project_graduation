@@ -94,15 +94,17 @@ class AdminContractsController extends AbstractController
     /**
 	 * @Route("/admin/contrat/supprimer/{id}", name="admin.contract.delete")
 	 */
-    public function delete(Contract $contract)
+    public function delete(Contract $contract, Request $request)
     {
-    	if (!$contract) {
+        if (!$contract) {
             throw $this->createNotFoundException('Ce contrat n\'existe pas');
         }
 
-        $this->em->remove($contract);
-        $this->em->flush();
-
+        if ($this->isCsrfTokenValid('delete' . $contract->getId(), $request->get('_token'))) {
+            $this->em->remove($contract);
+            $this->em->flush();
+        }
+    	
         return $this->redirectToRoute('admin.contracts');
     }
 }

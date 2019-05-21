@@ -3,7 +3,7 @@
 {% block title %}AMAP Pré-vert - Gestion des contrats{% endblock %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/admin_home.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_contracts.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -34,7 +34,11 @@
 						<td>
 							<a href="{{ path('contract.show', {id: contract.id}) }}" class="btn btn-success">Visualiser</a>
 							<a href="{{ path('admin.contract.update', {id: contract.id}) }}" class="btn btn-warning">Modifier</a>
-							<a href="{{ path('admin.contract.delete', {id: contract.id}) }}" class="btn btn-danger">Supprimer</a>
+							<form method="POST" action="{{ path('admin.contract.delete', {id: contract.id}) }}" onsubmit="return confirm('Souhaitez-vous vraiment supprimer ce contrat?')">
+								<input type="hidden" name="_method" value="delete">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contract.id) }}">
+								<button class="btn btn-danger">Supprimer</button>
+							</form>
 						</td>
 					</tr>
 				{% endfor %}

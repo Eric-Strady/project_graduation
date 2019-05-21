@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/posts.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_contracts.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -61,7 +62,11 @@
 							<td>
 								<a href="{{ path('post.show', {id: post.id}) }}" class="btn btn-success">Visualiser</a>
 								<a href="{{ path('admin.post.update', {id: post.id}) }}" class="btn btn-warning">Modifier</a>
-								<a href="{{ path('admin.post.delete', {id: post.id}) }}" class="btn btn-danger">Supprimer</a>
+								<form method="POST" action="{{ path('admin.post.delete', {id: post.id}) }}" onsubmit="return confirm('Souhaitez-vous vraiment supprimer cette article?')">
+									<input type="hidden" name="_method" value="delete">
+									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
+									<button class="btn btn-danger">Supprimer</button>
+								</form>
 							</td>
 						</tr>
 					{% endfor %}
