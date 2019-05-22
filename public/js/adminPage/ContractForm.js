@@ -1,8 +1,22 @@
 class ContractForm {
-	constructor(productContainer, productAddElt) {
-		this.productContainer = productContainer;
-		this.productAddElt = productAddElt;
+	constructor(domElt) {
+		this.summaryElt = domElt.summaryElt;
+		this.descriptionElt = domElt.descriptionElt;
+		this.growerNameElt = domElt.growerNameElt;
+		this.gpsLatElt = domElt.gpsLatElt;
+		this.gpsLngElt = domElt.gpsLngElt;
+		this.productContainer = domElt.productContainer;
+		this.productAddElt = domElt.productAddElt;
+		this.displayPlaceholders();
 		this.handleEmbeddedProductForm();
+	}
+
+	displayPlaceholders() {
+		$(this.summaryElt).attr('placeholder', 'Le résumé du contrat sera affiché sur la page d\'accueil et sur la page listant les contrats.');
+		$(this.descriptionElt).attr('placeholder', 'La description du contrat sera affiché sur la page du contrat.');
+		$(this.growerNameElt).attr('placeholder', 'Le nom renseigné ici servira également de description pour le marqueur de la carte.');
+		$(this.gpsLatElt).attr('placeholder', 'Exemple de latitude: 48.862725');
+		$(this.gpsLngElt).attr('placeholder', 'Exemple de longitude: 2.287592');
 	}
 
 	handleEmbeddedProductForm() {
@@ -47,5 +61,14 @@ class ContractForm {
 }
 
 $(function() {
-	const contractForm = new ContractForm('#contract_products', '#add-product');
+	let domElt = {
+		summaryElt: '#contract_summary',
+		descriptionElt: '#contract_description',
+		growerNameElt: '#contract_grower_name',
+		gpsLatElt: '#contract_grower_gps_lat',
+		gpsLngElt: '#contract_grower_gps_lng',
+		productContainer: '#contract_products',
+		productAddElt: '#add-product'
+	}
+	const contractForm = new ContractForm(domElt);
 });
