@@ -7,10 +7,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContractRepository")
+ * @UniqueEntity("name")
  * @Vich\Uploadable
  */
 class Contract
@@ -53,11 +56,13 @@ class Contract
     private $ending_season_at;
 
     /**
+     * @Assert\Regex("/\d+[,\.]{1}\d+/")
      * @ORM\Column(type="float")
      */
     private $grower_gps_lat;
 
     /**
+     * @Assert\Regex("/\d+[,\.]{1}\d+/")
      * @ORM\Column(type="float")
      */
     private $grower_gps_lng;
