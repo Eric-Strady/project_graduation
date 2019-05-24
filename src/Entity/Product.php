@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -19,6 +20,7 @@ class Product
     private $id;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)
      */
     private $name;
@@ -39,16 +41,19 @@ class Product
     private $is_fixed_price;
 
     /**
+     * @Assert\GreaterThan(0)
      * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
      */
     private $fixed_price;
 
     /**
+     * @Assert\GreaterThan(0)
      * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
      */
     private $min_price;
 
     /**
+     * @Assert\GreaterThan(0)
      * @ORM\Column(type="decimal", precision=5, scale=2, nullable=true)
      */
     private $max_price;

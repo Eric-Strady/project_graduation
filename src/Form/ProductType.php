@@ -19,9 +19,15 @@ class ProductType extends AbstractType
             ->add('is_fixed_delivery')
             ->add('nb_delivery')
             ->add('is_fixed_price')
-            ->add('fixed_price', MoneyType::class)
-            ->add('min_price', MoneyType::class)
-            ->add('max_price', MoneyType::class)
+            ->add('fixed_price', MoneyType::class, [
+                'required' => false
+            ])
+            ->add('min_price', MoneyType::class, [
+                'required' => false
+            ])
+            ->add('max_price', MoneyType::class, [
+                'required' => false
+            ])
             ->add('food_types', EntityType::class, [
                 'class' => FoodType::class,
                 'choice_label' => 'name',
