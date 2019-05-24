@@ -95,6 +95,7 @@ class Contract
     private $updated_at;
 
     /**
+     * @Assert\Valid
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="contract", orphanRemoval=true)
      */
     private $products;
