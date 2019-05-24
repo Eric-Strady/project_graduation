@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Contract;
 use App\Form\ProductType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\AbstractType;
@@ -19,10 +20,10 @@ class ContractType extends AbstractType
             ->add('description')
             ->add('grower_name')
             ->add('summary')
-            ->add('starting_season_at', null, [
+            ->add('starting_season_at', DateType::class, [
                 'widget' => 'single_text'
             ])
-            ->add('ending_season_at', null, [
+            ->add('ending_season_at', DateType::class, [
                 'widget' => 'single_text'
             ])
             ->add('grower_gps_lat')

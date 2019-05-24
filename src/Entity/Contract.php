@@ -51,12 +51,14 @@ class Contract
 
     /**
      * @Assert\NotBlank
+     * @Assert\Date
      * @ORM\Column(type="date")
      */
     private $starting_season_at;
 
     /**
      * @Assert\NotBlank
+     * @Assert\Date
      * @ORM\Column(type="date")
      */
     private $ending_season_at;
