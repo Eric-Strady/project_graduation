@@ -26,42 +26,50 @@ class Contract
     private $id;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="text")
      */
     private $description;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="string", length=255)
      */
     private $grower_name;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="text")
      */
     private $summary;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="date")
      */
     private $starting_season_at;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="date")
      */
     private $ending_season_at;
 
     /**
+     * @Assert\NotBlank
      * @Assert\Regex("/\d+[,\.]{1}\d+/")
      * @ORM\Column(type="float")
      */
     private $grower_gps_lat;
 
     /**
+     * @Assert\NotBlank
      * @Assert\Regex("/\d+[,\.]{1}\d+/")
      * @ORM\Column(type="float")
      */
