@@ -22,7 +22,7 @@ class ContractType extends AbstractType
                 'required' => false
             ])
             ->add('grower_name')
-            ->add('summary')
+            ->add('summary', TextareaType::class)
             ->add('starting_season_at', DateType::class, [
                 'widget' => 'single_text'
             ])
