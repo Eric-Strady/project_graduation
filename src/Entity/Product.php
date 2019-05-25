@@ -21,6 +21,7 @@ class Product
 
     /**
      * @Assert\NotBlank
+     * @Assert\Length(max=255, maxMessage="Cette valeur ne doit pas dépasser les 255 caractères.")
      * @ORM\Column(type="string", length=255)
      */
     private $name;

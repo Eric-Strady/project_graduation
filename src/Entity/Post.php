@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -21,11 +22,15 @@ class Post
     private $id;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(max=255, maxMessage="Cette valeur ne doit pas dépasser les 255 caractères.")
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(max=255, maxMessage="Cette valeur ne doit pas dépasser les 255 caractères.")
      * @ORM\Column(type="text")
      */
     private $content;
@@ -42,7 +47,7 @@ class Post
 
     /**
      * @Vich\UploadableField(mapping="post_image", fileNameProperty="image_name")
-     * 
+     * @Assert\Image(mimeTypes={"image/jpeg", "image/png"})
      * @var File
      */
     private $image_file;

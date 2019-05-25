@@ -27,6 +27,7 @@ class Contract
 
     /**
      * @Assert\NotBlank
+     * @Assert\Length(max=255, maxMessage="Cette valeur ne doit pas dépasser les 255 caractères.")
      * @ORM\Column(type="string", length=255)
      */
     private $name;
@@ -39,6 +40,7 @@ class Contract
 
     /**
      * @Assert\NotBlank
+     * @Assert\Length(max=255, maxMessage="Cette valeur ne doit pas dépasser les 255 caractères.")
      * @ORM\Column(type="string", length=255)
      */
     private $grower_name;
@@ -78,8 +80,8 @@ class Contract
     private $grower_gps_lng;
 
     /**
-     * @Vich\UploadableField(mapping="contract_image", fileNameProperty="image_name")
-     * 
+     * @Vich\UploadableField(mapping="contract_image", fileNameProperty="image_name") 
+     * @Assert\Image(mimeTypes={"image/jpeg", "image/png"})
      * @var File
      */
     private $image_file;
