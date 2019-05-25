@@ -29,4 +29,8 @@
 {% endblock %}
 
 {% block javascripts %}
+	<script type="text/javascript">
+		let selector = "#post_content"
+	</script>
+	{% include 'back/admin_tinymce_script.html.twig' %}
 {% endblock %}
