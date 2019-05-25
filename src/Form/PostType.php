@@ -6,6 +6,7 @@ use App\Entity\Post;
 use App\Entity\PostCategory;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,7 +23,9 @@ class PostType extends AbstractType
                 'multiple' => false,
                 'expanded' => false
             ])
-            ->add('content')
+            ->add('content', TextareaType::class, [
+                'required' => false
+            ])
             ->add('image_file', FileType::class, [
                 'required' => false
             ])
