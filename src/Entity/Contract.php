@@ -119,7 +119,7 @@ class Contract
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -131,7 +131,7 @@ class Contract
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -143,7 +143,7 @@ class Contract
         return $this->grower_name;
     }
 
-    public function setGrowerName(string $grower_name): self
+    public function setGrowerName(?string $grower_name): self
     {
         $this->grower_name = $grower_name;
 
@@ -155,7 +155,7 @@ class Contract
         return $this->summary;
     }
 
-    public function setSummary(string $summary): self
+    public function setSummary(?string $summary): self
     {
         $this->summary = $summary;
 
@@ -191,7 +191,7 @@ class Contract
         return $this->grower_gps_lat;
     }
 
-    public function setGrowerGpsLat(float $grower_gps_lat): self
+    public function setGrowerGpsLat(?float $grower_gps_lat): self
     {
         $this->grower_gps_lat = $grower_gps_lat;
 
@@ -203,7 +203,7 @@ class Contract
         return $this->grower_gps_lng;
     }
 
-    public function setGrowerGpsLng(float $grower_gps_lng): self
+    public function setGrowerGpsLng(?float $grower_gps_lng): self
     {
         $this->grower_gps_lng = $grower_gps_lng;
 
