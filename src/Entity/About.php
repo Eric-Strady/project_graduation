@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AboutRepository")
@@ -17,11 +18,13 @@ class About
     private $id;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="text")
      */
     private $description;
 
     /**
+     * @Assert\NotBlank
      * @ORM\Column(type="text")
      */
     private $how_join_us;
@@ -32,26 +35,33 @@ class About
     private $created_at;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Regex("/\d+[,\.]{1}\d+/")
      * @ORM\Column(type="float")
      */
     private $amap_gps_lat;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Regex("/\d+[,\.]{1}\d+/")
      * @ORM\Column(type="float")
      */
     private $amap_gps_lng;
 
     /**
+     * @Assert\GreaterThan(0)
      * @ORM\Column(type="integer")
      */
     private $nb_members;
 
     /**
+     * @Assert\GreaterThan(0)
      * @ORM\Column(type="integer")
      */
     private $annual_membership_fee;
 
     /**
+     * @Assert\Regex("#^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?\#[\]@!\$&'\(\)\*\+,;=.]+$#")
      * @ORM\Column(type="string", length=255)
      */
     private $facebook_link;
@@ -66,7 +76,7 @@ class About
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -78,7 +88,7 @@ class About
         return $this->how_join_us;
     }
 
-    public function setHowJoinUs(string $how_join_us): self
+    public function setHowJoinUs(?string $how_join_us): self
     {
         $this->how_join_us = $how_join_us;
 
@@ -102,7 +112,7 @@ class About
         return $this->amap_gps_lat;
     }
 
-    public function setAmapGpsLat(float $amap_gps_lat): self
+    public function setAmapGpsLat(?float $amap_gps_lat): self
     {
         $this->amap_gps_lat = $amap_gps_lat;
 
@@ -114,7 +124,7 @@ class About
         return $this->amap_gps_lng;
     }
 
-    public function setAmapGpsLng(float $amap_gps_lng): self
+    public function setAmapGpsLng(?float $amap_gps_lng): self
     {
         $this->amap_gps_lng = $amap_gps_lng;
 
@@ -126,7 +136,7 @@ class About
         return $this->nb_members;
     }
 
-    public function setNbMembers(int $nb_members): self
+    public function setNbMembers(?int $nb_members): self
     {
         $this->nb_members = $nb_members;
 
@@ -138,7 +148,7 @@ class About
         return $this->annual_membership_fee;
     }
 
-    public function setAnnualMembershipFee(int $annual_membership_fee): self
+    public function setAnnualMembershipFee(?int $annual_membership_fee): self
     {
         $this->annual_membership_fee = $annual_membership_fee;
 
@@ -150,7 +160,7 @@ class About
         return $this->facebook_link;
     }
 
-    public function setFacebookLink(string $facebook_link): self
+    public function setFacebookLink(?string $facebook_link): self
     {
         $this->facebook_link = $facebook_link;
 

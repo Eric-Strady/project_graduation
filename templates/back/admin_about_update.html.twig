@@ -32,4 +32,9 @@
 {% endblock %}
 
 {% block javascripts %}
+	<script type="text/javascript" src="{{ asset('js/adminPage/ContractForm.js') }}"></script>
+	<script type="text/javascript">
+		let selector = ".tinymce"
+	</script>
+	{% include 'back/admin_tinymce_script.html.twig' %}
 {% endblock %}
