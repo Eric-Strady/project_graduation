@@ -67,6 +67,7 @@ class Product
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\FoodType", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $food_types;
 

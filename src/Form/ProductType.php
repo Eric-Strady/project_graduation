@@ -32,7 +32,8 @@ class ProductType extends AbstractType
                 'class' => FoodType::class,
                 'choice_label' => 'name',
                 'multiple' => true,
-                'expanded' => false
+                'expanded' => false,
+                'empty_data' => false
             ])
         ;
     }

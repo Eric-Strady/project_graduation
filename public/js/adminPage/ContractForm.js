@@ -7,6 +7,7 @@ class ContractForm {
 		this.gpsLngElt = domElt.gpsLngElt;
 		this.productContainer = domElt.productContainer;
 		this.productAddElt = domElt.productAddElt;
+		this.selectElt = domElt.selectElt;
 		this.displayPlaceholders();
 		this.handleEmbeddedProductForm();
 	}
@@ -27,6 +28,7 @@ class ContractForm {
 
 		if (this.productIndex !== 0) {
 			$(this.productContainer).children('fieldset').each(function() {
+				self.customizeSelectBox();
 				self.addDeleteLink($(this));
 			});
 		}
@@ -43,6 +45,7 @@ class ContractForm {
 
 		let productForm = this.addDeleteLink(newProductPrototype);
 		$(this.productAddElt).before(productForm);
+		this.customizeSelectBox();
 	}
 
 	addDeleteLink(prototype) {
@@ -58,6 +61,10 @@ class ContractForm {
 
 		return prototypeWithDeleteLink;
 	}
+
+	customizeSelectBox(){
+		$(this.selectElt).select2();
+	}
 }
 
 $(function() {
@@ -68,7 +75,8 @@ $(function() {
 		gpsLatElt: '#contract_grower_gps_lat',
 		gpsLngElt: '#contract_grower_gps_lng',
 		productContainer: '#contract_products',
-		productAddElt: '#add-product'
+		productAddElt: '#add-product',
+		selectElt: 'select'
 	}
 	const contractForm = new ContractForm(domElt);
 });
