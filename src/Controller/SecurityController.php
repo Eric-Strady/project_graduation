@@ -11,22 +11,21 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-    * @Route("/login", name="login", methods={"GET", "POST"})
-    */
-    public function login(AuthenticationUtils $authenticationUtils)
+     * @Route("/login", name="login")
+     */
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
+        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error
-        ]);
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
     /**
-    * @Route("/logout", name="logout", methods={"GET"})
-    */
+     * @Route("/logout", name="logout")
+     */
     public function logout()
     {
         throw new \Exception('Une erreur est survenue lors de la tentative de déconnexion.');
