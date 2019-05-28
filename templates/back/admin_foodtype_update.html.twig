@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AMAP Pré-vert - Modification type d'alimentation{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin_home.css') }}">
+{% endblock %}
+
+{% block nav %}
+	{% include 'back/admin_nav.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<header class="container">
+			<div class="row text-center">
+				<div class="col-lg-12">
+					<h2>Modification du type d'alimentation</h2>
+				</div>
+			</div>
+		</header>
+
+		<section id="createForm">
+			{% include 'back/admin_foodtype_form.html.twig' with { button: 'Modifier' } %}
+		</section>
+	</div>
+{% endblock %}

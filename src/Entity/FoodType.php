@@ -5,9 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FoodTypeRepository")
+ * @UniqueEntity("name")
  */
 class FoodType
 {
@@ -19,12 +22,14 @@ class FoodType
     private $id;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(max=255)
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Product", mappedBy="food_types")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Product", mappedBy="food_types", cascade={"remove"})
      */
     private $products;
 
@@ -43,7 +48,7 @@ class FoodType
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
