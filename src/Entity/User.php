@@ -20,16 +20,26 @@ class User implements UserInterface
 
     /**
      * @Assert\NotBlank
+     * @Assert\Email
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
 
     /**
      * @var string The hashed password
-     * @Assert\NotBlank
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $token_pass;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $token_pass_date;
 
     public function getId(): ?int
     {
@@ -96,5 +106,29 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getTokenPass(): ?string
+    {
+        return $this->token_pass;
+    }
+
+    public function setTokenPass(?string $token_pass): self
+    {
+        $this->token_pass = $token_pass;
+
+        return $this;
+    }
+
+    public function getTokenPassDate(): ?\DateTimeInterface
+    {
+        return $this->token_pass_date;
+    }
+
+    public function setTokenPassDate(?\DateTimeInterface $token_pass_date): self
+    {
+        $this->token_pass_date = $token_pass_date;
+
+        return $this;
     }
 }

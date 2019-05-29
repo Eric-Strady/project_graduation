@@ -71,6 +71,7 @@ class AdminPostsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            $post->setUpdatedAt(new \DateTime());
         	$this->em->flush();
         	return $this->redirectToRoute('admin.posts');
         }
