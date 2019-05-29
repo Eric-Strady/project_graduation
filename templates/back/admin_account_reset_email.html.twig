@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AMAP Pré-vert - Gestion du compte{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin_home.css') }}">
+{% endblock %}
+
+{% block nav %}
+	{% include 'back/admin_nav.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<header>
+			<div class="row text-center">
+				<div class="col-lg-12">
+					<h2>Gestion du compte</h2>
+				</div>
+			</div>
+		</header>
+
+		<section id="accountUpdate">
+			<div class="row justify-content-center">
+				<div class="col-lg-6">
+					{{ form_start(formResetEmail) }}
+						{{ form_errors(formResetEmail) }}
+						<fieldset>
+							<legend>Changer l'identifiant (e-mail)</legend>
+							{{ form_row(formResetEmail.new_email) }}
+							{{ form_row(formResetEmail.old_password) }}
+						</fieldset>
+
+						<div class="row mt-4">
+							<div class="col-lg-12 text-center">
+								<button type="submit" class="btn btn-warning">Modifier</button>
+							</div>
+						</div>
+					{{ form_end(formResetEmail)}}
+				</div>
+			</div>		
+		</section>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
