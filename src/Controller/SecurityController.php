@@ -98,36 +98,42 @@ class SecurityController extends AbstractController
         $user = $this->repository->find($id);
         if ($user)
         {
-            if ($user->getTokenPass() === $token)
+            $date = new \DateTime('-30 min');
+            if ($this->repository->isTokenDateValid($date))
             {
-                $forgotPassword = new ForgotPasswordForm();
-
-                $form = $this->createForm(UserForgotPasswordType::class, $forgotPassword);
-                $form->handleRequest($request);
-
-                if ($form->isSubmitted() && $form->isValid())
+                if ($user->getTokenPass() === $token)
                 {
-                    $newPassword = $forgotPassword->getNewPassword();
-                    $newConfirmPassword = $forgotPassword->getNewConfirmPassword();
-                    
-                    if ($newPassword === $newConfirmPassword)
-                    {
-                        $newEncodedPassword = $this->passwordEncoder->encodePassword($user, $newPassword);
-                        $user->setPassword($newEncodedPassword);
-                        $this->em->flush();
+                    $forgotPassword = new ForgotPasswordForm();
 
-                        $this->addFlash('success', 'Votre mot de passe a bien été réinitialisé.');
-                        return $this->redirectToRoute('login');
-                    }
-                    else 
+                    $form = $this->createForm(UserForgotPasswordType::class, $forgotPassword);
+                    $form->handleRequest($request);
+
+                    if ($form->isSubmitted() && $form->isValid())
                     {
-                        $form->addError(new FormError('La confirmation du nouveau mot de passe n\'est pas correct.'));
+                        $newPassword = $forgotPassword->getNewPassword();
+                        $newConfirmPassword = $forgotPassword->getNewConfirmPassword();
+                        
+                        if ($newPassword === $newConfirmPassword)
+                        {
+                            $newEncodedPassword = $this->passwordEncoder->encodePassword($user, $newPassword);
+                            $user->setPassword($newEncodedPassword);
+                            $this->em->flush();
+
+                            $this->addFlash('success', 'Votre mot de passe a bien été réinitialisé.');
+                            return $this->redirectToRoute('login');
+                        }
+                        else 
+                        {
+                            $form->addError(new FormError('La confirmation du nouveau mot de passe n\'est pas correct.'));
+                        }
                     }
+                    return $this->render('security/forgot_password_reset.html.twig', [
+                        'form' => $form->createView()
+                    ]);
                 }
-                return $this->render('security/forgot_password_reset.html.twig', [
-                    'form' => $form->createView()
-                ]);
             }
+            $this->addFlash('error', 'Vous avez dépassé la date de renouvellement de votre mot de passe! Merci de refaire une demande.');
+            return $this->redirectToRoute('forgot.password');
         }
 
         $this->addFlash('error', 'Une erreur est survenue. Merci de réessayer ultérieurement');
