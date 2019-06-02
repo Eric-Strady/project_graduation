@@ -17,13 +17,8 @@ header {
 
 /* MAP */
 
-#amapMap {
-	width: 100vw;
-}
-
 #map {
 	height: 300px;
-	width: 100vw;
 	border-radius: 10px;
 }
 
