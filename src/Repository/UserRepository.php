@@ -19,11 +19,13 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    public function isTokenDateValid($date)
+    public function isTokenDateValid($id, $date)
     {
         return $this->createQueryBuilder('u')
             ->select('u')
-            ->where('u.token_pass_date >= :date')
+            ->where('u.id = :id')
+            ->setParameter('id', $id)
+            ->andWhere('u.token_pass_date >= :date')
             ->setParameter('date', $date)
             ->getQuery()
             ->getResult()

@@ -98,10 +98,10 @@ class SecurityController extends AbstractController
         $user = $this->repository->find($id);
         if ($user)
         {
-            $date = new \DateTime('-30 min');
-            if ($this->repository->isTokenDateValid($date))
+            if ($user->getTokenPass() === $token)
             {
-                if ($user->getTokenPass() === $token)
+                $date = new \DateTime('-30 min');
+                if ($this->repository->isTokenDateValid($id, $date))
                 {
                     $forgotPassword = new ForgotPasswordForm();
 
@@ -131,11 +131,10 @@ class SecurityController extends AbstractController
                         'form' => $form->createView()
                     ]);
                 }
+                $this->addFlash('error', 'Vous avez dépassé la date de renouvellement de votre mot de passe! Merci de refaire une demande.');
+                return $this->redirectToRoute('forgot.password');
             }
-            $this->addFlash('error', 'Vous avez dépassé la date de renouvellement de votre mot de passe! Merci de refaire une demande.');
-            return $this->redirectToRoute('forgot.password');
         }
-
         $this->addFlash('error', 'Une erreur est survenue. Merci de réessayer ultérieurement');
         return $this->redirectToRoute('forgot.password');
     }
