@@ -34,7 +34,7 @@
 					{% for contract in contracts %}
 						<tr>
 							<td>Contrat {{ contract.name }}</td>
-							<td>-</td>
+							<td>{{ days_diff(contract.endingSeasonAt) }}</td>
 							<td>
 								<a href="{{ path('admin.contract.update', {id: contract.id}) }}" class="btn btn-warning">Modifier</a>
 							</td>

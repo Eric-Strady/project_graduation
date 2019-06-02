@@ -40,7 +40,7 @@
 		</div>
 		<div class="row text-center">
 			<div class="col-lg-3 mt-4 mb-4">
-				<span>0</span>
+				<span>{{ nbContracts }}</span>
 				<p>Contrats</p>
 			</div>
 			<div class="col-lg-3 mt-4 mb-4">
@@ -48,7 +48,7 @@
 				<p>Membres</p>
 			</div>
 			<div class="col-lg-3 mt-4 mb-4">
-				<span>0</span>
+				<span>{{ years_diff(about.createdAt) }}</span>
 				<p>Années d'existance</p>
 			</div>
 			<div class="col-lg-3 mt-4 mb-4">
@@ -91,9 +91,7 @@
 		</div>
 	</section>
 
-	<section id="amapMap">
-		<div id="map"></div>
-	</section>
+	<div id="map"></div>
 {% endblock %}
 
 {% block javascripts %}
