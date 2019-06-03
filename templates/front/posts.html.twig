@@ -38,26 +38,11 @@
 	<section class="container" id="postsSection">
 		<div class="row">
 			{% for post in posts %}
-				<div class="col-lg-4 text-center mt-4">
-					<div class="card">
-						{% if post.imageName %}
-							<img class="card-img-top" src="{{ asset('images/posts/'~ post.imageName ~'') }}" alt="Image article {{ post.Title }}">
-						{% else %}
-							<img class="card-img-top" src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes">
-						{% endif %}
-						<div class="card-body">
-							<h5 class="card-title">{{ post.title }}</h5>
-							<p>Publié le {{ post.createdAt|date("d/m/Y") }}</p>
-						</div>
-						<div class="card-footer text-center">
-		      				<a href="{{ path('post.show', {id: post.id}) }}" class="btn btn-primary">Lire la suite</a>
-		      			</div>
-					</div>
-				</div>
+				{{ include('front/posts_thumbnail.html.twig') }}
 			{% endfor %}
 		</div>
 		<div class="row justify-content-center mt-4 mb-4" id="pagination">
-			<p>Pagination</p>
+			{{ knp_pagination_render(posts) }}
 		</div>
 	</section>
 

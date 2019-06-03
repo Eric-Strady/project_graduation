@@ -65,22 +65,7 @@
 		<h2>Les dernières actualités</h2>
 		<div class="row justify-content-center">
 			{% for post in lastPosts %}
-				<div class="col-lg-4 text-center">
-					<div class="card">
-						{% if post.imageName %}
-							<img class="card-img-top" src="{{ asset('images/posts/'~ post.imageName ~'') }}" alt="Image article {{ post.Title }}">
-						{% else %}
-							<img class="card-img-top" src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes">
-						{% endif %}
-						<div class="card-body">
-							<h5 class="card-title">{{ post.title }}</h5>
-							<p>Publié le {{ post.createdAt|date("d/m/Y") }}</p>
-						</div>
-						<div class="card-footer text-center">
-		      				<a href="{{ path('post.show', {id: post.id}) }}" class="btn btn-primary">Lire la suite</a>
-		      			</div>
-					</div>
-				</div>
+				{{ include('front/posts_thumbnail.html.twig') }}
 			{% endfor %}
 		</div>
 	</section>

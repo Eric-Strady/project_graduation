@@ -1,0 +1,20 @@
+<div class="col-lg-4 text-center">
+	<div class="card">
+		{% if post.imageName %}
+			<a href="{{ path('post.show', {id: post.id}) }}">
+				<img class="card-img-top" src="{{ asset('images/posts/'~ post.imageName ~'') }}" alt="Image article {{ post.Title }}">
+			</a>
+		{% else %}
+			<a href="{{ path('post.show', {id: post.id}) }}">
+				<img class="card-img-top" src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes">
+			</a>
+		{% endif %}
+		<div class="card-body">
+			<h5 class="card-title">{{ post.title }}</h5>
+			<p class="card-text">Publié le {{ post.createdAt|date("d/m/Y") }}</p>
+		</div>
+		<div class="card-footer text-center">
+			<a href="{{ path('post.show', {id: post.id}) }}" class="btn btn-primary">Lire la suite</a>
+		</div>
+	</div>
+</div>

@@ -19,6 +19,14 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
+    public function findAllPostsQuery(){
+        return $this->createQueryBuilder('p')
+            ->select('p')
+            ->orderBy('p.created_at', 'DESC')
+            ->getQuery()
+        ;
+    }
+
     public function findLastPosts()
     {
         return $this->createQueryBuilder('p')

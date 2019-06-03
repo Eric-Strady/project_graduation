@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\Post;
 
@@ -13,9 +15,13 @@ class PostsController extends AbstractController
     /**
      * @Route("/blog", name="posts.index")
      */
-    public function index()
+    public function index(PaginatorInterface $paginator, Request $request)
     {
-        $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
+        $posts = $paginator->paginate(
+            $this->getDoctrine()->getRepository(Post::class)->findAllPostsQuery(), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            2 /*limit per page*/
+        );
 
         return $this->render('front/posts.html.twig', [
             'posts' => $posts
