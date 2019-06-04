@@ -14,6 +14,11 @@ Fixed price: Prix fixe
 Min price: Prix minimum
 Max price: Prix maximum
 Food types: Types d'alimentation autorisés
+"La description du contrat sera affiché sur la page du contrat.": "La description du contrat sera affiché sur la page du contrat."
+"Le résumé du contrat sera affiché sur la page d'accueil et sur la page listant les contrats.": "Le résumé du contrat sera affiché sur la page d'accueil et sur la page listant les contrats."
+"Le nom renseigné ici servira également de description pour le marqueur de la carte.": "Le nom renseigné ici servira également de description pour le marqueur de la carte."
+"Exemple de latitude: 48.862725": "Exemple de latitude: 48.862725"
+"Exemple de longitude: 2.287592": "Exemple de longitude: 2.287592"
 
 Title: Titre
 Content: Contenu
