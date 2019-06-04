@@ -20,7 +20,7 @@ class PostsController extends AbstractController
         $posts = $paginator->paginate(
             $this->getDoctrine()->getRepository(Post::class)->findAllPostsQuery(), /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            2 /*limit per page*/
+            9 /*limit per page*/
         );
 
         return $this->render('front/posts.html.twig', [

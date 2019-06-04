@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,9 +27,13 @@ class AdminPostsController extends AbstractController
 	/**
 	 * @Route("/admin/articles", name="admin.posts")
 	 */
-    public function index()
+    public function index(PaginatorInterface $paginator, Request $request)
     {
-    	$posts = $this->repository->findAll();
+    	$posts = $paginator->paginate(
+            $this->getDoctrine()->getRepository(Post::class)->findAllPostsQuery(), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            20 /*limit per page*/
+        );
 
         return $this->render('back/admin_posts.html.twig', [
         	'posts' => $posts

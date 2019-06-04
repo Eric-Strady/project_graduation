@@ -72,6 +72,9 @@
 					{% endfor %}
 				</tbody>
 			</table>
+			<div class="row justify-content-center" id="pagination">
+				{{ knp_pagination_render(posts) }}
+			</div>
 			<div class="text-left">
 				<a href="{{ path('admin.post.create') }}" class="btn btn-primary">Ajouter un nouvel article</a>
 			</div>
