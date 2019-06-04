@@ -12,6 +12,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PostRepository;
 use App\Entity\Post;
 use App\Form\PostType;
+use App\Filter\PostFilter;
+use App\Form\PostFilterType;
 
 class AdminPostsController extends AbstractController
 {
@@ -29,14 +31,24 @@ class AdminPostsController extends AbstractController
 	 */
     public function index(PaginatorInterface $paginator, Request $request)
     {
+        $postFilter = new PostFilter();
+        $form = $this->createForm(PostFilterType::class, $postFilter);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && !$form->isValid())
+        {
+            $postFilter->setYear(null); /*prevent render nothing if year's validation has failed*/
+        }
+
     	$posts = $paginator->paginate(
-            $this->getDoctrine()->getRepository(Post::class)->findAllPostsQuery(), /* query NOT result */
+            $this->getDoctrine()->getRepository(Post::class)->findAllPostsQuery($postFilter), /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
             20 /*limit per page*/
         );
 
         return $this->render('back/admin_posts.html.twig', [
-        	'posts' => $posts
+        	'posts' => $posts,
+            'form' => $form->createView()
         ]);
     }
 

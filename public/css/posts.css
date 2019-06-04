@@ -24,6 +24,10 @@ header {
 	height: 230px;
 }
 
+#postsCrud form {
+	display: inline-block;
+}
+
 /* MEDIA */
 
 @media all and (max-width : 992px) {

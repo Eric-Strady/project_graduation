@@ -4,7 +4,6 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/posts.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/admin_contracts.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -21,25 +20,7 @@
 			</div>
 		</header>
 
-		<section class="mt-4 mb-4" id="filters">
-			<div class="row justify-content-center align-items-center text-center">
-				<div class="col-lg-2">
-					<p>Label année</p>
-				</div>
-				<div class="col-lg-2">
-					<p>Champ année</p>
-				</div>
-				<div class="col-lg-2">
-					<p>Label tag</p>
-				</div>
-				<div class="col-lg-2">
-					<p>Champ tag</p>
-				</div>
-				<div class="col-lg-2">
-					<button class="btn btn-primary">Filtrer</button>
-				</div>
-			</div>
-		</section>
+		{{ include('front/post_filter.html.twig') }}
 
 		<section class="mt-4 mb-4" id="postsCrud">
 			<table class="table">
@@ -83,4 +64,5 @@
 {% endblock %}
 
 {% block javascripts %}
+	<script type="text/javascript" src="{{ asset('js/postFilter.js') }}"></script>
 {% endblock %}

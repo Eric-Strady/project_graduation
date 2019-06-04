@@ -1,0 +1,17 @@
+<section class="mt-4 mb-4 pt-3" id="filters">
+	{{ form_start(form) }}
+		<div class="form-row align-items-end">
+			<div class="col ml-2 mr-2">
+				{{ form_row(form.year) }}
+			</div>
+			<div class="col ml-2 mr-2">
+				{{ form_row(form.post_categories) }}
+			</div>
+			<div class="col-lg-2 text-center">
+				<div class="form-group">
+					<button class="btn btn-primary">Filtrer</button>
+				</div>
+			</div>
+		</div>
+	{{ form_end(form) }}
+</section>
