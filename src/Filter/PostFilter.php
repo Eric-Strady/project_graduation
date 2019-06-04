@@ -3,17 +3,15 @@
 namespace App\Filter;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class PostFilter
 {
     /**
-     * 
+     * @Assert\Regex("/^2\d{3}$/")
      */
-    private $date;
+    private $year;
 
-    /**
-     * 
-     */
     private $post_categories;
 
     public function __construct()
@@ -21,14 +19,14 @@ class PostFilter
         $this->post_categories = new ArrayCollection();
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getYear(): ?String
     {
-        return $this->date;
+        return $this->year;
     }
 
-    public function setDate(?\DateTimeInterface $date): self
+    public function setYear(?String $year): self
     {
-        $this->date = $date;
+        $this->year = $year;
 
         return $this;
     }

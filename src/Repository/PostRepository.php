@@ -25,11 +25,17 @@ class PostRepository extends ServiceEntityRepository
             ->select('p')
             ->orderBy('p.created_at', 'DESC');
 
-        if ($postFilter->getDate())
+        if ($postFilter->getYear())
         {
+            $date_min = new \DateTime();
+            $date_min->setDate($postFilter->getYear(), 1, 1)->setTime(0, 0);
+            $date_max = new \DateTime();
+            $date_max->setDate($postFilter->getYear(), 12, 31)->setTime(0, 0);
+
             $query = $query
-                ->andWhere('p.created_at >= :date')
-                ->setParameter('date', $postFilter->getDate());
+                ->andWhere('p.created_at BETWEEN :date_min AND :date_max')
+                ->setParameter('date_min', $date_min)
+                ->setParameter('date_max', $date_max);
         }
 
         if ($postFilter->getPostCategories()->count() > 0)
