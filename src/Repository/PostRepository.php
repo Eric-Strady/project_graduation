@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Post;
+use App\Filter\PostFilter;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -19,12 +20,26 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    public function findAllPostsQuery(){
-        return $this->createQueryBuilder('p')
+    public function findAllPostsQuery(PostFilter $postFilter){
+        $query = $this->createQueryBuilder('p')
             ->select('p')
-            ->orderBy('p.created_at', 'DESC')
-            ->getQuery()
-        ;
+            ->orderBy('p.created_at', 'DESC');
+
+        if ($postFilter->getDate())
+        {
+            $query = $query
+                ->andWhere('p.created_at >= :date')
+                ->setParameter('date', $postFilter->getDate());
+        }
+
+        if ($postFilter->getPostCategories()->count() > 0)
+        {
+            $query = $query
+                ->andWhere('p.category IN (:postCategory)')
+                ->setParameter('postCategory', $postFilter->getPostCategories());
+        }
+
+        return $query->getQuery();
     }
 
     public function findLastPosts()
