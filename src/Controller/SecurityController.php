@@ -117,6 +117,8 @@ class SecurityController extends AbstractController
                         {
                             $newEncodedPassword = $this->passwordEncoder->encodePassword($user, $newPassword);
                             $user->setPassword($newEncodedPassword);
+                            $user->setTokenPass(null);
+                            $user->setTokenPassDate(null);
                             $this->em->flush();
 
                             $this->addFlash('success', 'Votre mot de passe a bien été réinitialisé.');
