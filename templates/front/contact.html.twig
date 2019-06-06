@@ -17,30 +17,24 @@
 	</header>
 
 	<section class="container mt-4">
+		{% for message in app.flashes('success') %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
 		<div class="row justify-content-center">
 			<div class="col-lg-8" id="contactArea">
 				<div class="row" id="contactForm">
 					<div class="col-lg-12">
-						<p>Label adresse e-mail</p>
-						<p>Champ adresse e-mail</p>
+						{{ form_start(form) }}
+							{{ form_row(form.user_email) }}
+							{{ form_row(form.subject) }}
+							{{ form_row(form.message) }}
+							{{ form_rest(form) }}
 					</div>
-					<div class="col-lg-12">
-						<p>Label objet</p>
-						<p>Champ objet</p>
-					</div>
-					<div class="col-lg-12">
-						<p>Label message</p>
-						<p>Champ message</p>
-					</div>
-				</div>
-				<div class="row" id="calculateCaptcha">
-					<div class="col-lg-12">
-						<p><span id="firstNumber">2</span> + <span id="secondNumber">4</span> = <input type="text" name="result"></p>
-					</div>
-				</div>
-				<div class="row" id="sendButton">
 					<div class="col-lg-12 text-center">
-						<button class="btn btn-primary">Envoyer</button>
+							<button type="submit" class="btn btn-primary">Envoyer</button>
+						{{ form_end(form) }}
 					</div>
 				</div>
 			</div>
