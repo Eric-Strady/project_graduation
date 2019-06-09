@@ -21,15 +21,16 @@
 				<h3>Etape 1/2</h3>
 			</div>
 		</div>
+		{{ form_start(form) }}
 		<div class="row justify-content-center">
 			<div class="col-lg-10 ">
-				<p>Label nombre d'adultes: champ nb adultes</p>
+				{{ form_row(form.nb_adult) }}
 			</div>
 			<div class="col-lg-10">
-				<p>Label nombre d'enfants: champ nb enfants</p>
+				{{ form_row(form.nb_child) }}
 			</div>
 			<div class="col-lg-10">
-				<p>Label type d'alimentation: champ type alim</p>
+				{{ form_row(form.food_type) }}
 			</div>
 		</div>
 		<div class="row text-center">
@@ -47,36 +48,7 @@
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-lg-10 ">
-				<div class="row">
-					<div class="col-lg-12">
-						<p>Contrat ...</p>
-					</div>
-					<div class="col-lg-6">
-						<p>Produit 1 (avec possibilité de cocher le produit)</p>
-					</div>
-					<div class="col-lg-6">
-						<p>Produit 2 (avec possibilité de cocher le produit)</p>
-					</div>
-					<div class="col-lg-6">
-						<p>Produit 3 (avec possibilité de cocher le produit)</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-10 ">
-				<div class="row">
-					<div class="col-lg-12">
-						<p>Contrat ...</p>
-					</div>
-					<div class="col-lg-6">
-						<p>Produit 1 (avec possibilité de cocher le produit)</p>
-					</div>
-					<div class="col-lg-6">
-						<p>Produit 2 (avec possibilité de cocher le produit)</p>
-					</div>
-					<div class="col-lg-6">
-						<p>Produit 3 (avec possibilité de cocher le produit)</p>
-					</div>
-				</div>
+				{{ form_row(form.contract) }}
 			</div>
 		</div>
 		<div class="row text-center">
@@ -88,13 +60,14 @@
 
 	<section class="container mt-4 mb-4" id="result">
 		<div class="row">
-			<div class="col-lg-12">
-				<p>Prix total: (prix généré grâce au simulateur) €</p>
+			<div class="col-lg-2">
+				<p>{{ form_row(form.total_price) }}</p>
 			</div>
 			<div class="col-lg-12 text-center">
 				<button class="btn btn-primary">Prendre contact</button>
 			</div>
 		</div>
+		{{ form_end(form) }}
 	</section>
 
 
