@@ -50,6 +50,9 @@ class ContractForm {
 		$validateButton.click(function(e) {
 			e.preventDefault();
 			$(prototypeWithValidateButton).fadeOut(500, function() {
+				if (self.productIndex > 0) {
+					$(self.tableElt).show();
+				}
 				self.addTableLine(prototypeIndex , $(this));
 			});
 		});
@@ -60,19 +63,21 @@ class ContractForm {
 	addTableLine(i, prototype) {
 		let tableIndex = i + 1;
 		let name = $('#contract_products_' + i + '_name').val();
-		let $line = $('<tr><th>' + tableIndex + '</th><td>' + name + '</td></tr>');
+		let $line = $('<tr><th>' + tableIndex + '</th><td class="name">' + name + '</td></tr>');
 
 		let $td = $('<td></td>');
-		let $editLink = $('<a class="mr-2" href="#"><span class="btn btn-primary fas fa-pen"></span></a>');
+		let $updateLink = $('<a class="mr-2" href="#"><span class="btn btn-primary fas fa-pen"></span></a>');
 		let $deleteLink = $('<a class="mr-2" href="#"><span class="btn btn-danger fas fa-times"></span></a>');
 
-		let actionsLink = $td.append($editLink, $deleteLink);
+		let actionsLink = $td.append($updateLink, $deleteLink);
 		let tableLine = $line.append(actionsLink);
 		$(this.tableBodyElt).append(tableLine);
 
-		$editLink.click(function(e) {
+		let self = this;
+		$updateLink.click(function(e) {
 			e.preventDefault();
-			$(prototype).fadeIn(500);
+			$(prototype).fadeToggle('slow');
+			self.updateLine(i, name, prototype, tableLine);
 		});
 
 		$deleteLink.click(function(e) {
@@ -85,12 +90,26 @@ class ContractForm {
 				$(this).remove();
 			});
 
-			//if ($(this.tableBodyElt + ' tr').length < 0) {
-			//	$(self.tableElt).fadeOut(500);
-			//}
+			if ($(self.tableBodyRowElt).length === 1) {
+				$(self.tableElt).fadeOut(500);
+				self.productIndex = 0;
+			}
 		});
+	}
 
-		
+	updateLine(index, currentName, prototype, tableLine) {
+		let $updateButton = $('<a href="#"><span class="btn btn-primary fas fa-check"> Modifier</span></a>');
+		let prototypeWithUpdateButton = $(prototype).append($updateButton);
+
+		$updateButton.click(function(e) {
+			e.preventDefault();
+			let newName = $('#contract_products_' + index + '_name').val();
+			if (newName !== currentName) {
+				$(tableLine).children('td.name').text(newName);
+			}
+			$(this).remove();
+			$(prototypeWithUpdateButton).fadeOut(500);;
+		});
 	}
 
 	customizeSelectBox() {
