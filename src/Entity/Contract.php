@@ -14,6 +14,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ContractRepository")
  * @UniqueEntity("name")
+ * @UniqueEntity("grower")
  * @Vich\Uploadable
  */
 class Contract
