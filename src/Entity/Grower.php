@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\GrowerRepository")
+ * @UniqueEntity("name")
  */
 class Grower
 {
@@ -17,46 +20,63 @@ class Grower
     private $id;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(max=255)
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(max=255)
      * @ORM\Column(type="string", length=255)
      */
     private $address;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Length(max=255)
      * @ORM\Column(type="string", length=255)
      */
     private $city;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Regex("/^\d{5}$/")
      * @ORM\Column(type="string", length=6)
      */
     private $postal_code;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Regex("/\d+[,\.]{1}\d+/")
      * @ORM\Column(type="float")
      */
     private $gps_lat;
 
     /**
+     * @Assert\NotBlank
+     * @Assert\Regex("/\d+[,\.]{1}\d+/")
      * @ORM\Column(type="float")
      */
     private $gps_lng;
 
     /**
+     * @Assert\Email
+     * @Assert\Length(max=255)
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $email;
 
     /**
+     * @Assert\Length(max=255)
+     * @Assert\Regex("#^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?\#[\]@!\$&'\(\)\*\+,;=.]+$#")
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $website;
 
     /**
+     * @Assert\Regex("#^0[1-9]([-. ]?[0-9]{2}){4}$#")
      * @ORM\Column(type="string", length=15, nullable=true)
      */
     private $phone;
