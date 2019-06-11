@@ -67,21 +67,4 @@ class AdminGrowerController extends AbstractController
         	'form' => $form->createView()
         ]);
     }
-
-    /**
-     * @Route("/admin/producteur/supprimer/{id}", name="admin.grower.delete")
-     */
-    public function delete(Grower $grower, Request $request)
-    {
-        if (!$grower) {
-            throw $this->createNotFoundException('Ce producteur n\'existe pas');
-        }
-
-        if ($this->isCsrfTokenValid('delete' . $grower->getId(), $request->get('_token'))) {
-            $this->em->remove($grower);
-            $this->em->flush();
-        }
-        
-        return $this->redirectToRoute('admin.contract.form.param');
-    }
 }

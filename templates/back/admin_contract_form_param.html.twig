@@ -41,11 +41,6 @@
 							<td>{{ grower.name }}</td>
 							<td>
 								<a href="{{ path('admin.grower.update', {id: grower.id}) }}" class="btn btn-warning">Modifier</a>
-								<form method="POST" action="{{ path('admin.grower.delete', {id: grower.id}) }}" onsubmit="return confirm('Souhaitez-vous vraiment supprimer ce producteur?')">
-									<input type="hidden" name="_method" value="delete">
-									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ grower.id) }}">
-									<button class="btn btn-danger">Supprimer</button>
-								</form>
 							</td>
 						</tr>
 					{% endfor %}
