@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AMAP Pré-vert - Paramétrage du formulaire{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin_contracts.css') }}">
+{% endblock %}
+
+{% block nav %}
+	{% include 'back/admin_nav.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<header>
+			<div class="row text-center">
+				<div class="col-lg-12">
+					<h2>Paramétrage du formualaire</h2>
+				</div>
+			</div>
+		</header>
+
+		<div class="row mb-2">
+			<div class="col text-right">
+				<a href="{{ path('admin.contracts') }}" class="btn btn-outline-secondary btn-sm">Retour à la gestion des contrats</a>
+			</div>
+		</div>
+
+		<section class="mt-4 mb-4" id="growerCrud">
+			<h3>Gestion des producteurs</h3>
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th>Nom du producteur</th>
+						<th>Gestion du producteur</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for grower in growers %}
+						<tr>
+							<td>{{ grower.name }}</td>
+							<td>
+								<a href="{{ path('admin.grower.update', {id: grower.id}) }}" class="btn btn-warning">Modifier</a>
+								<form method="POST" action="{{ path('admin.grower.delete', {id: grower.id}) }}" onsubmit="return confirm('Souhaitez-vous vraiment supprimer ce producteur?')">
+									<input type="hidden" name="_method" value="delete">
+									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ grower.id) }}">
+									<button class="btn btn-danger">Supprimer</button>
+								</form>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+
+			<div class="text-left">
+				<a href="{{ path('admin.grower.create') }}" class="btn btn-primary">Ajouter un nouveau types d'alimentation</a>
+			</div>
+		</section>
+
+		<section class="mt-4 mb-4" id="foodTypeCrud">
+			<h3>Gestion des types d'alimentation</h3>
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th>Nom du type d'alimentation</th>
+						<th>Gestion du type d'alimentation</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for foodType in foodTypes %}
+						<tr>
+							<td>{{ foodType.name }}</td>
+							<td>
+								<a href="{{ path('admin.foodtype.update', {id: foodType.id}) }}" class="btn btn-warning">Modifier</a>
+								<form method="POST" action="{{ path('admin.foodtype.delete', {id: foodType.id}) }}" onsubmit="return confirm('Souhaitez-vous vraiment supprimer ce type d\'alimentation?')">
+									<input type="hidden" name="_method" value="delete">
+									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ foodType.id) }}">
+									<button class="btn btn-danger">Supprimer</button>
+								</form>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+
+			<div class="text-left">
+				<a href="{{ path('admin.foodtype.create') }}" class="btn btn-primary">Ajouter un nouveau types d'alimentation</a>
+			</div>
+		</section>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

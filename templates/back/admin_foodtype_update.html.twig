@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}AMAP Pré-vert - Modification type d'alimentation{% endblock %}
+{% block title %}AMAP Pré-vert - Modification du type d'alimentation{% endblock %}
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/admin_home.css') }}">
@@ -20,7 +20,7 @@
 			</div>
 		</header>
 
-		<section id="createForm">
+		<section id="updateForm">
 			{% include 'back/admin_foodtype_form.html.twig' with { button: 'Modifier' } %}
 		</section>
 	</div>

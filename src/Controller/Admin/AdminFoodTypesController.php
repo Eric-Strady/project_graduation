@@ -23,18 +23,6 @@ class AdminFoodTypesController extends AbstractController
 		$this->repository = $repository;
 	}
 
-	/**
-	 * @Route("/admin/types_alimentation", name="admin.foodtypes")
-	 */
-    public function index()
-    {
-    	$foodTypes = $this->repository->findAll();
-
-        return $this->render('back/admin_foodtypes.html.twig', [
-        	'foodTypes' => $foodTypes
-        ]);
-    }
-
     /**
 	 * @Route("/admin/types_alimentation/creer", name="admin.foodtype.create")
 	 */

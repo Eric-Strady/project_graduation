@@ -8,10 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 
-use App\Repository\ContractRepository;
 use App\Entity\Contract;
+use App\Entity\FoodType;
+use App\Entity\Grower;
 use App\Entity\Product;
 use App\Form\ContractType;
+use App\Repository\ContractRepository;
 
 class AdminContractsController extends AbstractController
 {
@@ -106,5 +108,19 @@ class AdminContractsController extends AbstractController
         }
     	
         return $this->redirectToRoute('admin.contracts');
+    }
+
+    /**
+     * @Route("/admin/types_alimentation", name="admin.contract.form.param")
+     */
+    public function formParam()
+    {
+        $foodTypes = $this->getDoctrine()->getRepository(FoodType::class)->findAll();
+        $growers = $this->getDoctrine()->getRepository(Grower::class)->findAll();
+
+        return $this->render('back/admin_contract_form_param.html.twig', [
+            'foodTypes' => $foodTypes,
+            'growers' => $growers
+        ]);
     }
 }
