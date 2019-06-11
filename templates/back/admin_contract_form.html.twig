@@ -12,12 +12,8 @@
 	</fieldset>
 	
 	<fieldset>
-		<legend>Informations sur le producteur</legend>
-		{{ form_row(form.grower_name) }}
-		<div class="row">
-			<div class="col-lg-6">{{ form_row(form.grower_gps_lat) }}</div>
-			<div class="col-lg-6">{{ form_row(form.grower_gps_lng) }}</div>
-		</div>
+		<legend>Choix du producteur</legend>
+		{{ form_row(form.grower) }}
 	</fieldset>
 
 	<div class="row">

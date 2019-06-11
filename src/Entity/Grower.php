@@ -91,7 +91,7 @@ class Grower
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -103,7 +103,7 @@ class Grower
         return $this->address;
     }
 
-    public function setAddress(string $address): self
+    public function setAddress(?string $address): self
     {
         $this->address = $address;
 
@@ -115,7 +115,7 @@ class Grower
         return $this->city;
     }
 
-    public function setCity(string $city): self
+    public function setCity(?string $city): self
     {
         $this->city = $city;
 
@@ -127,7 +127,7 @@ class Grower
         return $this->postal_code;
     }
 
-    public function setPostalCode(string $postal_code): self
+    public function setPostalCode(?string $postal_code): self
     {
         $this->postal_code = $postal_code;
 
@@ -139,7 +139,7 @@ class Grower
         return $this->gps_lat;
     }
 
-    public function setGpsLat(float $gps_lat): self
+    public function setGpsLat(?float $gps_lat): self
     {
         $this->gps_lat = $gps_lat;
 
@@ -151,7 +151,7 @@ class Grower
         return $this->gps_lng;
     }
 
-    public function setGpsLng(float $gps_lng): self
+    public function setGpsLng(?float $gps_lng): self
     {
         $this->gps_lng = $gps_lng;
 

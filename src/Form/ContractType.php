@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Contract;
+use App\Entity\Grower;
 use App\Form\ProductType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -23,9 +25,6 @@ class ContractType extends AbstractType
                 'required' => false,
                 'help' => 'La description du contrat sera affiché sur la page du contrat.'
             ])
-            ->add('grower_name', TextType::class, [
-                'help' => 'Le nom renseigné ici servira également de description pour le marqueur de la carte.'
-            ])
             ->add('summary', TextareaType::class, [
                 'help' => 'Le résumé du contrat sera affiché sur la page d\'accueil et sur la page listant les contrats.'
             ])
@@ -35,12 +34,6 @@ class ContractType extends AbstractType
             ->add('ending_season_at', DateType::class, [
                 'widget' => 'single_text'
             ])
-            ->add('grower_gps_lat', null, [
-                'help' => 'Exemple de latitude: 48.862725'
-            ])
-            ->add('grower_gps_lng', null, [
-                'help' => 'Exemple de longitude: 2.287592'
-            ])
             ->add('image_file', FileType::class, [
                 'required' => false
             ])
@@ -49,6 +42,13 @@ class ContractType extends AbstractType
                 'entry_options' => ['label' => false],
                 'allow_add' => true,
                 'allow_delete' => true
+            ])
+            ->add('grower', EntityType::class, [
+                'class' => Grower::class,
+                'choice_label' => 'name',
+                'multiple' => false,
+                'expanded' => false,
+                'empty_data' => false
             ])
         ;
     }
