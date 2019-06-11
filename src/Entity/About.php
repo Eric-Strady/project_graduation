@@ -61,6 +61,7 @@ class About
     private $annual_membership_fee;
 
     /**
+     * @Assert\Length(max=255)
      * @Assert\Regex("#^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?\#[\]@!\$&'\(\)\*\+,;=.]+$#")
      * @ORM\Column(type="string", length=255)
      */
