@@ -43,13 +43,6 @@ class Contract
      * @Assert\Length(max=255)
      * @ORM\Column(type="string", length=255)
      */
-    private $grower_name;
-
-    /**
-     * @Assert\NotBlank
-     * @Assert\Length(max=255)
-     * @ORM\Column(type="string", length=255)
-     */
     private $summary;
 
     /**
@@ -65,20 +58,6 @@ class Contract
      * @ORM\Column(type="date")
      */
     private $ending_season_at;
-
-    /**
-     * @Assert\NotBlank
-     * @Assert\Regex("/\d+[,\.]{1}\d+/")
-     * @ORM\Column(type="float")
-     */
-    private $grower_gps_lat;
-
-    /**
-     * @Assert\NotBlank
-     * @Assert\Regex("/\d+[,\.]{1}\d+/")
-     * @ORM\Column(type="float")
-     */
-    private $grower_gps_lng;
 
     /**
      * @Vich\UploadableField(mapping="contract_image", fileNameProperty="image_name") 
@@ -102,6 +81,12 @@ class Contract
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="contract", orphanRemoval=true)
      */
     private $products;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Grower", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $grower;
 
     public function __construct()
     {
@@ -138,18 +123,6 @@ class Contract
         return $this;
     }
 
-    public function getGrowerName(): ?string
-    {
-        return $this->grower_name;
-    }
-
-    public function setGrowerName(?string $grower_name): self
-    {
-        $this->grower_name = $grower_name;
-
-        return $this;
-    }
-
     public function getSummary(): ?string
     {
         return $this->summary;
@@ -182,30 +155,6 @@ class Contract
     public function setEndingSeasonAt(?\DateTimeInterface $ending_season_at): self
     {
         $this->ending_season_at = $ending_season_at;
-
-        return $this;
-    }
-
-    public function getGrowerGpsLat(): ?float
-    {
-        return $this->grower_gps_lat;
-    }
-
-    public function setGrowerGpsLat(?float $grower_gps_lat): self
-    {
-        $this->grower_gps_lat = $grower_gps_lat;
-
-        return $this;
-    }
-
-    public function getGrowerGpsLng(): ?float
-    {
-        return $this->grower_gps_lng;
-    }
-
-    public function setGrowerGpsLng(?float $grower_gps_lng): self
-    {
-        $this->grower_gps_lng = $grower_gps_lng;
 
         return $this;
     }
@@ -275,6 +224,18 @@ class Contract
                 $product->setContract(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getGrower(): ?Grower
+    {
+        return $this->grower;
+    }
+
+    public function setGrower(?Grower $grower): self
+    {
+        $this->grower = $grower;
 
         return $this;
     }
