@@ -71,6 +71,11 @@ class ContractForm {
 		let self = this;
 		$updateLink.click(function(e) {
 			e.preventDefault();
+			$(this).css('pointer-events', 'none');
+			$(this).children('span').css({
+				'background-color': 'grey',
+				'border': 'none'
+			});
 			$(prototype).fadeIn(500);
 		});
 
