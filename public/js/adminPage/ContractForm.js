@@ -17,6 +17,7 @@ class ContractForm {
 		if (this.productIndex !== 0) {
 			$(this.productContainer).children('fieldset').each(function(i) {
 				self.addTableLine(i, $(this));
+				$(this).hide();
 				i++;
 			});
 		}
@@ -35,29 +36,23 @@ class ContractForm {
 		let newProductPrototype = this.productPrototype.replace(/__name__/g, this.productIndex);
 		this.productIndex++;
 
-		let productForm = this.addValidateButton(newProductPrototype);
+		let productForm = this.addDeleteButton(newProductPrototype);
 		$(this.productContainer).append(productForm);
 		this.customizeSelectBox();
 	}
 
-	addValidateButton(prototype) {
-		let $validateButton = $('<a href="#"><span class="btn btn-primary fas fa-check"> Ajouter</span></a>');
-		let prototypeWithValidateButton = $(prototype).append($validateButton);
-		let prototypeChildrenId = $(prototype).children('div').attr('id');
-		let prototypeIndex = Number(prototypeChildrenId.slice(-1));
+	addDeleteButton(prototype) {
+		let $deleteButton = $('<a href="#"><span class="btn btn-danger fas fa-times"> Supprimer</span></a>');
+		let prototypeWithDeleteButton = $(prototype).append($deleteButton);
 
-		let self = this;
-		$validateButton.click(function(e) {
+		$deleteButton.click(function(e) {
 			e.preventDefault();
-			$(prototypeWithValidateButton).fadeOut(500, function() {
-				if (self.productIndex > 0) {
-					$(self.tableElt).show();
-				}
-				self.addTableLine(prototypeIndex , $(this));
+			$(prototypeWithDeleteButton).fadeOut(500, function() {
+				$(this).remove();
 			});
 		});
 
-		return prototypeWithValidateButton;
+		return prototypeWithDeleteButton;
 	}
 
 	addTableLine(i, prototype) {
@@ -76,8 +71,7 @@ class ContractForm {
 		let self = this;
 		$updateLink.click(function(e) {
 			e.preventDefault();
-			$(prototype).fadeToggle('slow');
-			self.updateLine(i, name, prototype, tableLine);
+			$(prototype).fadeIn(500);
 		});
 
 		$deleteLink.click(function(e) {
@@ -94,21 +88,6 @@ class ContractForm {
 				$(self.tableElt).fadeOut(500);
 				self.productIndex = 0;
 			}
-		});
-	}
-
-	updateLine(index, currentName, prototype, tableLine) {
-		let $updateButton = $('<a href="#"><span class="btn btn-primary fas fa-check"> Modifier</span></a>');
-		let prototypeWithUpdateButton = $(prototype).append($updateButton);
-
-		$updateButton.click(function(e) {
-			e.preventDefault();
-			let newName = $('#contract_products_' + index + '_name').val();
-			if (newName !== currentName) {
-				$(tableLine).children('td.name').text(newName);
-			}
-			$(this).remove();
-			$(prototypeWithUpdateButton).fadeOut(500);;
 		});
 	}
 
