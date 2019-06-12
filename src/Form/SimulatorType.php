@@ -33,13 +33,6 @@ class SimulatorType extends AbstractType
                 'expanded' => false,
                 'empty_data' => false
             ])
-            ->add('contract', EntityType::class, [
-                'class' => Contract::class,
-                'choice_label' => 'name',
-                'multiple' => true,
-                'expanded' => true,
-                'empty_data' => false
-            ])
         ;
     }
 

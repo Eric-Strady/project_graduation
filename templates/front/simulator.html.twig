@@ -24,18 +24,21 @@
 		{{ form_start(form) }}
 		<div class="row justify-content-center">
 			<div class="col-lg-10 ">
+				<div class="mb-2" id="nbAdultError"></div>
 				{{ form_row(form.nb_adult) }}
 			</div>
 			<div class="col-lg-10">
+				<div class="mb-2" id="nbChildError"></div>
 				{{ form_row(form.nb_child) }}
 			</div>
 			<div class="col-lg-10">
+				<div class="mb-2" id="foodTypeError"></div>
 				{{ form_row(form.food_type) }}
 			</div>
 		</div>
-		<div class="row text-center">
+		<div class="row text-center mt-3">
 			<div class="col-lg-12">
-				<button class="btn btn-primary">Suivant</button>
+				<button class="btn btn-primary" id="nextStep" data-url="{{ path('simulator.products') }}">Suivant</button>
 			</div>
 		</div>
 	</section>
@@ -47,13 +50,30 @@
 			</div>
 		</div>
 		<div class="row justify-content-center">
-			<div class="col-lg-10 ">
-				{{ form_row(form.contract) }}
-			</div>
+			{% for contract in contracts %}
+				<div class="col-lg-12">
+					<h5>Contrat {{ contract.name }}:</h5>
+				</div>
+				<div class="col-lg-12">
+					<div class="row">
+				{% for product in contract.products %}
+					<div class="col-lg-4 productChoice">
+						<input type="checkbox" name="{{ product.id }}" value="{{ product.id }}" id="{{ product.name }}">
+						<label for="{{ product.name }}">
+							{{ product.name }}
+						</label>
+						{% for foodType in product.foodTypes %}
+							<span>{{ foodType.name }}</span>
+						{% endfor %}
+					</div>
+				{% endfor %}
+					</div>
+				</div>
+			{% endfor %}
 		</div>
-		<div class="row text-center">
+		<div class="row text-center mt-3">
 			<div class="col-lg-12">
-				<button class="btn btn-primary">Simuler</button>
+				<button class="btn btn-primary" id="simulate">Simuler</button>
 			</div>
 		</div>
 	</section>
@@ -63,8 +83,8 @@
 			<div class="col-lg-2">
 				<p>{{ form_row(form.total_price) }}</p>
 			</div>
-			<div class="col-lg-12 text-center">
-				<button class="btn btn-primary">Prendre contact</button>
+			<div class="col-lg-12 text-center mt-3">
+				<button class="btn btn-primary" id="submit">Prendre contact</button>
 			</div>
 		</div>
 		{{ form_end(form) }}

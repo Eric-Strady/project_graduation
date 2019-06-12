@@ -7,6 +7,17 @@ header {
 	margin-top: 100px;
 }
 
+/* SIMULATOR */
+
+.errorSimulator {
+	border-color: red;
+}
+
+.errorSimulator:focus {
+	border-color: red;
+	box-shadow: 0 0 0 .2rem rgba(220,53,69,.25);
+}
+
 /* MEDIA */
 
 @media all and (max-width : 992px) {

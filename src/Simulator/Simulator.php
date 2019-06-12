@@ -28,10 +28,7 @@ class Simulator
      */
     private $food_type;
 
-    /**
-     * @Assert\NotBlank
-     */
-    private $contract;
+    private $products = [];
 
     public function getNbAdult(): ?int
     {
@@ -81,14 +78,14 @@ class Simulator
         return $this;
     }
 
-    public function getContract(): ?Contract
+    public function getProducts(): ?array
     {
-        return $this->contract;
+        return $this->products;
     }
 
-    public function setContract(Contract $contract): self
+    public function setProducts(array $products): self
     {
-        return $this->contract = $contract;
+        $this->products = $products;
 
         return $this;
     }
