@@ -7,6 +7,7 @@ class Simulator {
 		this.errorNbChildElt = domElt.errorNbChildElt;
 		this.errorFoodTypeElt = domElt.errorFoodTypeElt;
 		this.secondStepContainer = domElt.secondStepContainer;
+		this.productsFoodTypes = domElt.productsFoodTypes;
 		this.resultContainer = domElt.resultContainer;
 		this.nextStepButton = domElt.nextStepButton;
 		this.simulateButton = domElt.simulateButton;
@@ -23,8 +24,11 @@ class Simulator {
 		let self = this;
 		$(this.nextStepButton).click(function(e) {
 			e.preventDefault();
-			self.checkFirstStepData();
-			$(self.secondStepContainer).fadeIn(500);
+			let checked = self.checkFirstStepData();
+			if (checked === true) {
+				$(self.secondStepContainer).fadeIn(500);
+				self.disableNotMatchProducts();
+			}
 		});
 
 		$(this.simulateButton).click(function(e) {
@@ -59,6 +63,33 @@ class Simulator {
 		return isValid;
 	}
 
+	disableNotMatchProducts() {
+		let selectedFoodType = $(this.selectedFoodTypeOption).text();
+		$(this.productsFoodTypes).each(function() {
+			let $currentContract = $(this).parents('.contract');
+			let nbProducts = $currentContract.find('.productChoice').length;
+			
+			$currentContract.show();
+			$(this).parent().show();
+			let isMatched = false;
+
+			$(this).children('span').each(function() {
+				if ($(this).text() === selectedFoodType) {
+					isMatched = true;
+				}
+			});
+
+			if (isMatched === false) {
+				$(this).parent().hide();
+				nbProducts--;
+			}
+
+			if (nbProducts === 0) {
+				$currentContract.hide();
+			}
+		});
+	}
+
 	addError(input, errorContainer, errorMessage) {
 		$(input).addClass('errorSimulator');
 		let $spanContainer = $('<span class="invalid-feedback d-block"></span>');
@@ -82,6 +113,7 @@ $(function() {
 		errorNbChildElt: '#nbChildError',
 		errorFoodTypeElt: '#foodTypeError',
 		secondStepContainer: '#secondStep',
+		productsFoodTypes: '.foodTypes',
 		resultContainer: '#result',
 		nextStepButton: '#nextStep',
 		simulateButton: '#simulate'

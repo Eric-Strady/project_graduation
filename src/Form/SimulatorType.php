@@ -18,7 +18,8 @@ class SimulatorType extends AbstractType
     {
         $builder
             ->add('nb_adult', NumberType::class, [
-                'required' => true
+                'required' => true,
+                'attr' => ['autofocus' => 'true']
             ])
             ->add('nb_child', NumberType::class, [
                 'required' => true
