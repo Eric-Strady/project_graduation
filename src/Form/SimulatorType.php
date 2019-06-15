@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\Contract;
 use App\Entity\FoodType;
 use App\Simulator\Simulator;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;

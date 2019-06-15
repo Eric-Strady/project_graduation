@@ -2,6 +2,7 @@
 
 namespace App\Simulator;
 
+use App\Entity\FoodType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,25 +11,20 @@ class Simulator
 {
     /**
      * @Assert\NotBlank
+     * @Assert\Range(min = 1, max = 10)
      */
     private $nb_adult;
 
     /**
      * @Assert\NotBlank
+     * @Assert\Range(min = 0, max = 10)
      */
     private $nb_child;
 
     /**
      * @Assert\NotBlank
      */
-    private $total_price;
-
-    /**
-     * @Assert\NotBlank
-     */
     private $food_type;
-
-    private $products = [];
 
     public function getNbAdult(): ?int
     {
@@ -54,18 +50,6 @@ class Simulator
         return $this;
     }
 
-    public function getTotalPrice(): ?int
-    {
-        return $this->total_price;
-    }
-
-    public function setTotalPrice(int $total_price): self
-    {
-        $this->total_price = $total_price;
-
-        return $this;
-    }
-
     public function getFoodType(): ?FoodType
     {
         return $this->food_type;
@@ -74,18 +58,6 @@ class Simulator
     public function setFoodType(FoodType $food_type): self
     {
         $this->food_type = $food_type;
-
-        return $this;
-    }
-
-    public function getProducts(): ?array
-    {
-        return $this->products;
-    }
-
-    public function setProducts(array $products): self
-    {
-        $this->products = $products;
 
         return $this;
     }
