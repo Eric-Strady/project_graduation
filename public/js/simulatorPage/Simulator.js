@@ -9,6 +9,7 @@ class Simulator {
 		this.secondStepContainer = domElt.secondStepContainer;
 		this.productsFoodTypes = domElt.productsFoodTypes;
 		this.resultContainer = domElt.resultContainer;
+		this.totalPriceElt = domElt.totalPriceElt;
 		this.nextStepButton = domElt.nextStepButton;
 		this.simulateButton = domElt.simulateButton;
 		this.handleSimulator();
@@ -136,6 +137,7 @@ class Simulator {
 			},
 			dataType: 'json'
 		}).done(function(data) {
+			$(self.totalPriceElt).text(data);
 			console.log(data)
 		});
 
@@ -175,6 +177,7 @@ $(function() {
 		secondStepContainer: '#secondStep',
 		productsFoodTypes: '.foodTypes',
 		resultContainer: '#result',
+		totalPriceElt: '#totalPrice span',
 		nextStepButton: '#nextStep',
 		simulateButton: '#simulate'
 	}
