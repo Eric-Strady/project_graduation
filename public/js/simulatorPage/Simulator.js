@@ -125,6 +125,20 @@ class Simulator {
 			choices.push($(this).val());
 		});
 		
+		let self = this;
+		$.ajax({
+			type: 'POST',
+			url: $(self.simulateButton).attr('data-url'),
+			data: {
+				nbChild: Number($(this.inputNbChild).val()),
+				nbAdult: Number($(this.inputNbAdult).val()),
+				choices: choices
+			},
+			dataType: 'json'
+		}).done(function(data) {
+			console.log(data)
+		});
+
 		console.log(choices);
 	}
 

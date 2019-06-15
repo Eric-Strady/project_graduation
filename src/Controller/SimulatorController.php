@@ -6,10 +6,16 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
+use App\Entity\About;
 use App\Entity\Contract;
+use App\Entity\Product;
 use App\Form\SimulatorType;
 use App\Simulator\Simulator;
+use App\Simulator\CalculatePrice;
 
 class SimulatorController extends AbstractController
 {
@@ -32,5 +38,53 @@ class SimulatorController extends AbstractController
             'form' => $form->createView(),
             'contracts' => $contracts
         ]);
+    }
+
+    /**
+     * @Route("/simulateur/calcul", name="simulator.calculate")
+     */
+    public function calculatePrice(Request $request, CalculatePrice $calculatePrice) {
+        if ($request->isXMLHttpRequest())
+        {
+            $encoders = [new JsonEncoder()];
+            $normalizers = [new ObjectNormalizer()];
+            $serializer = new Serializer($normalizers, $encoders);
+
+            $nbChild = $request->get('nbChild');
+            $nbAdult = $request->get('nbAdult');
+            $choices = $request->get('choices');
+
+            $about = $this->getDoctrine()->getRepository(About::class)->findAbout();
+            $annualMembershipFee = $about->getAnnualMembershipFee();
+            $totalPrice = 0;
+
+            $isValid = true;
+            foreach ($choices as $value) {
+                $product = $this->getDoctrine()->getRepository(Product::class)->find($value);
+                if ($product)
+                {
+                    $isVariableDelivery = $product->getIsVariableDelivery();
+                    $nbDelivery = $product->getNbDelivery();
+                    $isFixedPrice = $product->getIsFixedPrice();
+                    $fixedPrice = $product->getFixedPrice();
+                    $minPrice = $product->getMinPrice();
+                    $maxPrice = $product->getMaxPrice();
+
+                    $price = $calculatePrice->definePrice($nbChild, $nbAdult, $isVariableDelivery, $nbDelivery, $isFixedPrice, $fixedPrice, $minPrice, $maxPrice);
+                    $totalPrice += $price;
+                }
+                else
+                {
+                    $isValid = false;
+                }
+            }
+
+            $result = $serializer->serialize($totalPrice, 'json');
+            return $this->json($result, 200);
+        }
+        else
+        {
+            return $this->redirectToRoute('simulator');
+        }
     }
 }
