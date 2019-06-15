@@ -2,6 +2,8 @@
 
 namespace App\Simulator;
 
+use App\Entity\Product;
+
 class CalculatePrice
 {
 	const CHILD = 0.5;
@@ -22,15 +24,15 @@ class CalculatePrice
 	private $multiplicator;
 	private $price;
 
-    public function definePrice($nbChild, $nbAdult, $isVariableDelivery, $nbDelivery, $isFixedPrice, $fixedPrice, $minPrice, $maxPrice) {
+    public function definePrice($nbChild, $nbAdult, Product $product) {
     	$this->nbChild = $nbChild;
     	$this->nbAdult = $nbAdult;
-    	$this->isVariableDelivery = $isVariableDelivery;
-    	$this->nbDelivery = $nbDelivery;
-    	$this->isFixedPrice = $isFixedPrice;
-    	$this->fixedPrice = $fixedPrice;
-    	$this->minPrice = $minPrice;
-    	$this->maxPrice = $maxPrice;
+    	$this->isVariableDelivery = $product->getIsVariableDelivery();
+    	$this->nbDelivery = $product->getNbDelivery();
+    	$this->isFixedPrice = $product->getIsFixedPrice();
+    	$this->fixedPrice = $product->getFixedPrice();
+    	$this->minPrice = $product->getMinPrice();
+    	$this->maxPrice = $product->getMaxPrice();
 
     	$this->setFamilyIndex();
     	$this->setMultiplicator();
