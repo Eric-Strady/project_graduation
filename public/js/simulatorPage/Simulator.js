@@ -3,23 +3,29 @@ class Simulator {
 		this.inputNbAdult = domElt.inputNbAdult;
 		this.inputNbChild = domElt.inputNbChild;
 		this.selectedFoodTypeOption = domElt.selectedFoodTypeOption;
+		this.inputEmail = domElt.inputEmail;
 		this.errorNbAdultElt = domElt.errorNbAdultElt;
 		this.errorNbChildElt = domElt.errorNbChildElt;
 		this.errorProductElt = domElt.errorProductElt;
+		this.errorEmailElt = domElt.errorEmailElt;
 		this.secondStepContainer = domElt.secondStepContainer;
 		this.productsFoodTypes = domElt.productsFoodTypes;
 		this.resultContainer = domElt.resultContainer;
+		this.thirdStepContainer = domElt.thirdStepContainer;
 		this.totalPriceElt = domElt.totalPriceElt;
 		this.nextStepButton = domElt.nextStepButton;
 		this.simulateButton = domElt.simulateButton;
 		this.submitButton = domElt.submitButton;
+		this.sendingButton = domElt.sendingButton;
 		this.handleSimulator();
 		this.handleEvents();
 	}
 
 	handleSimulator() {
+		$(this.inputEmail).attr('placeholder', 'Votre adresse e-mail');
 		$(this.secondStepContainer).hide();
 		$(this.resultContainer).hide();
+		$(this.thirdStepContainer).hide();
 	}
 
 	handleEvents() {
@@ -47,12 +53,19 @@ class Simulator {
 		});
 
 		$(this.submitButton).click(function(e) {
-			let isFirstStepDataValid = self.checkFirstStepData();
+			e.preventDefault();
+			$(this).fadeOut('fast');
+			$(self.thirdStepContainer).delay('fast').fadeIn();
+		});
 
-			if (!isFirstStepDataValid) {
+		$(this.sendingButton).click(function(e) {
+			let isFirstStepDataValid = self.checkFirstStepData();
+			let isThirdStepDataValid = self.checkThirdStepData();
+
+			if (!isFirstStepDataValid || !isThirdStepDataValid) {
 				e.preventDefault();
 			}
-		})
+		});
 	}
 
 	checkFirstStepData() {
@@ -99,6 +112,25 @@ class Simulator {
 				self.removeError(self.errorProductElt);
 			}
 		});
+
+		return isValid;
+	}
+
+	checkThirdStepData() {
+		let errorMessage = ' Merci de saisir une adresse e-mail valide.';
+		let isValid = true;
+
+		let email = $(this.inputEmail).val();
+		let emailInputType = $(this.inputEmail).attr('type');
+		if (!email || emailInputType !== 'email') {
+			$(this.inputEmail).addClass('errorSimulator');
+			this.addError(this.errorEmailElt, errorMessage);
+			isValid = false;
+		}
+		else {
+			this.removeError(this.errorEmailElt);
+			$(this.inputEmail).removeClass('errorSimulator');
+		}
 
 		return isValid;
 	}
@@ -188,16 +220,20 @@ $(function() {
 		inputNbAdult: '#simulator_nb_adult',
 		inputNbChild: '#simulator_nb_child',
 		selectedFoodTypeOption: '#simulator_food_type option:selected',
+		inputEmail: '#simulator_email',
 		errorNbAdultElt: '#nbAdultError',
 		errorNbChildElt: '#nbChildError',
 		errorProductElt: '#productError',
+		errorEmailElt: '#emailError',
 		secondStepContainer: '#secondStep',
 		productsFoodTypes: '.foodTypes',
 		resultContainer: '#result',
+		thirdStepContainer: '#thirdStep',
 		totalPriceElt: '#totalPrice span',
 		nextStepButton: '#nextStep',
 		simulateButton: '#simulate',
-		submitButton: '#submit'
+		submitButton: '#submit button',
+		sendingButton: '#send'
 	}
 	
 	const simulator = new Simulator(domElt);

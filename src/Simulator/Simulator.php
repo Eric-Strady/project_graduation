@@ -26,6 +26,12 @@ class Simulator
      */
     private $food_type;
 
+    /**
+     * @Assert\NotBlank
+     * @Assert\Email
+     */
+    private $email;
+
     public function getNbAdult(): ?int
     {
         return $this->nb_adult;
@@ -58,6 +64,18 @@ class Simulator
     public function setFoodType(FoodType $food_type): self
     {
         $this->food_type = $food_type;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -29,6 +30,10 @@ class SimulatorType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
                 'empty_data' => false
+            ])
+            ->add('email', EmailType::class, [
+                'required' => true,
+                'label' => false
             ])
         ;
     }
