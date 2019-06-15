@@ -82,7 +82,12 @@ class SimulatorController extends AbstractController
                 }
             }
             
-            $result = $serializer->serialize($totalPrice, 'json');
+            $returnedData = [
+                'isValid' => $isValid,
+                'totalPrice' => $totalPrice
+            ];
+            $result = $serializer->serialize($returnedData, 'json');
+            
             return $this->json($result, 200);
         }
         else

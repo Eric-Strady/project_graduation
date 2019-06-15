@@ -25,9 +25,9 @@ class Simulator {
 		let self = this;
 		$(this.nextStepButton).click(function(e) {
 			e.preventDefault();
-			let checked = self.checkFirstStepData();
+			let isFirstStepDataValid = self.checkFirstStepData();
 
-			if (checked) {
+			if (isFirstStepDataValid) {
 				$(self.secondStepContainer).fadeIn(500);
 				self.disableNotMatchProducts();
 			}
@@ -36,9 +36,10 @@ class Simulator {
 		$(this.simulateButton).click(function(e) {
 			e.preventDefault();
 			let checkedInput = $(self.secondStepContainer).find('input:checked');
-			let isValidData = self.checkSecondStepData(checkedInput);
+			let isFirstStepDataValid = self.checkFirstStepData();
+			let isSecondStepDataValid = self.checkSecondStepData(checkedInput);
 
-			if (isValidData) {
+			if (isFirstStepDataValid && isSecondStepDataValid) {
 				$(self.resultContainer).fadeIn(500);
 				self.simulate(checkedInput);
 			}
@@ -126,6 +127,7 @@ class Simulator {
 			choices.push($(this).val());
 		});
 		
+		let errorMessage = ' Le ou les produits sélectionnés ne sont pas valides.';
 		let self = this;
 		$.ajax({
 			type: 'POST',
@@ -135,10 +137,18 @@ class Simulator {
 				nbAdult: Number($(this.inputNbAdult).val()),
 				choices: choices
 			},
-			dataType: 'json'
+			dataType: 'json',
 		}).done(function(data) {
-			$(self.totalPriceElt).text(data);
-			console.log(data)
+			let result = JSON.parse(data);
+			if (result.isValid) {
+				self.removeError(self.errorProductElt);
+				$(self.totalPriceElt).text(result.totalPrice);
+			}
+			else {
+				$(self.resultContainer).hide();
+				self.addError(self.errorProductElt, errorMessage);
+			}
+			
 		});
 
 		console.log(choices);
