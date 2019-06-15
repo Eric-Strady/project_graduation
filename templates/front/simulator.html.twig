@@ -18,6 +18,18 @@
 	<section class="container mt-4 mb-4" id="firstStep">
 		<div class="row">
 			<div class="col-lg-12">
+				{% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% for message in app.flashes('error') %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+			</div>
+			<div class="col-lg-12">
 				<h3>Etape 1/2</h3>
 			</div>
 		</div>

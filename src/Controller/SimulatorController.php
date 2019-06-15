@@ -14,6 +14,7 @@ use App\Entity\About;
 use App\Entity\Contract;
 use App\Entity\Product;
 use App\Form\SimulatorType;
+use App\Services\Mailer;
 use App\Simulator\Simulator;
 use App\Simulator\CalculatePrice;
 
@@ -22,7 +23,7 @@ class SimulatorController extends AbstractController
     /**
      * @Route("/simulateur", name="simulator")
      */
-    public function index(Request $request)
+    public function index(Request $request, Mailer $mailer)
     {
         $contracts = $this->getDoctrine()->getRepository(Contract::class)->findAll();
 
@@ -31,7 +32,17 @@ class SimulatorController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
-            return $this->redirectToRoute('contact');
+            if ($_SESSION['simulatorData']) {
+                $result = $_SESSION['simulatorData'];
+                $mailer->sendUserSimulation($simulator, $result);
+
+                $this->addFlash('success', 'Votre simulation a bien été envoyée! Vous serez recontacté prochainement.');
+                return $this->redirectToRoute('simulator');
+            }
+            else {
+                $this->addFlash('error', 'Une erreur est survenue lors de l\'envoi de votre simulation, merci de réessayer.');
+                return $this->redirectToRoute('simulator');
+            }
         }
 
         return $this->render('front/simulator.html.twig', [
