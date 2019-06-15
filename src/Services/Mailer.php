@@ -37,6 +37,7 @@ class Mailer
     public function sendMessageToAdmin(Contact $contact)
     {
         $message = (new \Swift_Message($contact->getSubject()))
+            ->setReplyTo($contact->getUserEmail())
             ->setFrom($contact->getUserEmail())
             ->setTo('prevert@amap.com')
             ->setBody(
@@ -51,6 +52,7 @@ class Mailer
 
     public function sendUserSimulation(Simulator $simulator, $result) {
         $message = (new \Swift_Message('Simulation d\'un abonnement à l\'AMAP'))
+            ->setReplyTo($simulator->getEmail())
             ->setFrom($simulator->getEmail())
             ->setTo('prevert@amap.com')
             ->setBody(
