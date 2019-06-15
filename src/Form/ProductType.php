@@ -16,7 +16,7 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('is_fixed_delivery')
+            ->add('is_variable_delivery')
             ->add('nb_delivery')
             ->add('is_fixed_price')
             ->add('fixed_price', MoneyType::class, [

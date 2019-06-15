@@ -29,7 +29,7 @@ class Product
     /**
      * @ORM\Column(type="boolean")
      */
-    private $is_fixed_delivery;
+    private $is_variable_delivery;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -93,14 +93,14 @@ class Product
         return $this;
     }
 
-    public function getIsFixedDelivery(): ?bool
+    public function getIsVariableDelivery(): ?bool
     {
-        return $this->is_fixed_delivery;
+        return $this->is_variable_delivery;
     }
 
-    public function setIsFixedDelivery(bool $is_fixed_delivery): self
+    public function setIsVariableDelivery(bool $is_variable_delivery): self
     {
-        $this->is_fixed_delivery = $is_fixed_delivery;
+        $this->is_variable_delivery = $is_variable_delivery;
 
         return $this;
     }
