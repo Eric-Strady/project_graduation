@@ -12,6 +12,7 @@ class Simulator {
 		this.totalPriceElt = domElt.totalPriceElt;
 		this.nextStepButton = domElt.nextStepButton;
 		this.simulateButton = domElt.simulateButton;
+		this.submitButton = domElt.submitButton;
 		this.handleSimulator();
 		this.handleEvents();
 	}
@@ -44,6 +45,14 @@ class Simulator {
 				self.simulate(checkedInput);
 			}
 		});
+
+		$(this.submitButton).click(function(e) {
+			let isFirstStepDataValid = self.checkFirstStepData();
+
+			if (!isFirstStepDataValid) {
+				e.preventDefault();
+			}
+		})
 	}
 
 	checkFirstStepData() {
@@ -131,10 +140,11 @@ class Simulator {
 		let self = this;
 		$.ajax({
 			type: 'POST',
-			url: $(self.simulateButton).attr('data-url'),
+			url: $(this.simulateButton).attr('data-url'),
 			data: {
 				nbChild: Number($(this.inputNbChild).val()),
 				nbAdult: Number($(this.inputNbAdult).val()),
+				foodType: $(this.selectedFoodTypeOption).text(),
 				choices: choices
 			},
 			dataType: 'json',
@@ -148,10 +158,7 @@ class Simulator {
 				$(self.resultContainer).hide();
 				self.addError(self.errorProductElt, errorMessage);
 			}
-			
 		});
-
-		console.log(choices);
 	}
 
 	addError(errorContainer, errorMessage) {
@@ -189,7 +196,8 @@ $(function() {
 		resultContainer: '#result',
 		totalPriceElt: '#totalPrice span',
 		nextStepButton: '#nextStep',
-		simulateButton: '#simulate'
+		simulateButton: '#simulate',
+		submitButton: '#submit'
 	}
 	
 	const simulator = new Simulator(domElt);
