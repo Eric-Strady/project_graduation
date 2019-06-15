@@ -52,28 +52,23 @@ class SimulatorController extends AbstractController
 
             $nbChild = $request->get('nbChild');
             $nbAdult = $request->get('nbAdult');
+            $foodType = $request->get('foodType');
             $choices = $request->get('choices');
 
             $about = $this->getDoctrine()->getRepository(About::class)->findAbout();
             $annualMembershipFee = $about->getAnnualMembershipFee();
             $totalPrice = $annualMembershipFee;
 
+            $products = [];
             $isValid = true;
-
             if ($choices) {
                 foreach ($choices as $value) {
                     $product = $this->getDoctrine()->getRepository(Product::class)->find($value);
                     if ($product)
                     {
-                        $isVariableDelivery = $product->getIsVariableDelivery();
-                        $nbDelivery = $product->getNbDelivery();
-                        $isFixedPrice = $product->getIsFixedPrice();
-                        $fixedPrice = $product->getFixedPrice();
-                        $minPrice = $product->getMinPrice();
-                        $maxPrice = $product->getMaxPrice();
-
-                        $price = $calculatePrice->definePrice($nbChild, $nbAdult, $isVariableDelivery, $nbDelivery, $isFixedPrice, $fixedPrice, $minPrice, $maxPrice);
+                        $price = $calculatePrice->definePrice($nbChild, $nbAdult, $product);
                         $totalPrice += $price;
+                        array_push($products, $product->getName());
                     }
                     else
                     {
@@ -81,13 +76,22 @@ class SimulatorController extends AbstractController
                     }
                 }
             }
+
+            $simulatorData = [
+                'nbChild' => $nbChild,
+                'nbAdult' => $nbAdult,
+                'foodType' => $foodType,
+                'totalPrice' => $totalPrice,
+                'products' => $products
+            ];
+            $_SESSION['simulatorData'] = $simulatorData;
             
             $returnedData = [
                 'isValid' => $isValid,
                 'totalPrice' => $totalPrice
             ];
             $result = $serializer->serialize($returnedData, 'json');
-            
+
             return $this->json($result, 200);
         }
         else
