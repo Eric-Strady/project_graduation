@@ -5,7 +5,7 @@ class Simulator {
 		this.selectedFoodTypeOption = domElt.selectedFoodTypeOption;
 		this.errorNbAdultElt = domElt.errorNbAdultElt;
 		this.errorNbChildElt = domElt.errorNbChildElt;
-		this.errorFoodTypeElt = domElt.errorFoodTypeElt;
+		this.errorProductElt = domElt.errorProductElt;
 		this.secondStepContainer = domElt.secondStepContainer;
 		this.productsFoodTypes = domElt.productsFoodTypes;
 		this.resultContainer = domElt.resultContainer;
@@ -25,7 +25,8 @@ class Simulator {
 		$(this.nextStepButton).click(function(e) {
 			e.preventDefault();
 			let checked = self.checkFirstStepData();
-			if (checked === true) {
+
+			if (checked) {
 				$(self.secondStepContainer).fadeIn(500);
 				self.disableNotMatchProducts();
 			}
@@ -33,7 +34,13 @@ class Simulator {
 
 		$(this.simulateButton).click(function(e) {
 			e.preventDefault();
-			$(self.resultContainer).fadeIn(500);
+			let checkedInput = $(self.secondStepContainer).find('input:checked');
+			let isValidData = self.checkSecondStepData(checkedInput);
+
+			if (isValidData) {
+				$(self.resultContainer).fadeIn(500);
+				self.simulate(checkedInput);
+			}
 		});
 	}
 
@@ -42,23 +49,45 @@ class Simulator {
 		let isValid = true;
 
 		let nbAdult = Number($(this.inputNbAdult).val());
-
 		if (isNaN(nbAdult) || nbAdult < 1 || nbAdult > 10) {
-			this.addError(this.inputNbAdult, this.errorNbAdultElt, errorMessage);
+			$(this.inputNbAdult).addClass('errorSimulator');
+			this.addError(this.errorNbAdultElt, errorMessage);
 			isValid = false;
 		}
 		else {
+			this.removeError(this.errorNbAdultElt);
 			$(this.inputNbAdult).removeClass('errorSimulator');
 		}
 
 		let nbChild = parseInt($(this.inputNbChild).val());
 		if (isNaN(nbChild) || nbChild < 0 || nbChild > 10) {
-			this.addError(this.inputNbChild, this.errorNbChildElt, errorMessage);
+			$(this.inputNbChild).addClass('errorSimulator');
+			this.addError(this.errorNbChildElt, errorMessage);
 			isValid = false;
 		}
 		else {
+			this.removeError(this.errorNbChildElt);
 			$(this.inputNbChild).removeClass('errorSimulator');
 		}
+
+		return isValid;
+	}
+
+	checkSecondStepData(checkedInput) {
+		let errorMessage = ' Le ou les produits sélectionnés ne sont pas valides.';
+		let isValid = true;
+
+		let self = this;
+		$(checkedInput).each(function(){
+			let productId = Number($(this).val());
+			if (isNaN(productId)) {
+				self.addError(self.errorProductElt, errorMessage);
+				isValid = false;
+			}
+			else {
+				self.removeError(self.errorProductElt);
+			}
+		});
 
 		return isValid;
 	}
@@ -90,8 +119,18 @@ class Simulator {
 		});
 	}
 
-	addError(input, errorContainer, errorMessage) {
-		$(input).addClass('errorSimulator');
+	simulate(checkedInput) {
+		let choices = [];
+		$(checkedInput).each(function() {
+			choices.push($(this).val());
+		});
+		
+		console.log(choices);
+	}
+
+	addError(errorContainer, errorMessage) {
+		this.removeError(errorContainer);
+
 		let $spanContainer = $('<span class="invalid-feedback d-block"></span>');
 		let $spanSubCntainer = $('<span class="d-block"></span>');
 		let $spanBadgeError = $('<span class="form-error-icon badge badge-danger text-uppercase">Erreur</span>');
@@ -102,6 +141,13 @@ class Simulator {
 
 		$(errorContainer).append($completeBlockError);
 	}
+
+	removeError(errorContainer) {
+		let $messageContainer = $(errorContainer).children('.invalid-feedback');
+		if ($messageContainer) {
+			$messageContainer.remove();
+		}
+	}
 }
 
 $(function() {
@@ -111,7 +157,7 @@ $(function() {
 		selectedFoodTypeOption: '#simulator_food_type option:selected',
 		errorNbAdultElt: '#nbAdultError',
 		errorNbChildElt: '#nbChildError',
-		errorFoodTypeElt: '#foodTypeError',
+		errorProductElt: '#productError',
 		secondStepContainer: '#secondStep',
 		productsFoodTypes: '.foodTypes',
 		resultContainer: '#result',

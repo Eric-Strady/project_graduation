@@ -32,11 +32,10 @@
 				{{ form_row(form.nb_child) }}
 			</div>
 			<div class="col-lg-10">
-				<div class="mb-2" id="foodTypeError"></div>
 				{{ form_row(form.food_type) }}
 			</div>
 		</div>
-		<div class="row text-center mt-3">
+		<div class="row text-center mt-3 mb-3">
 			<div class="col-lg-12">
 				<button class="btn btn-primary" id="nextStep">Suivant</button>
 			</div>
@@ -47,6 +46,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h3>Etape 2/2</h3>
+				<div class="mb-2" id="productError"></div>
 			</div>
 		</div>
 		{% for contract in contracts %}
@@ -74,7 +74,7 @@
 			</div>
 		{% endfor %}
 		
-		<div class="row text-center mt-3">
+		<div class="row text-center mt-3 mb-3">
 			<div class="col-lg-12">
 				<button class="btn btn-primary" id="simulate">Simuler</button>
 			</div>
@@ -83,10 +83,10 @@
 
 	<section class="container mt-4 mb-4" id="result">
 		<div class="row">
-			<div class="col-lg-2">
-				<p>{{ form_row(form.total_price) }}</p>
+			<div class="col-lg-2" id="totalPrice">
+				<p>Prix total:</p><span></span>
 			</div>
-			<div class="col-lg-12 text-center mt-3">
+			<div class="col-lg-12 text-center mt-3 mb-3">
 				<button class="btn btn-primary" id="submit">Prendre contact</button>
 			</div>
 		</div>
