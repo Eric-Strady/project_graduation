@@ -6,6 +6,7 @@ use Twig\Environment;
 
 use App\Entity\User;
 use App\Contact\Contact;
+use App\Simulator\Simulator;
 
 class Mailer
 {
@@ -41,6 +42,21 @@ class Mailer
             ->setBody(
                 $this->environment->render('front/contact_email.html.twig', [
                     'message' => $contact->getMessage()
+                ]),
+                'text/html'
+            );
+
+        $this->mailer->send($message);
+    }
+
+    public function sendUserSimulation(Simulator $simulator, $result) {
+        $message = (new \Swift_Message('Simulation d\'un abonnement à l\'AMAP'))
+            ->setFrom($simulator->getEmail())
+            ->setTo('prevert@amap.com')
+            ->setBody(
+                $this->environment->render('front/simulator_email.html.twig', [
+                    'userEmail' => $simulator->getEmail(),
+                    'result' => $result
                 ]),
                 'text/html'
             );
