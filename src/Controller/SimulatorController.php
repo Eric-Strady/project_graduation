@@ -56,29 +56,32 @@ class SimulatorController extends AbstractController
 
             $about = $this->getDoctrine()->getRepository(About::class)->findAbout();
             $annualMembershipFee = $about->getAnnualMembershipFee();
-            $totalPrice = 0;
+            $totalPrice = $annualMembershipFee;
 
             $isValid = true;
-            foreach ($choices as $value) {
-                $product = $this->getDoctrine()->getRepository(Product::class)->find($value);
-                if ($product)
-                {
-                    $isVariableDelivery = $product->getIsVariableDelivery();
-                    $nbDelivery = $product->getNbDelivery();
-                    $isFixedPrice = $product->getIsFixedPrice();
-                    $fixedPrice = $product->getFixedPrice();
-                    $minPrice = $product->getMinPrice();
-                    $maxPrice = $product->getMaxPrice();
 
-                    $price = $calculatePrice->definePrice($nbChild, $nbAdult, $isVariableDelivery, $nbDelivery, $isFixedPrice, $fixedPrice, $minPrice, $maxPrice);
-                    $totalPrice += $price;
-                }
-                else
-                {
-                    $isValid = false;
+            if ($choices) {
+                foreach ($choices as $value) {
+                    $product = $this->getDoctrine()->getRepository(Product::class)->find($value);
+                    if ($product)
+                    {
+                        $isVariableDelivery = $product->getIsVariableDelivery();
+                        $nbDelivery = $product->getNbDelivery();
+                        $isFixedPrice = $product->getIsFixedPrice();
+                        $fixedPrice = $product->getFixedPrice();
+                        $minPrice = $product->getMinPrice();
+                        $maxPrice = $product->getMaxPrice();
+
+                        $price = $calculatePrice->definePrice($nbChild, $nbAdult, $isVariableDelivery, $nbDelivery, $isFixedPrice, $fixedPrice, $minPrice, $maxPrice);
+                        $totalPrice += $price;
+                    }
+                    else
+                    {
+                        $isValid = false;
+                    }
                 }
             }
-
+            
             $result = $serializer->serialize($totalPrice, 'json');
             return $this->json($result, 200);
         }
