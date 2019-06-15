@@ -24,9 +24,6 @@ class SimulatorType extends AbstractType
             ->add('nb_child', NumberType::class, [
                 'required' => true
             ])
-            ->add('total_price', NumberType::class, [
-                'required' => true
-            ])
             ->add('food_type', EntityType::class, [
                 'class' => FoodType::class,
                 'choice_label' => 'name',
