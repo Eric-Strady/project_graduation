@@ -1,0 +1,29 @@
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	</head>
+	<body>
+	    <div class="row">
+	    	<div class="col-lg-12">
+	    		<h3 class="text-center mb-3">Simulation pour un abonnement à l'AMAP</h3>
+	        	<p>Bonjour AMAP Pré-Vert, vous venez de recevoir une demande d'informations à la suite d'une simulation réalisé part: <b>{{ userEmail }}</b> .</p>
+	        	<p>En voici les détails:</p>
+	        	<ul>
+	        		<li>Taille du foyer: <b>{{ result.nbAdult }} adulte(s)</b> et <b>{{ result.nbChild }} enfant(s)</b></li>
+	        		<li>Type d'alimentation: <b>{{ result.foodType }}</b></li>
+	        		<li>Produit(s) sélectionné(s):
+	        			<ol>
+	        				{% for product in result.products %}
+							    <li><b>{{ product }}</b></li>
+							{% endfor %} 
+	        			</ol>
+					</li>
+	        		<li>Prix total estimé annoncé: <b>{{ result.totalPrice }}</b> €</li>
+	        	</ul>
+	        	<p>Merci de recontacter dès que possible cette personne afin de lui proposer une solution.</p>
+	    	</div>
+	    </div>
+	</body>
+</html>
