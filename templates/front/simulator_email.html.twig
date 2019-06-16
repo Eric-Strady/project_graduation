@@ -12,7 +12,13 @@
 	        	<p>En voici les détails:</p>
 	        	<ul>
 	        		<li>Taille du foyer: <b>{{ result.nbAdult }} adulte(s)</b> et <b>{{ result.nbChild }} enfant(s)</b></li>
-	        		<li>Type d'alimentation: <b>{{ result.foodType }}</b></li>
+	        		<li>Type(s) d'alimentation: 
+	        			<ul>
+	        				{% for foodType in result.selectedFoodTypes %}
+							    <li><b>{{ foodType }}</b></li>
+							{% endfor %}
+	        			</ul>
+					</li>
 	        		<li>Produit(s) sélectionné(s):
 	        			<ol>
 	        				{% for product in result.products %}

@@ -63,7 +63,7 @@ class SimulatorController extends AbstractController
 
             $nbChild = $request->get('nbChild');
             $nbAdult = $request->get('nbAdult');
-            $foodType = $request->get('foodType');
+            $selectedFoodTypes = $request->get('selectedFoodTypes');
             $choices = $request->get('choices');
 
             $about = $this->getDoctrine()->getRepository(About::class)->findAbout();
@@ -91,7 +91,7 @@ class SimulatorController extends AbstractController
             $simulatorData = [
                 'nbChild' => $nbChild,
                 'nbAdult' => $nbAdult,
-                'foodType' => $foodType,
+                'selectedFoodTypes' => $selectedFoodTypes,
                 'totalPrice' => $totalPrice,
                 'products' => $products
             ];

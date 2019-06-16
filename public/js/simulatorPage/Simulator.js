@@ -9,6 +9,7 @@ class Simulator {
 		this.errorProductElt = domElt.errorProductElt;
 		this.errorEmailElt = domElt.errorEmailElt;
 		this.secondStepContainer = domElt.secondStepContainer;
+		this.contractElt= domElt.contractElt;
 		this.productsFoodTypes = domElt.productsFoodTypes;
 		this.resultContainer = domElt.resultContainer;
 		this.thirdStepContainer = domElt.thirdStepContainer;
@@ -22,6 +23,9 @@ class Simulator {
 	}
 
 	handleSimulator() {
+		$('select').select2({
+		    placeholder: "Sélectionnez un ou plusieurs type d'alimentation"
+		});
 		$(this.inputEmail).attr('placeholder', 'Votre adresse e-mail');
 		$(this.secondStepContainer).hide();
 		$(this.resultContainer).hide();
@@ -136,37 +140,53 @@ class Simulator {
 	}
 
 	disableNotMatchProducts() {
-		let selectedFoodType = $(this.selectedFoodTypeOption).text();
-		$(this.productsFoodTypes).each(function() {
-			let $currentContract = $(this).parents('.contract');
-			let nbProducts = $currentContract.find('.productChoice').length;
-			
-			$currentContract.show();
-			$(this).parent().show();
-			let isMatched = false;
+		let selectedFoodTypes = [];
+		$(this.selectedFoodTypeOption).each(function(){
+			selectedFoodTypes.push($(this).text());
+		});
+		
+		let self = this;
+		$(this.contractElt).each(function() {
+			$(this).show();
+			let $foodTypes = $(this).find(self.productsFoodTypes);
+			let nbProducts = $foodTypes.length;
 
-			$(this).children('span').each(function() {
-				if ($(this).text() === selectedFoodType) {
-					isMatched = true;
+			$foodTypes.each(function() {
+				$(this).parent().show();
+
+				let isMatched = false;
+				$(this).children('span').each(function() {
+					let presence = $.inArray($(this).text(), selectedFoodTypes);
+					if (presence > -1) {
+						isMatched = true;
+					}
+				});
+
+				if (isMatched === false) {
+					$(this).parent().hide();
+					nbProducts--;
 				}
 			});
 
-			if (isMatched === false) {
-				$(this).parent().hide();
-				nbProducts--;
-			}
-
 			if (nbProducts === 0) {
-				$currentContract.hide();
+				$(this).hide();
 			}
 		});
 	}
 
 	simulate(checkedInput) {
+		let selectedFoodTypes = [];
+		$(this.selectedFoodTypeOption).each(function(){
+			selectedFoodTypes.push($(this).text());
+		});
+
 		let choices = [];
 		$(checkedInput).each(function() {
 			choices.push($(this).val());
 		});
+
+		console.log(selectedFoodTypes);
+		console.log(choices);
 		
 		let errorMessage = ' Le ou les produits sélectionnés ne sont pas valides.';
 		let self = this;
@@ -176,7 +196,7 @@ class Simulator {
 			data: {
 				nbChild: Number($(this.inputNbChild).val()),
 				nbAdult: Number($(this.inputNbAdult).val()),
-				foodType: $(this.selectedFoodTypeOption).text(),
+				selectedFoodTypes: selectedFoodTypes,
 				choices: choices
 			},
 			dataType: 'json',
@@ -226,6 +246,7 @@ $(function() {
 		errorProductElt: '#productError',
 		errorEmailElt: '#emailError',
 		secondStepContainer: '#secondStep',
+		contractElt: '.contract',
 		productsFoodTypes: '.foodTypes',
 		resultContainer: '#result',
 		thirdStepContainer: '#thirdStep',

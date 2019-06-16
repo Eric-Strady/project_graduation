@@ -27,7 +27,7 @@ class SimulatorType extends AbstractType
             ->add('food_type', EntityType::class, [
                 'class' => FoodType::class,
                 'choice_label' => 'name',
-                'multiple' => false,
+                'multiple' => true,
                 'expanded' => false,
                 'empty_data' => false
             ])

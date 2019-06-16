@@ -24,7 +24,7 @@ class Simulator
     /**
      * @Assert\NotBlank
      */
-    private $food_type;
+    private $food_type = [];
 
     /**
      * @Assert\NotBlank
@@ -56,12 +56,12 @@ class Simulator
         return $this;
     }
 
-    public function getFoodType(): ?FoodType
+    public function getFoodType(): ?array
     {
         return $this->food_type;
     }
 
-    public function setFoodType(FoodType $food_type): self
+    public function setFoodType(array $food_type): self
     {
         $this->food_type = $food_type;
 
