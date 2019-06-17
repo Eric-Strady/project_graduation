@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Serializer;
 
 use App\Entity\About;
 use App\Entity\Contract;
+use App\Entity\FoodType;
 use App\Entity\Product;
 use App\Form\SimulatorType;
 use App\Services\Mailer;
@@ -70,20 +71,36 @@ class SimulatorController extends AbstractController
             $annualMembershipFee = $about->getAnnualMembershipFee();
             $totalPrice = $annualMembershipFee;
 
+            $foodTypes = [];
             $products = [];
-            $isValid = true;
+            $isFoodTypesValid = true;
+            $isProductsValid = true;
+
+            if ($selectedFoodTypes) {
+                foreach ($selectedFoodTypes as $value) {
+                    $foodType = $this->getDoctrine()->getRepository(FoodType::class)->find($value);
+                    if ($foodType) {
+                        array_push($foodTypes, $foodType->getName());
+                    }
+                    else {
+                        $isFoodTypesValid = false;
+                    }
+                }
+            }
+            else {
+                $isFoodTypesValid = false;
+            }
+
             if ($choices) {
                 foreach ($choices as $value) {
                     $product = $this->getDoctrine()->getRepository(Product::class)->find($value);
-                    if ($product)
-                    {
+                    if ($product) {
                         $price = $calculatePrice->definePrice($nbChild, $nbAdult, $product);
                         $totalPrice += $price;
                         array_push($products, $product->getName());
                     }
-                    else
-                    {
-                        $isValid = false;
+                    else {
+                        $isProductsValid = false;
                     }
                 }
             }
@@ -91,14 +108,15 @@ class SimulatorController extends AbstractController
             $simulatorData = [
                 'nbChild' => $nbChild,
                 'nbAdult' => $nbAdult,
-                'selectedFoodTypes' => $selectedFoodTypes,
+                'foodTypes' => $foodTypes,
                 'totalPrice' => $totalPrice,
                 'products' => $products
             ];
             $_SESSION['simulatorData'] = $simulatorData;
             
             $returnedData = [
-                'isValid' => $isValid,
+                'isFoodTypesValid' => $isFoodTypesValid,
+                'isProductsValid' => $isProductsValid,
                 'totalPrice' => $totalPrice
             ];
             $result = $serializer->serialize($returnedData, 'json');

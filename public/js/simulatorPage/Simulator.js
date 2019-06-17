@@ -6,6 +6,7 @@ class Simulator {
 		this.inputEmail = domElt.inputEmail;
 		this.errorNbAdultElt = domElt.errorNbAdultElt;
 		this.errorNbChildElt = domElt.errorNbChildElt;
+		this.errorFoodTypeElt = domElt.errorFoodTypeElt;
 		this.errorProductElt = domElt.errorProductElt;
 		this.errorEmailElt = domElt.errorEmailElt;
 		this.secondStepContainer = domElt.secondStepContainer;
@@ -177,7 +178,7 @@ class Simulator {
 	simulate(checkedInput) {
 		let selectedFoodTypes = [];
 		$(this.selectedFoodTypeOption).each(function(){
-			selectedFoodTypes.push($(this).text());
+			selectedFoodTypes.push($(this).val());
 		});
 
 		let choices = [];
@@ -185,10 +186,8 @@ class Simulator {
 			choices.push($(this).val());
 		});
 
-		console.log(selectedFoodTypes);
-		console.log(choices);
-		
-		let errorMessage = ' Le ou les produits sélectionnés ne sont pas valides.';
+		let foodTypesErrorMessage = ' Le ou les types d\'alimentation sélectionnés ne sont pas valides.';
+		let productsErrorMessage = ' Le ou les produits sélectionnés ne sont pas valides.';
 		let self = this;
 		$.ajax({
 			type: 'POST',
@@ -202,13 +201,21 @@ class Simulator {
 			dataType: 'json',
 		}).done(function(data) {
 			let result = JSON.parse(data);
-			if (result.isValid) {
+			if (result.isFoodTypesValid && result.isProductsValid) {
+				self.removeError(self.errorFoodTypeElt);
 				self.removeError(self.errorProductElt);
 				$(self.totalPriceElt).text(result.totalPrice);
 			}
 			else {
 				$(self.resultContainer).hide();
-				self.addError(self.errorProductElt, errorMessage);
+
+				if (!result.isFoodTypesValid) {
+					self.addError(self.errorFoodTypeElt, foodTypesErrorMessage);
+				}
+
+				if (!result.isProductsValid) {
+					self.addError(self.errorProductElt, productsErrorMessage);
+				}
 			}
 		});
 	}
@@ -243,6 +250,7 @@ $(function() {
 		inputEmail: '#simulator_email',
 		errorNbAdultElt: '#nbAdultError',
 		errorNbChildElt: '#nbChildError',
+		errorFoodTypeElt: '#foodTypeError',
 		errorProductElt: '#productError',
 		errorEmailElt: '#emailError',
 		secondStepContainer: '#secondStep',

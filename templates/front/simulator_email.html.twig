@@ -14,7 +14,7 @@
 	        		<li>Taille du foyer: <b>{{ result.nbAdult }} adulte(s)</b> et <b>{{ result.nbChild }} enfant(s)</b></li>
 	        		<li>Type(s) d'alimentation: 
 	        			<ul>
-	        				{% for foodType in result.selectedFoodTypes %}
+	        				{% for foodType in result.foodTypes %}
 							    <li><b>{{ foodType }}</b></li>
 							{% endfor %}
 	        			</ul>
