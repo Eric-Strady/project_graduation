@@ -22,6 +22,14 @@ header {
 	display: inline-block;
 }
 
+#noContract {
+	background-color: lightgrey;
+}
+
+#noContractMessage {
+	background-color: bisque;
+}
+
 /* MEDIA */
 
 @media all and (max-width : 992px) {

@@ -86,7 +86,16 @@
 				</div>
 			</div>
 		{% endfor %}
-		
+		<div class="row mt-2 mb-2" id="noContract">
+			<div class="col-lg-12 pt-4 pb-4">
+				<div class="row justify-content-center pt-2 pb-3">
+					<div class="col-lg-6 text-center pt-3" id="noContractMessage">
+						<p>Aucun contrat ne correspond à votre demande!<br>
+						Merci de modifier votre demande ou de prendre <a href="{{ path('contact') }}">contact</a> avec nous.</p>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="row text-center mt-3 mb-3">
 			<div class="col-lg-12">
 				<button class="btn btn-primary" id="simulate" data-url="{{ path('simulator.calculate') }}">Simuler</button>

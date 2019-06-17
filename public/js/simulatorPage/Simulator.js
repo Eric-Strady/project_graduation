@@ -2,6 +2,7 @@ class Simulator {
 	constructor(domElt) {
 		this.inputNbAdult = domElt.inputNbAdult;
 		this.inputNbChild = domElt.inputNbChild;
+		this.selectedFoodTypes = domElt.selectedFoodTypes;
 		this.selectedFoodTypeOption = domElt.selectedFoodTypeOption;
 		this.inputEmail = domElt.inputEmail;
 		this.errorNbAdultElt = domElt.errorNbAdultElt;
@@ -9,6 +10,7 @@ class Simulator {
 		this.errorFoodTypeElt = domElt.errorFoodTypeElt;
 		this.errorProductElt = domElt.errorProductElt;
 		this.errorEmailElt = domElt.errorEmailElt;
+		this.noContractElt = domElt.noContractElt;
 		this.secondStepContainer = domElt.secondStepContainer;
 		this.contractElt= domElt.contractElt;
 		this.productsFoodTypes = domElt.productsFoodTypes;
@@ -28,6 +30,7 @@ class Simulator {
 		    placeholder: "Sélectionnez un ou plusieurs type d'alimentation"
 		});
 		$(this.inputEmail).attr('placeholder', 'Votre adresse e-mail');
+		$(this.noContractElt).hide();
 		$(this.secondStepContainer).hide();
 		$(this.resultContainer).hide();
 		$(this.thirdStepContainer).hide();
@@ -146,6 +149,7 @@ class Simulator {
 			selectedFoodTypes.push($(this).text());
 		});
 		
+		let nbContracts = $(this.contractElt).length;
 		let self = this;
 		$(this.contractElt).each(function() {
 			$(this).show();
@@ -171,8 +175,16 @@ class Simulator {
 
 			if (nbProducts === 0) {
 				$(this).hide();
+				nbContracts--;
 			}
 		});
+
+		if (nbContracts === 0) {
+			$(this.noContractElt).fadeIn(500);
+		}
+		else {
+			$(this.noContractElt).hide();
+		}
 	}
 
 	simulate(checkedInput) {
@@ -202,6 +214,7 @@ class Simulator {
 		}).done(function(data) {
 			let result = JSON.parse(data);
 			if (result.isFoodTypesValid && result.isProductsValid) {
+				$(this.selectedFoodTypes).removeClass('errorSimulator');
 				self.removeError(self.errorFoodTypeElt);
 				self.removeError(self.errorProductElt);
 				$(self.totalPriceElt).text(result.totalPrice);
@@ -210,6 +223,7 @@ class Simulator {
 				$(self.resultContainer).hide();
 
 				if (!result.isFoodTypesValid) {
+					$(this.selectedFoodTypes).addClass('errorSimulator');
 					self.addError(self.errorFoodTypeElt, foodTypesErrorMessage);
 				}
 
@@ -246,6 +260,7 @@ $(function() {
 	let domElt = {
 		inputNbAdult: '#simulator_nb_adult',
 		inputNbChild: '#simulator_nb_child',
+		selectedFoodTypes: '#simulator_food_type',
 		selectedFoodTypeOption: '#simulator_food_type option:selected',
 		inputEmail: '#simulator_email',
 		errorNbAdultElt: '#nbAdultError',
@@ -253,6 +268,7 @@ $(function() {
 		errorFoodTypeElt: '#foodTypeError',
 		errorProductElt: '#productError',
 		errorEmailElt: '#emailError',
+		noContractElt: '#noContract',
 		secondStepContainer: '#secondStep',
 		contractElt: '.contract',
 		productsFoodTypes: '.foodTypes',
