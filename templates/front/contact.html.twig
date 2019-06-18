@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}
 
 {% block body %}
@@ -27,11 +28,13 @@
 				<div class="row" id="contactForm">
 					<div class="col-lg-12">
 						{{ form_start(form) }}
+							{{ form_errors(form) }}
 							{{ form_row(form.user_email) }}
 							{{ form_row(form.subject) }}
 							{{ form_row(form.message) }}
 							{{ form_rest(form) }}
 					</div>
+					<div class="col-lg-12 g-recaptcha" data-sitekey="6Le4iqkUAAAAACPF4h1EXfvzS1xvy1Qa0I5aIXbG"></div>
 					<div class="col-lg-12 text-center">
 							<button type="submit" class="btn btn-primary">Envoyer</button>
 						{{ form_end(form) }}

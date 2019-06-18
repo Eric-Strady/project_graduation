@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -25,11 +26,20 @@ class ContactController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $mailer->sendMessageToAdmin($contact);
+            $recaptcha = new \ReCaptcha\ReCaptcha('6Le4iqkUAAAAAI2JtAYAcHJWu7Idr_gdJYOKRyNb');
+            $resp = $recaptcha->setExpectedHostname($_SERVER['SERVER_NAME'])
+                ->verify($request->get('g-recaptcha-response'), $_SERVER['REMOTE_ADDR']);
+            dd($_POST);
+            if ($resp->isSuccess()){
+                $mailer->sendMessageToAdmin($contact);
 
-            $this->addFlash('success', 'Votre message a bien été envoyée. Nous vous répondrons dans les plus brefs délais.');
+                $this->addFlash('success', 'Votre message a bien été envoyée. Nous vous répondrons dans les plus brefs délais.');
 
-            return $this->redirectToRoute('contact');
+                return $this->redirectToRoute('contact');
+            }
+            else {
+                $form->addError(new FormError('Une erreur est survenue avec le reCAPTCHA. Merci de réessayer.'));
+            }            
         }
 
         return $this->render('front/contact.html.twig', [
