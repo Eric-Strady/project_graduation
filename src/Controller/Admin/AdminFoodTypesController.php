@@ -37,7 +37,7 @@ class AdminFoodTypesController extends AbstractController
         {
         	$this->em->persist($foodType);
         	$this->em->flush();
-        	return $this->redirectToRoute('admin.foodtypes');
+        	return $this->redirectToRoute('admin.contract.form.param');
         }
 
         return $this->render('back/admin_foodtype_create.html.twig', [
@@ -60,7 +60,7 @@ class AdminFoodTypesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
         	$this->em->flush();
-        	return $this->redirectToRoute('admin.foodtypes');
+        	return $this->redirectToRoute('admin.contract.form.param');
         }
 
         return $this->render('back/admin_foodtype_update.html.twig', [
@@ -82,6 +82,6 @@ class AdminFoodTypesController extends AbstractController
             $this->em->flush();
         }
         
-        return $this->redirectToRoute('admin.foodtypes');
+        return $this->redirectToRoute('admin.contract.form.param');
     }
 }

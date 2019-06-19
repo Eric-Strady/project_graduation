@@ -111,7 +111,7 @@ class AdminContractsController extends AbstractController
     }
 
     /**
-     * @Route("/admin/types_alimentation", name="admin.contract.form.param")
+     * @Route("/admin/parametres_formulaire", name="admin.contract.form.param")
      */
     public function formParam()
     {
