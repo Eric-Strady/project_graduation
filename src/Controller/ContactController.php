@@ -26,10 +26,9 @@ class ContactController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
-            $recaptcha = new \ReCaptcha\ReCaptcha('6Le4iqkUAAAAAI2JtAYAcHJWu7Idr_gdJYOKRyNb');
+            $recaptcha = new \ReCaptcha\ReCaptcha('');
             $resp = $recaptcha->setExpectedHostname($_SERVER['SERVER_NAME'])
                 ->verify($request->get('g-recaptcha-response'), $_SERVER['REMOTE_ADDR']);
-            dd($_POST);
             if ($resp->isSuccess()){
                 $mailer->sendMessageToAdmin($contact);
 
@@ -39,7 +38,7 @@ class ContactController extends AbstractController
             }
             else {
                 $form->addError(new FormError('Une erreur est survenue avec le reCAPTCHA. Merci de réessayer.'));
-            }            
+            }
         }
 
         return $this->render('front/contact.html.twig', [

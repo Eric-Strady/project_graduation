@@ -55,7 +55,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             $credentials['email']
         );
 
-        return $credentials;
+        $recaptcha = new \ReCaptcha\ReCaptcha('');
+        $resp = $recaptcha->setExpectedHostname($_SERVER['SERVER_NAME'])
+            ->verify($request->get('g-recaptcha-response'), $_SERVER['REMOTE_ADDR']);
+        if ($resp->isSuccess()){
+            return $credentials;
+        }
+        else {
+            throw new CustomUserMessageAuthenticationException('Une erreur est survenue avec le reCAPTCHA. Merci de réessayer.');
+        }
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
