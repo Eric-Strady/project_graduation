@@ -2,7 +2,7 @@
 	<div class="card">
 		{% if post.imageName %}
 			<a href="{{ path('post.show', {id: post.id}) }}">
-				<img class="card-img-top" src="{{ asset('images/posts/'~ post.imageName ~'') }}" alt="Image article {{ post.Title }}">
+				<img class="card-img-top" src="{{ vich_uploader_asset(post, 'image_file') | imagine_filter('thumb') }}" alt="Image article {{ post.Title }}">
 			</a>
 		{% else %}
 			<a href="{{ path('post.show', {id: post.id}) }}">

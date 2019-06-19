@@ -15,9 +15,9 @@
 			</div>
 			<div class="col-lg-12 mt-5">
 				{% if post.imageName %}
-					<img src="{{ asset('images/posts/'~ post.imageName ~'') }}" alt="Image article {{ post.Title }}" id="postImage">
+					<img src="{{ vich_uploader_asset(post, 'image_file') | imagine_filter('large') }}" alt="Image article {{ post.Title }}" id="postImage">
 				{% else %}
-					<img src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes" id="postImage">
+					<img src="{{ asset('images/vegetables_basket.jpg' | imagine_filter('large')) }}" alt="Panier de légumes" id="postImage">
 				{% endif %}
 			</div>
 		</div>

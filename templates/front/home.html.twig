@@ -38,7 +38,7 @@
 				</div>
 				<div class="col-lg-4 col-md-12 text-center mb-2 contractThumbnail">
 					{% if contract.imageName %}
-						<img src="{{ asset('images/contracts/'~ contract.imageName ~'') }}" alt="Image contrat {{ contract.name }}">
+						<img src="{{ vich_uploader_asset(contract, 'image_file') | imagine_filter('medium') }}" alt="Image contrat {{ contract.name }}">
 					{% else %}
 						<img src="{{ asset('images/vegetables_basket.jpg' | imagine_filter('medium')) }}" alt="Panier de légumes">
 					{% endif %}
