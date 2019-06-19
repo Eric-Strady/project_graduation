@@ -6,7 +6,7 @@
 			</a>
 		{% else %}
 			<a href="{{ path('post.show', {id: post.id}) }}">
-				<img class="card-img-top" src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes">
+				<img class="card-img-top" src="{{ asset('images/vegetables_basket.jpg' | imagine_filter('thumb')) }}" alt="Panier de légumes">
 			</a>
 		{% endif %}
 		<div class="card-body">

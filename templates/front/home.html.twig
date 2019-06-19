@@ -40,7 +40,7 @@
 					{% if contract.imageName %}
 						<img src="{{ asset('images/contracts/'~ contract.imageName ~'') }}" alt="Image contrat {{ contract.name }}">
 					{% else %}
-						<img src="{{ asset('images/vegetables_basket.jpg') }}" alt="Panier de légumes">
+						<img src="{{ asset('images/vegetables_basket.jpg' | imagine_filter('medium')) }}" alt="Panier de légumes">
 					{% endif %}
 				</div>
 			</div>
