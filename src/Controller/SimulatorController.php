@@ -33,15 +33,24 @@ class SimulatorController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
-            if ($_SESSION['simulatorData']) {
-                $result = $_SESSION['simulatorData'];
-                $mailer->sendUserSimulation($simulator, $result);
+            $recaptcha = new \ReCaptcha\ReCaptcha('');
+            $resp = $recaptcha->setExpectedHostname($_SERVER['SERVER_NAME'])
+                ->verify($request->get('g-recaptcha-response'), $_SERVER['REMOTE_ADDR']);
+            if ($resp->isSuccess()){
+                if ($_SESSION['simulatorData']) {
+                    $result = $_SESSION['simulatorData'];
+                    $mailer->sendUserSimulation($simulator, $result);
 
-                $this->addFlash('success', 'Votre simulation a bien été envoyée! Vous serez recontacté prochainement.');
-                return $this->redirectToRoute('simulator');
+                    $this->addFlash('success', 'Votre simulation a bien été envoyée! Vous serez recontacté prochainement.');
+                    return $this->redirectToRoute('simulator');
+                }
+                else {
+                    $this->addFlash('error', 'Une erreur est survenue lors de l\'envoi de votre simulation, merci de réessayer.');
+                    return $this->redirectToRoute('simulator');
+                }
             }
             else {
-                $this->addFlash('error', 'Une erreur est survenue lors de l\'envoi de votre simulation, merci de réessayer.');
+                $this->addFlash('error', 'Une erreur est survenue avec le reCAPTCHA. Merci de réessayer.');
                 return $this->redirectToRoute('simulator');
             }
         }
