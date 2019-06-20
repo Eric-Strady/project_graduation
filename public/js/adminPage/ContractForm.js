@@ -17,7 +17,8 @@ class ContractForm {
 		if (this.productIndex !== 0) {
 			$(this.productContainer).children('fieldset').each(function(i) {
 				self.addTableLine(i, $(this));
-				$(this).hide();
+				self.listenChangedValue(i);
+				self.customizeSelectBox();
 				i++;
 			});
 		}
@@ -34,21 +35,24 @@ class ContractForm {
 
 	addProductForm() {
 		let newProductPrototype = this.productPrototype.replace(/__name__/g, this.productIndex);
-		this.productIndex++;
-
+		
 		let productForm = this.addDeleteButton(newProductPrototype);
 		$(this.productContainer).append(productForm);
+		this.listenChangedValue(this.productIndex);
 		this.customizeSelectBox();
+		this.productIndex++;
 	}
 
 	addDeleteButton(prototype) {
 		let $deleteButton = $('<a href="#"><span class="btn btn-danger fas fa-times"> Supprimer</span></a>');
 		let prototypeWithDeleteButton = $(prototype).append($deleteButton);
 
+		let self = this;
 		$deleteButton.click(function(e) {
 			e.preventDefault();
 			$(prototypeWithDeleteButton).fadeOut(500, function() {
 				$(this).remove();
+				self.productIndex--;
 			});
 		});
 
@@ -71,16 +75,13 @@ class ContractForm {
 		let self = this;
 		$updateLink.click(function(e) {
 			e.preventDefault();
-			$(this).css('pointer-events', 'none');
-			$(this).children('span').css({
-				'background-color': 'grey',
-				'border': 'none'
-			});
-			$(prototype).fadeIn(500);
+			$(prototype).fadeToggle(500);
 		});
 
 		$deleteLink.click(function(e) {
 			e.preventDefault();
+			self.productIndex--;
+
 			$(prototype).fadeOut(500, function() {
 				$(this).remove();
 			});
@@ -89,15 +90,63 @@ class ContractForm {
 				$(this).remove();
 			});
 
-			if ($(self.tableBodyRowElt).length === 1) {
+			if (self.productIndex === 0) {
 				$(self.tableElt).fadeOut(500);
-				self.productIndex = 0;
+			}
+		});
+	}
+
+	listenChangedValue(i) {
+		let $deliveryBool = $('#contract_products_' + i + '_is_variable_delivery');
+		let $nbDelivery = $('#contract_products_' + i + '_nb_delivery');
+		let $priceBool = $('#contract_products_' + i + '_is_fixed_price');
+		let $fixedPrice = $('#contract_products_' + i + '_fixed_price');
+		let $minPrice = $('#contract_products_' + i + '_min_price');
+		let $maxPrice = $('#contract_products_' + i + '_max_price');
+
+		if ($deliveryBool.val() === '0') {
+			$nbDelivery.attr('disabled', 'true');
+		}
+		
+		if ($priceBool.val() === '0') {
+			$fixedPrice.attr('disabled', 'true');
+		}
+		else if ($priceBool.val() === '1') {
+			$minPrice.attr('disabled', 'true');
+			$maxPrice.attr('disabled', 'true');
+		}
+
+		$deliveryBool.change(function() {
+			let value = $(this).val();
+			if (value === '1') {
+				$nbDelivery.removeAttr('disabled');
+			}
+			else {
+				$nbDelivery.attr('disabled', 'true');
+				$nbDelivery.val('');
+			}
+		});
+
+		$priceBool.change(function() {
+			let value = $(this).val();
+			if (value === '1') {
+				$fixedPrice.removeAttr('disabled');
+				$minPrice.attr('disabled', 'true');
+				$minPrice.val('');
+				$maxPrice.attr('disabled', 'true');
+				$maxPrice.val('');
+			}
+			else {
+				$fixedPrice.attr('disabled', 'true');
+				$fixedPrice.val('');
+				$minPrice.removeAttr('disabled');
+				$maxPrice.removeAttr('disabled');
 			}
 		});
 	}
 
 	customizeSelectBox() {
-		$(this.selectElt).select2();
+		$(this.selectElt).siblings('select').select2();
 	}
 }
 
@@ -108,7 +157,7 @@ $(function() {
 		tableElt: 'table',
 		tableBodyElt: 'tbody',
 		tableBodyRowElt: 'tbody tr',
-		selectElt: 'select'
+		selectElt: '.foodTypes'
 	}
 	const contractForm = new ContractForm(domElt);
 });
