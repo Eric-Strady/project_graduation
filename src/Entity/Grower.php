@@ -70,7 +70,7 @@ class Grower
 
     /**
      * @Assert\Length(max=255)
-     * @Assert\Regex("#^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?\#[\]@!\$&'\(\)\*\+,;=.]+$#")
+     * @Assert\Regex("#^(https?:\/\/)([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$#")
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $website;
