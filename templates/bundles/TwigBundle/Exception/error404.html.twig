@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AMAP Pré-vert - Erreur {{ status_code }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <header>
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <h2>Erreur {{ status_code }}</h2>
+                </div>
+            </div>
+        </header>
+
+        <section id="error">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-6">
+                    <p>Nous sommes désolé mais ces terres ne sont pas encores accessibles.</p>
+                    <a href="{{ path('home') }}" class="btn btn-primary">Revenir à la page d'accueil</a>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
