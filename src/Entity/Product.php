@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -27,16 +28,19 @@ class Product
     private $name;
 
     /**
+     * @Assert\Type("bool")
      * @ORM\Column(type="boolean")
      */
     private $is_variable_delivery;
 
     /**
+     * @Assert\GreaterThan(0)
      * @ORM\Column(type="integer", nullable=true)
      */
     private $nb_delivery;
 
     /**
+     * @Assert\Type("bool")
      * @ORM\Column(type="boolean")
      */
     private $is_fixed_price;
@@ -201,5 +205,75 @@ class Product
         }
 
         return $this;
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function checkDelivery(ExecutionContextInterface $context) {
+        if ($this->getNbDelivery() && !$this->getIsVariableDelivery()) {
+            $message = 'Vous ne pouvez pas attribuer un nombre de livraison, alors que le client n\'a pas le choix.';
+            $path = 'nb_delivery';
+            $this->addViolation($message, $path, $context);
+        }
+        elseif (!$this->getNbDelivery() && $this->getIsVariableDelivery()) {
+            $message = 'Vous devez indiqué un nombre de livraison maximum, car le client a le choix.';
+            $path = 'nb_delivery';
+            $this->addViolation($message, $path, $context);
+        }
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function checkFixedPrice(ExecutionContextInterface $context) {
+        if ($this->getFixedPrice() && !$this->getIsFixedPrice()) {
+            $message = 'Vous ne pouvez pas attribuer un prix fixe, alors que celui-ci est variable.';
+            $path = 'fixed_price';
+            $this->addViolation($message, $path, $context);
+        }
+        elseif (!$this->getFixedPrice() && $this->getIsFixedPrice()) {
+            $message = 'Vous devez indiquer un prix fixe.';
+            $path = 'fixed_price';
+            $this->addViolation($message, $path, $context);
+        }
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function checkMinPrice(ExecutionContextInterface $context) {
+        if ($this->getMinPrice() && $this->getIsFixedPrice()) {
+            $message = 'Vous ne pouvez pas attribuer un prix minimum, alors que celui-ci est fixe.';
+            $path = 'min_price';
+            $this->addViolation($message, $path, $context);
+        }
+        elseif (!$this->getMinPrice() && !$this->getIsFixedPrice()) {
+            $message = 'Vous devez indiquer un prix minimum, car celui-ci n\'est pas fixe.';
+            $path = 'min_price';
+            $this->addViolation($message, $path, $context);
+        }
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function checkMaxPrice(ExecutionContextInterface $context) {
+        if ($this->getMaxPrice() && $this->getIsFixedPrice()) {
+            $message = 'Vous ne pouvez pas attribuer un prix maximum, alors que celui-ci est fixe.';
+            $path = 'max_price';
+            $this->addViolation($message, $path, $context);
+        }
+        elseif (!$this->getMaxPrice() && !$this->getIsFixedPrice()) {
+            $message = 'Vous devez indiquer un prix maximum, car celui-ci n\'est pas fixe.';
+            $path = 'max_price';
+            $this->addViolation($message, $path, $context);
+        }
+    }
+
+    private function addViolation($message, $path, $context) {
+        $context->buildViolation($message)
+            ->atPath($path)
+            ->addViolation();
     }
 }
