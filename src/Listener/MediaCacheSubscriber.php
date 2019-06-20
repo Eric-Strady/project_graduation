@@ -31,12 +31,7 @@ class MediaCacheSubscriber implements EventSubscriber
 
 	public function preUpdate(PreUpdateEventArgs $event) {
 		$entity = $event->getEntity();
-		if ($entity instanceof Contract) {
-			if ($entity->getImageFile() instanceof UploadedFile) {
-				$this->cacheManager->remove($this->uploaderHelper->asset($entity, 'image_file'));
-			}
-		}
-		elseif ($entity instanceof Post) {
+		if ($entity instanceof Contract || $entity instanceof Post) {
 			if ($entity->getImageFile() instanceof UploadedFile) {
 				$this->cacheManager->remove($this->uploaderHelper->asset($entity, 'image_file'));
 			}
@@ -48,10 +43,7 @@ class MediaCacheSubscriber implements EventSubscriber
 
 	public function preRemove(LifecycleEventArgs $event) {
 		$entity = $event->getEntity();
-		if ($entity instanceof Contract) {
-			$this->cacheManager->remove($this->uploaderHelper->asset($entity, 'image_file'));
-		}
-		elseif ($entity instanceof Post) {
+		if ($entity instanceof Contract || $entity instanceof Post) {
 			$this->cacheManager->remove($this->uploaderHelper->asset($entity, 'image_file'));
 		}
 		else {
