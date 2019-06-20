@@ -20,6 +20,12 @@
 			</div>
 		</header>
 
+		<div class="row">
+			<div class="col text-right">
+				<a href="{{ path('admin.contract.form.param') }}" class="btn btn-outline-secondary btn-sm">Retour au paramétrage du formulaire</a>
+			</div>
+		</div>
+
 		<section id="createForm">
 			{% include 'back/admin_foodtype_form.html.twig' with { button: 'Créer' } %}
 		</section>

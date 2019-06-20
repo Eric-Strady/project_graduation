@@ -20,6 +20,12 @@
 			</div>
 		</header>
 
+		<div class="row">
+			<div class="col text-right">
+				<a href="{{ path('admin.posts') }}" class="btn btn-outline-secondary btn-sm">Retour à la gestion des articles</a>
+			</div>
+		</div>
+
 		<section id="updateForm">
 			{% include 'back/admin_post_form.html.twig' with { button: 'Modifier' } %}
 		</section>

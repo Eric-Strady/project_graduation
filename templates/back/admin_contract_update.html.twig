@@ -20,6 +20,12 @@
 			</div>
 		</header>
 
+		<div class="row">
+			<div class="col text-right">
+				<a href="{{ path('admin.contracts') }}" class="btn btn-outline-secondary btn-sm">Retour à la gestion des contrats</a>
+			</div>
+		</div>
+
 		<section class="mt-4 mb-4" id="updateForm">
 			{% include 'back/admin_contract_form.html.twig' with { button: 'Modifier' } %}
 		</section>
