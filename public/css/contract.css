@@ -12,7 +12,7 @@ header {
 	height: 40vh;
 }
 
-/* MAP */
+/* GROWER */
 
 #map {
 	height: 400px;
@@ -21,6 +21,10 @@ header {
 
 .leaflet-popup-content {
 	font-weight: bold;
+}
+
+#growerData {
+	height: 100%;
 }
 
 /* MEDIA */
