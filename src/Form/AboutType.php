@@ -6,6 +6,7 @@ use App\Entity\About;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,7 +25,7 @@ class AboutType extends AbstractType
             ])
             ->add('amap_gps_lat')
             ->add('amap_gps_lng')
-            ->add('nb_members')
+            ->add('nb_members', NumberType::class)
             ->add('annual_membership_fee', MoneyType::class)
             ->add('facebook_link')
         ;
