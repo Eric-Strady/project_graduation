@@ -35,25 +35,20 @@
 					<p>{{ contract.description|raw }}</p>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<h4>Liste des produits proposés:</h4>
+			<div class="row justify-content-center">
+				<div class="col-lg-6">
 					<table class="table table-responsive-sm">
 						<thead>
 							<tr class="table-info">
-								<th>Nom</th>
-								<th>Prix min</th>
-								<th>Prix max</th>
-								<th>Prix fixe</th>
+								<th>Produits</th>
+								<th>Prix</th>
 							</tr>
 						</thead>
 						<tbody>
 							{% for product in contract.products %}
 								<tr>
 									<td>{{ product.name }}</td>
-									<td>{% if product.minPrice %} {{ product.minPrice }}€ {% else %} - {% endif %}</td>
-									<td>{% if product.maxPrice %} {{ product.maxPrice }}€ {% else %} - {% endif %}</td>
-									<td>{% if product.fixedPrice %} {{ product.fixedPrice }}€ {% else %} - {% endif %}</td>
+									<td>{% if product.fixedPrice %} {{ product.fixedPrice }}€ {% else %} De {{ product.minPrice }}€ à {{ product.maxPrice }}€ {% endif %}</td>
 								</tr>
 							{% endfor %}
 						</tbody>
