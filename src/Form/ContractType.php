@@ -48,7 +48,8 @@ class ContractType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => false,
                 'expanded' => false,
-                'empty_data' => false
+                'empty_data' => false,
+                'help' => 'Pensez à créer le producteur avant de pouvoir l\'assigné à un contrat. Attention, un producteur ne peut appartenir qu\'à un seul contrat.'
             ])
         ;
     }

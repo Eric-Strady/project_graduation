@@ -19,7 +19,6 @@ class ProductType extends AbstractType
         $builder
             ->add('name')
             ->add('is_variable_delivery', ChoiceType::class, [
-                'label' => 'Le client peut-il choisir ses livraisons?',
                 'choices' => [
                     'Non' => false,
                     'Oui' => true

@@ -27,6 +27,7 @@ class UserForgotPasswordType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ForgotPasswordForm::class,
+            'translation_domain' => 'forms'
         ]);
     }
 }

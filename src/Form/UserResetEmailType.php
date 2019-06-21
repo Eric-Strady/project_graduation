@@ -28,6 +28,7 @@ class UserResetEmailType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ResetEmailForm::class,
+            'translation_domain' => 'forms'
         ]);
     }
 }

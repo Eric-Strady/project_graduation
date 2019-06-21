@@ -212,12 +212,12 @@ class Product
      */
     public function checkDelivery(ExecutionContextInterface $context) {
         if ($this->getNbDelivery() && !$this->getIsVariableDelivery()) {
-            $message = 'Vous ne pouvez pas attribuer un nombre de livraison, alors que le client n\'a pas le choix.';
+            $message = 'nb_delivery_has_to_be_empty';
             $path = 'nb_delivery';
             $this->addViolation($message, $path, $context);
         }
         elseif (!$this->getNbDelivery() && $this->getIsVariableDelivery()) {
-            $message = 'Vous devez indiqué un nombre de livraison maximum, car le client a le choix.';
+            $message = 'nb_delivery_empty';
             $path = 'nb_delivery';
             $this->addViolation($message, $path, $context);
         }
@@ -228,12 +228,12 @@ class Product
      */
     public function checkFixedPrice(ExecutionContextInterface $context) {
         if ($this->getFixedPrice() && !$this->getIsFixedPrice()) {
-            $message = 'Vous ne pouvez pas attribuer un prix fixe, alors que celui-ci est variable.';
+            $message = 'fixed_price_has_to_be_empty';
             $path = 'fixed_price';
             $this->addViolation($message, $path, $context);
         }
         elseif (!$this->getFixedPrice() && $this->getIsFixedPrice()) {
-            $message = 'Vous devez indiquer un prix fixe.';
+            $message = 'fixed_price_empty';
             $path = 'fixed_price';
             $this->addViolation($message, $path, $context);
         }
@@ -244,12 +244,12 @@ class Product
      */
     public function checkMinPrice(ExecutionContextInterface $context) {
         if ($this->getMinPrice() && $this->getIsFixedPrice()) {
-            $message = 'Vous ne pouvez pas attribuer un prix minimum, alors que celui-ci est fixe.';
+            $message = 'min_price_has_to_be_empty';
             $path = 'min_price';
             $this->addViolation($message, $path, $context);
         }
         elseif (!$this->getMinPrice() && !$this->getIsFixedPrice()) {
-            $message = 'Vous devez indiquer un prix minimum, car celui-ci n\'est pas fixe.';
+            $message = 'min_price_empty';
             $path = 'min_price';
             $this->addViolation($message, $path, $context);
         }
@@ -260,12 +260,12 @@ class Product
      */
     public function checkMaxPrice(ExecutionContextInterface $context) {
         if ($this->getMaxPrice() && $this->getIsFixedPrice()) {
-            $message = 'Vous ne pouvez pas attribuer un prix maximum, alors que celui-ci est fixe.';
+            $message = 'max_price_has_to_be_empty';
             $path = 'max_price';
             $this->addViolation($message, $path, $context);
         }
         elseif (!$this->getMaxPrice() && !$this->getIsFixedPrice()) {
-            $message = 'Vous devez indiquer un prix maximum, car celui-ci n\'est pas fixe.';
+            $message = 'max_price_empty';
             $path = 'max_price';
             $this->addViolation($message, $path, $context);
         }

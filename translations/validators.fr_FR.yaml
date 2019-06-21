@@ -1,0 +1,9 @@
+# CONTRACT FORM ERRORS
+nb_delivery_has_to_be_empty: Vous ne pouvez pas attribuer un nombre de livraison, alors que le client n'a pas le choix.
+nb_delivery_empty: Vous devez indiqué un nombre de livraison maximum, car le client a le choix.
+fixed_price_has_to_be_empty: Vous ne pouvez pas attribuer un prix fixe, alors que celui-ci est variable.
+fixed_price_empty: Vous devez indiquer un prix fixe.
+min_price_has_to_be_empty: Vous ne pouvez pas attribuer un prix minimum, alors que celui-ci est fixe.
+min_price_empty: Vous devez indiquer un prix minimum, car celui-ci n'est pas fixe.
+max_price_has_to_be_empty: Vous ne pouvez pas attribuer un prix maximum, alors que celui-ci est fixe.
+max_price_empty: Vous devez indiquer un prix maximum, car celui-ci n'est pas fixe.

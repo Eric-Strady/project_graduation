@@ -31,6 +31,7 @@ class UserResetPasswordType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ResetPasswordForm::class,
+            'translation_domain' => 'forms'
         ]);
     }
 }

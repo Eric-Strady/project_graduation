@@ -1,13 +1,18 @@
+# COMMON
 Name: Nom
+Email: E-mail
+Old password: Saisissez votre mot de passe
+
+# CONTRACT FORM
 Description: Description
 Summary: Résumé
 Image file: Image
-Grower name: Nom du producteur
 Starting season at: Début du contrat
 Ending season at: Fin du contrat
-Grower gps lat: Latitude
-Grower gps lng: Longitude
-Is fixed delivery: Les livraisons sont-elles au choix pour le client?
+Grower: Producteur
+Oui: Oui
+Non: Non
+Is variable delivery: Les livraisons sont-elles au choix pour le client?
 Nb delivery: Nombre maximal de livraison
 Is fixed price: Le produit a t-il un prix fixe?
 Fixed price: Prix fixe
@@ -16,14 +21,26 @@ Max price: Prix maximum
 Food types: Types d'alimentation autorisés
 "La description du contrat sera affiché sur la page du contrat.": "La description du contrat sera affiché sur la page du contrat."
 "Le résumé du contrat sera affiché sur la page d'accueil et sur la page listant les contrats.": "Le résumé du contrat sera affiché sur la page d'accueil et sur la page listant les contrats."
+"Pensez à créer le producteur avant de pouvoir l'assigner à un contrat. Attention, un producteur ne peut appartenir qu'à un seul contrat.": "Pensez à créer le producteur avant de pouvoir l'assigner à un contrat. Attention, un producteur ne peut appartenir qu'à un seul contrat."
+
+# GROWER FORM
+Gps lat: Latitude
+Gps lng: Longitude
+Address: Adresse
+City: Ville
+Postal code: Code postal
+Phone: Téléphone
+Website: Site Internet
 "Le nom renseigné ici servira également de description pour le marqueur de la carte.": "Le nom renseigné ici servira également de description pour le marqueur de la carte."
 "Exemple de latitude: 48.862725": "Exemple de latitude: 48.862725"
 "Exemple de longitude: 2.287592": "Exemple de longitude: 2.287592"
 
+# POST FORM
 Title: Titre
 Content: Contenu
 Category: Catégorie
 
+# ABOUT FORM
 How join us: Comment nous rejoindre
 Amap gps lat: Latitude
 Amap gps lng: Longitude
@@ -31,6 +48,15 @@ Nb members: Nombre de membres
 Annual membership fee: Prix de l'adhésion annuelle
 Facebook link : Lien Facebook
 
+# CONTACT FORM
 User email: Votre adresse e-mail
 Subject: Sujet
 Message: Votre message
+
+# RESET EMAIL FORM
+New email: Nouvelle adresse e-mail
+
+# RESET PASSWORD FORM
+New password: Nouveau mot de passe
+New confirm password: Confirmez votre nouveau mot de passe
+"Le mot de passe doit contenir au minimum 8 caractères, un chiffre et une lettre, une majuscule et un caractère spécial.": "Le mot de passe doit contenir au minimum 8 caractères, un chiffre et une lettre, une majuscule et un caractère spécial."
