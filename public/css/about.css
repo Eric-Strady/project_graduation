@@ -25,7 +25,14 @@
 /* MEDIA */
 
 @media all and (max-width : 992px) {
+	#aboutImage {
+		width: 80%;
+		height: auto;
+	}
 }
 
 @media all and (max-width : 576px) {
+	#aboutImage {
+		width: 100%;
+	}
 }

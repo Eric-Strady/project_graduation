@@ -3,7 +3,6 @@
 {% block title %}AMAP Pré-vert - Gestion du compte{% endblock %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/admin_home.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -15,22 +14,18 @@
 		<header>
 			<div class="row text-center">
 				<div class="col-lg-12">
-					<h2>Gestion du compte</h2>
+					<h2>Changer l'identifiant</h2>
 				</div>
 			</div>
 		</header>
 
-		<section id="accountUpdate">
+		<section class="mt-5" id="accountUpdate">
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
 					{{ form_start(formResetEmail) }}
 						{{ form_errors(formResetEmail) }}
-						<fieldset>
-							<legend>Changer l'identifiant (e-mail)</legend>
-							{{ form_row(formResetEmail.new_email) }}
-							{{ form_row(formResetEmail.old_password) }}
-						</fieldset>
-
+						{{ form_row(formResetEmail.new_email) }}
+						{{ form_row(formResetEmail.old_password) }}
 						<div class="row mt-4">
 							<div class="col-lg-12 text-center">
 								<button type="submit" class="btn btn-warning">Modifier</button>
@@ -41,6 +36,14 @@
 			</div>		
 		</section>
 	</div>
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer mt-3 mb-3 fixed-bottom">
+        <div class="container text-center">
+            <span class="text-muted">&copy; AMAP Pré-vert</span>
+        </div>
+    </footer>
 {% endblock %}
 
 {% block javascripts %}

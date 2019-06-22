@@ -12,7 +12,7 @@
 		<header>
 			<div class="row text-center">
 				<div class="col-lg-12">
-					<h2>A propos de l'AMAP Pré-vert</h2>
+					<h2>A propos de l'AMAP</h2>
 				</div>
 				<div class="col-lg-12 mt-5">
 					<img src="{{ asset('images/vegetables_basket.jpg' | imagine_filter('large')) }}" alt="Panier de légumes" id="aboutImage">
@@ -20,73 +20,73 @@
 			</div>
 		</header>
 
-		<section class="mt-4 mb-4" id="aboutUs">
+		<section class="mt-4 mb-4 pt-4" id="aboutUs">
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h3>Qui sommes-nous?</h3>
 				</div>
-				<div class="col-lg-12 text-justify">
+				<div class="col-lg-12">
 					<p>{{ about.description|raw }}</p>
 				</div>
 			</div>
 		</section>
 	</div>
 
-	<section class="container-fluid mt-4 mb-4" id="keyNumbers">
+	<section class="container-fluid mt-4 mb-4 pt-4" id="keyNumbers">
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h3>L'AMAP Pré-vert en quelques chiffres</h3>
+				<h3>L'AMAP en quelques chiffres</h3>
 			</div>
 		</div>
 		<div class="row text-center">
-			<div class="col-lg-3 mt-4 mb-4">
+			<div class="col-lg-3 col-md-3 mt-4 mb-4">
 				<span>{{ nbContracts }}</span>
 				<p>Contrats</p>
 			</div>
-			<div class="col-lg-3 mt-4 mb-4">
+			<div class="col-lg-3 col-md-3 mt-4 mb-4">
 				<span>{{ about.nbMembers }}</span>
 				<p>Membres</p>
 			</div>
-			<div class="col-lg-3 mt-4 mb-4">
+			<div class="col-lg-3 col-md-3 mt-4 mb-4">
 				<span>{{ years_diff(about.createdAt) }}</span>
 				<p>Années d'existance</p>
 			</div>
-			<div class="col-lg-3 mt-4 mb-4">
+			<div class="col-lg-3 col-md-3 mt-4 mb-4">
 				<span>{{ about.annualMembershipFee }} €</span>
 				<p>Adhésion annuelle</p>
 			</div>
 		</div>
 	</section>
 
-	<section class="container mt-4 mb-4" id="joinUs">
+	<section class="container mt-4 mb-4 pt-4" id="joinUs">
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<h3>Comment nous rejoindre?</h3>
 			</div>
-			<div class="col-lg-12 text-justify">
+			<div class="col-lg-12">
 				<p>{{ about.howJoinUs|raw }}</p>
 			</div>
 		</div>
 	</section>
 
-	<section class="container-fluid mt-4 mb-4" id="links">
+	<section class="container-fluid mt-4 pt-4" id="links">
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<h3>En apprendre plus</h3>
 			</div>
 		</div>
 		<div class="row text-center">
-			<div class="col-lg-4 mt-4 mb-4">
-				<span>icône fontawesome</span>
-				<a href="#">AMAP IDF</a>
+			<div class="col-lg-4 col-md-4 mt-4 mb-4">
+				<a href="http://amap-idf.org/"><span class="fas fa-mouse-pointer fa-2x"></span></a>
+				<p>AMAP IDF</p>
 			</div>
-			<div class="col-lg-4 mt-4 mb-4">
-				<span>icône fontawesome</span>
-				<a href="#">Page Facebook</a>
+			<div class="col-lg-4 col-md-4 mt-4 mb-4">
+				<a href="{{ about.facebookLink }}"><span class="fab fa-facebook-f fa-2x"></span></a>
+				<p>Page Facebook</p>
 			</div>
-			<div class="col-lg-4 mt-4 mb-4">
-				<span>icône fontawesome</span>
-				<a href="{{ path('contact') }}">Page de contact</a>
+			<div class="col-lg-4 col-md-4 mt-4 mb-4">
+				<a href="{{ path('contact') }}"><span class="far fa-envelope fa-2x"></span></a>
+				<p>Page de contact</p>
 			</div>
 		</div>
 	</section>

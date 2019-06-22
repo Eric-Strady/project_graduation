@@ -3,7 +3,8 @@
 {% block title %}AMAP Pré-vert - Gestion des contrats{% endblock %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/admin_contracts.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_main.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_lists.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -11,51 +12,52 @@
 {% endblock %}
 
 {% block body %}
-	<header class="container">
-		<div class="row text-center">
-			<div class="col-lg-12">
-				<h2>Gestion des contrats</h2>
+	<div class="container">
+		<header>
+			<div class="row text-center">
+				<div class="col-lg-12">
+					<h2>Gestion des contrats</h2>
+				</div>
 			</div>
-		</div>
-	</header>
+		</header>
 
-	<section class="container mt-4 mb-4" id="contractsCrud">
-		<div class="row mb-2">
-			<div class="col text-right">
-				<a href="{{ path('admin.contract.form.param') }}" class="btn btn-outline-secondary btn-sm">Paramétrer le formulaire</a>
+		<section class="pt-4 pb-4" id="contractCrud">
+			<div class="row mb-2">
+				<div class="col text-right returnButton">
+					<a href="{{ path('admin.contract.form.param') }}" class="btn btn-outline-secondary btn-sm">Paramétrer le formulaire</a>
+				</div>
 			</div>
-		</div>
-		
-		<table class="table">
-			<thead class="thead-dark">
-				<tr>
-					<th>Nom du contrat</th>
-					<th>Gestion du contrat</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for contract in contracts %}
+			
+			<table class="table table-responsive-sm text-center">
+				<thead class="thead-dark">
 					<tr>
-						<td>Contrat {{ contract.name }}</td>
-						<td>
-							<a href="{{ path('contract.show', {id: contract.id}) }}" class="btn btn-success">Visualiser</a>
-							<a href="{{ path('admin.contract.update', {id: contract.id}) }}" class="btn btn-warning">Modifier</a>
-							<form method="POST" action="{{ path('admin.contract.delete', {id: contract.id}) }}" onsubmit="return confirm('Souhaitez-vous vraiment supprimer ce contrat?')">
-								<input type="hidden" name="_method" value="delete">
-								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contract.id) }}">
-								<button class="btn btn-danger">Supprimer</button>
-							</form>
-						</td>
+						<th>Nom du contrat</th>
+						<th>Gestion du contrat</th>
 					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					{% for contract in contracts %}
+						<tr>
+							<td>Contrat {{ contract.name }}</td>
+							<td>
+								<a href="{{ path('contract.show', {id: contract.id}) }}" class="btn btn-success crudActions">Visualiser</a>
+								<a href="{{ path('admin.contract.update', {id: contract.id}) }}" class="btn btn-warning crudActions">Modifier</a>
+								<form method="POST" action="{{ path('admin.contract.delete', {id: contract.id}) }}" onsubmit="return confirm('Souhaitez-vous vraiment supprimer ce contrat?')">
+									<input type="hidden" name="_method" value="delete">
+									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contract.id) }}">
+									<button class="btn btn-danger crudActions">Supprimer</button>
+								</form>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
 
-		<div class="text-left">
-			<a href="{{ path('admin.contract.create') }}" class="btn btn-primary">Ajouter un nouveau contrat</a>
-		</div>
-	</section>
-
+			<div class="text-left addButton mt-4 mb-4">
+				<a href="{{ path('admin.contract.create') }}" class="btn btn-primary">Ajouter un nouveau contrat</a>
+			</div>
+		</section>
+	</div>
 {% endblock %}
 
 {% block javascripts %}

@@ -1,0 +1,27 @@
+/* GENERAL */
+
+/* LISTS */
+
+form {
+	display: inline-block;
+}
+
+#contractsCrud table thead tr th, #growerCrud table thead tr th, #foodTypeCrud table thead tr th{
+	width: 50%;
+}
+
+#contractsTimeLeft table thead tr th {
+	width: 30%
+}
+
+table td {
+	vertical-align: middle!important;
+}
+
+/* MEDIA */
+
+@media all and (max-width : 992px) {
+}
+
+@media all and (max-width : 576px) {
+}

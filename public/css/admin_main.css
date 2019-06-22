@@ -1,0 +1,21 @@
+@media all and (max-width : 576px) {
+	nav {
+		justify-content: center!important;
+	}
+
+	.navbar-brand {
+		margin-right: auto;
+	}
+
+	h3 {
+		text-align: center;
+	}
+
+	.crudActions {
+		margin-bottom: 10px;
+	}
+
+	.returnButton, .addButton, h3 {
+		text-align: center!important;
+	}
+}

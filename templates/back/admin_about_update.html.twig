@@ -3,7 +3,6 @@
 {% block title %}AMAP Pré-vert - Modification page à propos{% endblock %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/admin_home.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -20,7 +19,7 @@
 			</div>
 		</header>
 
-		<section id="updateForm">
+		<section class="mt-4" id="updateForm">
 			{{ form_start(form) }}
 				{{ form_widget(form) }}
 				<div class="row mt-4">

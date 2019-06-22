@@ -3,7 +3,8 @@
 {% block title %}AMAP Pré-vert - Paramétrage du formulaire{% endblock %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/admin_contracts.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_main.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_lists.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -20,15 +21,14 @@
 			</div>
 		</header>
 
-		<div class="row">
-			<div class="col text-right">
-				<a href="{{ path('admin.contracts') }}" class="btn btn-outline-secondary btn-sm">Retour à la gestion des contrats</a>
+		<section class="pt-4 pb-4" id="growerCrud">
+			<div class="row mb-2">
+				<div class="col text-right returnButton">
+					<a href="{{ path('admin.contracts') }}" class="btn btn-outline-secondary btn-sm">Retour à la gestion des contrats</a>
+				</div>
 			</div>
-		</div>
-
-		<section class="mb-4" id="growerCrud">
-			<h3>Gestion des producteurs</h3>
-			<table class="table">
+			<h3 class="mb-3">Les producteurs</h3>
+			<table class="table table-responsive-sm text-center">
 				<thead class="thead-dark">
 					<tr>
 						<th>Nom du producteur</th>
@@ -47,14 +47,14 @@
 				</tbody>
 			</table>
 
-			<div class="text-left">
+			<div class="text-left addButton">
 				<a href="{{ path('admin.grower.create') }}" class="btn btn-primary">Ajouter un nouveau producteur</a>
 			</div>
 		</section>
 
-		<section class="mt-4 mb-4" id="foodTypeCrud">
-			<h3>Gestion des types d'alimentation</h3>
-			<table class="table">
+		<section class="pt-4 pb-4" id="foodTypeCrud">
+			<h3 class="mb-3">Les types d'alimentation</h3>
+			<table class="table table-responsive-sm text-center">
 				<thead class="thead-dark">
 					<tr>
 						<th>Nom du type d'alimentation</th>
@@ -66,11 +66,11 @@
 						<tr>
 							<td>{{ foodType.name }}</td>
 							<td>
-								<a href="{{ path('admin.foodtype.update', {id: foodType.id}) }}" class="btn btn-warning">Modifier</a>
+								<a href="{{ path('admin.foodtype.update', {id: foodType.id}) }}" class="btn btn-warning crudActions">Modifier</a>
 								<form method="POST" action="{{ path('admin.foodtype.delete', {id: foodType.id}) }}" onsubmit="return confirm('Souhaitez-vous vraiment supprimer ce type d\'alimentation?')">
 									<input type="hidden" name="_method" value="delete">
 									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ foodType.id) }}">
-									<button class="btn btn-danger">Supprimer</button>
+									<button class="btn btn-danger crudActions">Supprimer</button>
 								</form>
 							</td>
 						</tr>
@@ -78,7 +78,7 @@
 				</tbody>
 			</table>
 
-			<div class="text-left">
+			<div class="text-left addButton">
 				<a href="{{ path('admin.foodtype.create') }}" class="btn btn-primary">Ajouter un nouveau types d'alimentation</a>
 			</div>
 		</section>

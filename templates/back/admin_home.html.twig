@@ -3,7 +3,8 @@
 {% block title %}AMAP Pré-vert - Interface d'administration{% endblock %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/admin_home.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_main.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_lists.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -20,9 +21,9 @@
 			</div>
 		</header>
 
-		<section id="contractsTimeLeft">
-			<h3>Les contrats:</h3>
-			<table class="table mt-4 mb-4">
+		<section class="pt-4 pb-4" id="contractsTimeLeft">
+			<h3 class="mb-3">Les contrats</h3>
+			<table class="table table-responsive-sm text-center mt-4 mb-4">
 				<thead class="thead-light">
 					<tr>
 						<th>Nom du contrat</th>
@@ -44,10 +45,10 @@
 			</table>
 		</section>
 
-		<section id="keyNumbers">
-			<h3>Chiffres clés:</h3>
+		<section class="pt-4 pb-4" id="keyNumbers">
+			<h3 class="mb-3">Chiffres clés</h3>
 			<div class="row justify-content-center text-center mt-4 mb-4">
-				<div class="col-lg-2" id="nbContracts">
+				<div class="col-lg-3 col-md-3" id="nbContracts">
 					<div class="row">
 						<div class="col-lg-12">
 							<span>{{ nbContracts }}</span>
@@ -57,7 +58,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-2" id="nbPosts">
+				<div class="col-lg-3 col-md-3" id="nbPosts">
 					<div class="row">
 						<div class="col-lg-12">
 							<span>{{ nbPosts }}</span>
@@ -67,7 +68,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-2" id="nbMembers">
+				<div class="col-lg-3 col-md-3" id="nbMembers">
 					<div class="row">
 						<div class="col-lg-12">
 							<span>{{ about.nbMembers }}</span>
@@ -77,7 +78,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-2" id="annualMembershipFee">
+				<div class="col-lg-3 col-md-3" id="annualMembershipFee">
 					<div class="row">
 						<div class="col-lg-12">
 							<span>{{ about.annualMembershipFee }} €</span>
