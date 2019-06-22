@@ -60,13 +60,8 @@ header {
 	background-color: grey!important;
 }
 
-.summary {
-	background-color: aqua;
-}
-
 .contractThumbnail img{
-	height: 40vh;
-	max-width: 100%;
+	width: 100%;
 }
 
 /* SIMULATOR BANNER SECTION */
@@ -93,10 +88,23 @@ header {
 /* MEDIA */
 
 @media all and (max-width : 992px) {
-    #contractDescription {
+    .contractSummary {
 		flex-wrap: wrap-reverse;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.contractThumbnail img{
+		width: 80%;
+	}
+
+	.summary {
+		text-align: center!important;
 	}
 }
 
 @media all and (max-width : 576px) {
+	.contractThumbnail img{
+		width: 100%;
+	}
 }

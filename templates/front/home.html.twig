@@ -18,20 +18,26 @@
 
 	<section class="container-fluid" id="contracts">
 		<h2>Les contrats</h2>
-		<div class="row justify-content-center text-center" id="contractsName">
-			{% for contract in contracts %}
-				<div class="col-lg-2 col-md-4 mb-2">
-					<button class="btn">Contrat {{ contract.name }}</button>
-				</div>
-			{% endfor %}
+		<div class="container">
+				<div class="row justify-content-center text-center" id="contractsName">
+				{% for contract in contracts %}
+					<div class="col-lg-2 col-md-4 mb-2">
+						<button class="btn">Contrat {{ contract.name }}</button>
+					</div>
+				{% endfor %}
+			</div>
 		</div>
 		{% for key, contract in contracts %}
 			<div class="row justify-content-center mt-5 contractSummary" id="{{ key }}">
 				<div class="col-lg-6 col-md-12 text-justify align-self-center summary">
-					<h3>Contrat {{ contract.name }}</h3>
-					<p>{{ contract.summary }}</p>
+					<div class="row justify-content-center">
+						<div class="col-lg-10">
+							<h3>Contrat {{ contract.name }}</h3>
+							<p>{{ contract.summary }}</p>
+						</div>
+					</div>
 					<div class="row">
-						<div class="col-lg-12 text-center">
+						<div class="col-lg-12 text-center mb-2">
 							<a class="btn btn-primary" href="{{ path('contract.show', {id: contract.id}) }}">En savoir plus</a>
 						</div>
 					</div>
@@ -49,12 +55,12 @@
 
 	<section id="simulatorBanner">
 		<div class="container pt-5 pb-5">
-			<div class="row">
+			<div class="row text-center">
 				<div class="col-lg-6">
 					<h3>Découvrez notre simulateur !</h3>
 					<p>Vous ne savez pas quels contrats vous conviendrez le mieux?</p>
 				</div>
-				<div class="col-lg-6 align-self-center text-center">
+				<div class="col-lg-6 align-self-center">
 					<a href="{{ path('simulator') }}" class="btn btn-primary">Réaliser une simulation</a>
 				</div>
 			</div>
@@ -63,7 +69,7 @@
 
 	<section class="container" id="lastPosts">
 		<h2>Les dernières actualités</h2>
-		<div class="row justify-content-center">
+		<div class="row">
 			{% for post in lastPosts %}
 				{{ include('front/posts_thumbnail.html.twig') }}
 			{% endfor %}

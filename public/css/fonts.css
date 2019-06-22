@@ -49,9 +49,14 @@ h2 {
 	font-size: 3em;
 }
 
-h3 {
+h3, .card-title {
 	font-family: sorts_mill_goudyregular, "Times New Roman", Arial, sans-serif;
 	font-size: 2.2em;
+}
+
+.card-title {
+	font-family: sorts_mill_goudyregular, "Times New Roman", Arial, sans-serif;
+	font-size: 1.5em;
 }
 
 p, a, button, label {
