@@ -1,0 +1,13 @@
+/* HEADER */
+
+header {
+	margin-top: 100px;
+}
+
+/* MEDIA */
+
+@media all and (max-width : 992px) {
+}
+
+@media all and (max-width : 576px) {
+}
