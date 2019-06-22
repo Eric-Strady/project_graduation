@@ -1,0 +1,59 @@
+@font-face {
+    font-family: 'aliceregular';
+    src: url('../fonts/Alice-Regular-webfont.eot');
+    src: url('../fonts/Alice-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Alice-Regular-webfont.woff2') format('woff2'),
+         url('../fonts/Alice-Regular-webfont.woff') format('woff'),
+         url('../fonts/Alice-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Alice-Regular-webfont.svg#aliceregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'archisticobold';
+    src: url('../fonts/Archistico_Bold-webfont.eot');
+    src: url('../fonts/Archistico_Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Archistico_Bold-webfont.woff2') format('woff2'),
+         url('../fonts/Archistico_Bold-webfont.woff') format('woff'),
+         url('../fonts/Archistico_Bold-webfont.ttf') format('truetype'),
+         url('../fonts/Archistico_Bold-webfont.svg#archisticobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'sorts_mill_goudyregular';
+    src: url('../fonts/GoudyStM-webfont.eot');
+    src: url('../fonts/GoudyStM-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/GoudyStM-webfont.woff2') format('woff2'),
+         url('../fonts/GoudyStM-webfont.woff') format('woff'),
+         url('../fonts/GoudyStM-webfont.ttf') format('truetype'),
+         url('../fonts/GoudyStM-webfont.svg#sorts_mill_goudyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.navbar-brand {
+	font-family: archisticobold, "Times New Roman", Arial, sans-serif;
+	font-size: 1.5em;
+}
+
+h1 {
+	font-family: archisticobold, "Times New Roman", Arial, sans-serif;
+	font-size: 4em;
+}
+
+h2 {
+	font-family: sorts_mill_goudyregular, "Times New Roman", Arial, sans-serif;
+	font-size: 3em;
+}
+
+h3 {
+	font-family: sorts_mill_goudyregular, "Times New Roman", Arial, sans-serif;
+	font-size: 2.2em;
+}
+
+p, a, button, label {
+	font-family: aliceregular, "Times New Roman", Arial, sans-serif;
+}
