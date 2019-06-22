@@ -3,12 +3,9 @@
 /* FILTERS */
 
 #filters {
+	margin-top: 60px;
+	padding-top: 1rem;
 	background-color: grey;
-}
-
-#filters p {
-	margin-top: 15px;
-	margin-bottom: 15px;
 }
 
 /* POSTS LIST */
