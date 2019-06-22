@@ -10,10 +10,18 @@
 	margin-bottom: auto;
 }
 
+textarea {
+	height: 150px!important;
+}
+
 /* MEDIA */
 
 @media all and (max-width : 992px) {
 }
 
 @media all and (max-width : 576px) {
+	#contactArea {
+		margin-left: 15px;
+		margin-right: 15px;
+	}
 }
