@@ -155,6 +155,7 @@ class Simulator {
 			$(this).show();
 			let $foodTypes = $(this).find(self.productsFoodTypes);
 			let nbProducts = $foodTypes.length;
+			$foodTypes.hide();
 
 			$foodTypes.each(function() {
 				$(this).parent().show();
@@ -195,7 +196,9 @@ class Simulator {
 
 		let choices = [];
 		$(checkedInput).each(function() {
-			choices.push($(this).val());
+			if ($(this).is(':visible')) {
+				choices.push($(this).val());
+			}
 		});
 
 		let foodTypesErrorMessage = ' Le ou les types d\'alimentation sélectionnés ne sont pas valides.';
