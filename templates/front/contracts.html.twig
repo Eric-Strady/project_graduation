@@ -17,12 +17,16 @@
 
 	<section class="container-fluid" id="contractsList">
 		{% for key, contract in contracts %}
-			<div class="row justify-content-center mt-5">
+			<div class="row justify-content-center mb-2 contractSummary">
 				<div class="col-lg-6 col-md-12 text-justify align-self-center summary {% if key is odd %} order-last {% endif %}">
-					<h3>Contrat {{ contract.name }}</h3>
-					<p>{{ contract.summary }}</p>
+					<div class="row justify-content-center">
+						<div class="col-lg-10">
+							<h3>Contrat {{ contract.name }}</h3>
+							<p>{{ contract.summary }}</p>
+						</div>
+					</div>
 					<div class="row">
-						<div class="col-lg-12 text-center">
+						<div class="col-lg-12 text-center mb-2">
 							<a class="btn btn-primary" href="{{ path('contract.show', {id: contract.id}) }}">En savoir plus</a>
 						</div>
 					</div>

@@ -2,19 +2,36 @@
 
 /* CONTRACTS LIST */
 
-.summary {
-	background-color: aqua;
+#contractsList {
+	padding-top: 60px;
+	padding-bottom: 100px;
 }
 
 .contractThumbnail img{
-	height: 40vh;
-	max-width: 100%;
+	width: 100%;
 }
 
 /* MEDIA */
 
 @media all and (max-width : 992px) {
+    .contractSummary {
+		flex-wrap: wrap-reverse;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.contractThumbnail img{
+		width: 80%;
+	}
+
+	.summary {
+		order: 0;
+		text-align: center!important;
+	}
 }
 
 @media all and (max-width : 576px) {
+	.contractThumbnail img{
+		width: 100%;
+	}
 }
