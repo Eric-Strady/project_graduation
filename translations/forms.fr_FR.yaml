@@ -60,3 +60,8 @@ New email: Nouvelle adresse e-mail
 New password: Nouveau mot de passe
 New confirm password: Confirmez votre nouveau mot de passe
 "Le mot de passe doit contenir au minimum 8 caractères, un chiffre et une lettre, une majuscule et un caractère spécial.": "Le mot de passe doit contenir au minimum 8 caractères, un chiffre et une lettre, une majuscule et un caractère spécial."
+
+# SIMULATOR FORM
+Nb adult: Nombre d'adultes
+Nb child: Nombre d'enfants
+Food type: Types d'alimentations

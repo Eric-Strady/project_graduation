@@ -42,6 +42,7 @@ class SimulatorType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Simulator::class,
+            'translation_domain' => 'forms'
         ]);
     }
 }
