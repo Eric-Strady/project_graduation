@@ -9,9 +9,9 @@
 {% block body %}
 	<header class="container-fluid">
 		<div class="row text-center" id="fullSizeHeader">
-			<div class="col-lg-12" id="headerContent">
+			<div class="col-lg-12 mt-auto mb-auto">
 				<h1>AMAP Pré-vert</h1>
-				<p>image</p>
+				<a href="#contracts" class="btn btn-primary anchor"><span>Découvrir</span></a>
 			</div>
 		</div>
 	</header>
@@ -72,5 +72,19 @@
 {% endblock %}
 
 {% block javascripts %}
+	<script type="text/javascript">
+		$(function() {
+			$('.anchor').click(function(e) {
+		        if (this.hash !== "")
+		        {
+		            var hash = this.hash;
+		            $('html, body').animate({scrollTop: $(hash).offset().top}, 800, function(){
+		            window.location.hash = hash;
+		            });
+		            e.preventDefault();
+		        }
+		    });
+		});
+	</script>
 	<script type="text/javascript" src="{{ asset('js/homePage/Contracts.js') }}"></script>
 {% endblock %}
