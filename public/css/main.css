@@ -4,6 +4,12 @@ header {
 	margin-top: 100px;
 }
 
+/* RECAPTCHA */
+
+.g-recaptcha {
+	display: inline-block;
+}
+
 /* MEDIA */
 
 @media all and (max-width : 992px) {

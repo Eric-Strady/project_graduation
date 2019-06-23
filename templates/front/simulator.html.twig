@@ -4,7 +4,6 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/simulator.css') }}">
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 {% endblock %}
 
 {% block body %}
@@ -49,7 +48,9 @@
 					<div class="col-lg-12">
 						<div class="mb-2" id="foodTypeError"></div>
 						{{ form_row(form.food_type) }}
-						<div class="g-recaptcha" data-sitekey=""></div>
+						<div class="text-center">
+							<div class="g-recaptcha" data-sitekey=""></div>
+						</div>
 					</div>
 					<div class="col-lg-12 text-center">
 						<button class="btn btn-primary" id="nextStep">Suivant</button>

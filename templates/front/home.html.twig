@@ -67,12 +67,14 @@
 		</div>
 	</section>
 
-	<section class="container" id="lastPosts">
-		<h2>Les dernières actualités</h2>
-		<div class="row mt-5">
-			{% for post in lastPosts %}
-				{{ include('front/posts_thumbnail.html.twig') }}
-			{% endfor %}
+	<section class="container-fluid" id="lastPostsContainer">
+		<div class="container" id="lastPosts">
+			<h2>Les dernières actualités</h2>
+			<div class="row mt-5">
+				{% for post in lastPosts %}
+					{{ include('front/posts_thumbnail.html.twig') }}
+				{% endfor %}
+			</div>
 		</div>
 	</section>
 {% endblock %}
