@@ -40,7 +40,7 @@ class AdminGrowerController extends AbstractController
         	return $this->redirectToRoute('admin.contract.form.param');
         }
 
-        return $this->render('back/admin_grower_create.html.twig', [
+        return $this->render('back/admin_grower/admin_grower_create.html.twig', [
         	'form' => $form->createView()
         ]);
     }
@@ -63,7 +63,7 @@ class AdminGrowerController extends AbstractController
         	return $this->redirectToRoute('admin.contract.form.param');
         }
 
-        return $this->render('back/admin_grower_update.html.twig', [
+        return $this->render('back/admin_grower/admin_grower_update.html.twig', [
         	'form' => $form->createView()
         ]);
     }

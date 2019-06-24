@@ -29,7 +29,7 @@ class AboutController extends AbstractController
     	$about = $this->getDoctrine()->getRepository(About::class)->findAbout();
         $nbContracts = $this->contractRepository->countContracts();
 
-        return $this->render('front/about.html.twig', [
+        return $this->render('front/about/about.html.twig', [
         	'about' => $about,
             'nbContracts' => $nbContracts
         ]);

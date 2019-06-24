@@ -16,12 +16,12 @@
 			</div>
 		</header>
 
-		{{ include('front/post_filter.html.twig') }}
+		{{ include('front/posts/post_filter.html.twig') }}
 
 		<section id="postsSection">
 			<div class="row">
 				{% for post in posts %}
-					{{ include('front/posts_thumbnail.html.twig') }}
+					{{ include('front/posts/posts_thumbnail.html.twig') }}
 				{% endfor %}
 			</div>
 			<div class="row justify-content-center mt-4 mb-4" id="pagination">

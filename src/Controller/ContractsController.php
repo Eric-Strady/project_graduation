@@ -17,7 +17,7 @@ class ContractsController extends AbstractController
     {
         $contracts = $this->getDoctrine()->getRepository(Contract::class)->findAll();
 
-        return $this->render('front/contracts.html.twig', [
+        return $this->render('front/contracts/contracts.html.twig', [
             'contracts' => $contracts
         ]);
     }
@@ -31,7 +31,7 @@ class ContractsController extends AbstractController
             throw $this->createNotFoundException('Ce contrat n\'existe pas');
         }
 
-        return $this->render('front/contract.html.twig', [
+        return $this->render('front/contracts/contract.html.twig', [
         	'contract' => $contract
         ]);
     }

@@ -40,7 +40,7 @@ class AdminFoodTypesController extends AbstractController
         	return $this->redirectToRoute('admin.contract.form.param');
         }
 
-        return $this->render('back/admin_foodtype_create.html.twig', [
+        return $this->render('back/admin_foodtype/admin_foodtype_create.html.twig', [
         	'form' => $form->createView()
         ]);
     }
@@ -63,7 +63,7 @@ class AdminFoodTypesController extends AbstractController
         	return $this->redirectToRoute('admin.contract.form.param');
         }
 
-        return $this->render('back/admin_foodtype_update.html.twig', [
+        return $this->render('back/admin_foodtype/admin_foodtype_update.html.twig', [
         	'form' => $form->createView()
         ]);
     }

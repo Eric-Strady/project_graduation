@@ -45,7 +45,7 @@ class AdminAccountController extends AbstractController
             return $this->redirectToRoute('admin.home');
         }
 
-        return $this->render('back/admin_account_reset_email.html.twig', [
+        return $this->render('back/admin_account/admin_account_reset_email.html.twig', [
             'formResetEmail' => $formResetEmail->createView(),
         ]);
     }
@@ -79,7 +79,7 @@ class AdminAccountController extends AbstractController
             }
         }
 
-        return $this->render('back/admin_account_reset_password.html.twig', [
+        return $this->render('back/admin_account/admin_account_reset_password.html.twig', [
             'formResetPassword' => $formResetPassword->createView()
         ]);
     }

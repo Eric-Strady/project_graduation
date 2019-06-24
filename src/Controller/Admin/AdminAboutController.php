@@ -39,7 +39,7 @@ class AdminAboutController extends AbstractController
             return $this->redirectToRoute('admin.home');
         }
 
-        return $this->render('back/admin_about_update.html.twig', [
+        return $this->render('back/admin_about/admin_about_update.html.twig', [
             'form' => $form->createView()
         ]);
     }

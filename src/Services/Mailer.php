@@ -41,7 +41,7 @@ class Mailer
             ->setFrom($contact->getUserEmail())
             ->setTo('prevert@amap.com')
             ->setBody(
-                $this->environment->render('front/contact_email.html.twig', [
+                $this->environment->render('front/contact/contact_email.html.twig', [
                     'message' => $contact->getMessage()
                 ]),
                 'text/html'
@@ -56,7 +56,7 @@ class Mailer
             ->setFrom($simulator->getEmail())
             ->setTo('prevert@amap.com')
             ->setBody(
-                $this->environment->render('front/simulator_email.html.twig', [
+                $this->environment->render('front/simulator/simulator_email.html.twig', [
                     'userEmail' => $simulator->getEmail(),
                     'result' => $result
                 ]),

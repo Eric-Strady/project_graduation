@@ -46,7 +46,7 @@ class AdminPostsController extends AbstractController
             20 /*limit per page*/
         );
 
-        return $this->render('back/admin_posts.html.twig', [
+        return $this->render('back/admin_posts/admin_posts.html.twig', [
         	'posts' => $posts,
             'form' => $form->createView()
         ]);
@@ -69,7 +69,7 @@ class AdminPostsController extends AbstractController
         	return $this->redirectToRoute('admin.posts');
         }
 
-        return $this->render('back/admin_post_create.html.twig', [
+        return $this->render('back/admin_posts/admin_post_create.html.twig', [
         	'form' => $form->createView()
         ]);
     }
@@ -93,7 +93,7 @@ class AdminPostsController extends AbstractController
         	return $this->redirectToRoute('admin.posts');
         }
 
-        return $this->render('back/admin_post_update.html.twig', [
+        return $this->render('back/admin_posts/admin_post_update.html.twig', [
         	'form' => $form->createView()
         ]);
     }

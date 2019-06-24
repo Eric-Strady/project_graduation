@@ -55,7 +55,7 @@ class SimulatorController extends AbstractController
             }
         }
 
-        return $this->render('front/simulator.html.twig', [
+        return $this->render('front/simulator/simulator.html.twig', [
             'form' => $form->createView(),
             'contracts' => $contracts
         ]);

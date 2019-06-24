@@ -34,7 +34,7 @@ class PostsController extends AbstractController
             9 /*limit per page*/
         );
 
-        return $this->render('front/posts.html.twig', [
+        return $this->render('front/posts/posts.html.twig', [
             'posts' => $posts,
             'form' => $form->createView()
         ]);
@@ -49,7 +49,7 @@ class PostsController extends AbstractController
             throw $this->createNotFoundException('Ce contrat n\'existe pas');
         }
 
-        return $this->render('front/post.html.twig', [
+        return $this->render('front/posts/post.html.twig', [
         	'post' => $post
         ]);
     }

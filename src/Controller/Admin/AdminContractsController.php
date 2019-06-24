@@ -33,7 +33,7 @@ class AdminContractsController extends AbstractController
     {
     	$contracts = $this->repository->findAll();
 
-        return $this->render('back/admin_contracts.html.twig', [
+        return $this->render('back/admin_contracts/admin_contracts.html.twig', [
         	'contracts' => $contracts
         ]);
     }
@@ -60,7 +60,7 @@ class AdminContractsController extends AbstractController
         	return $this->redirectToRoute('admin.contracts');
         }
 
-        return $this->render('back/admin_contract_create.html.twig', [
+        return $this->render('back/admin_contracts/admin_contract_create.html.twig', [
         	'form' => $form->createView()
         ]);
     }
@@ -88,7 +88,7 @@ class AdminContractsController extends AbstractController
         	return $this->redirectToRoute('admin.contracts');
         }
 
-        return $this->render('back/admin_contract_update.html.twig', [
+        return $this->render('back/admin_contracts/admin_contract_update.html.twig', [
         	'form' => $form->createView()
         ]);
     }
@@ -118,7 +118,7 @@ class AdminContractsController extends AbstractController
         $foodTypes = $this->getDoctrine()->getRepository(FoodType::class)->findAll();
         $growers = $this->getDoctrine()->getRepository(Grower::class)->findAll();
 
-        return $this->render('back/admin_contract_form_param.html.twig', [
+        return $this->render('back/admin_contracts/admin_contract_form_param.html.twig', [
             'foodTypes' => $foodTypes,
             'growers' => $growers
         ]);

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}AMAP Pré-vert - Création d'un producteur{% endblock %}
+{% block title %}AMAP Pré-vert - Création d'un contrat{% endblock %}
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/admin_main.css') }}">
@@ -16,19 +16,27 @@
 		<header class="container">
 			<div class="row text-center">
 				<div class="col-lg-12">
-					<h2>Création d'un producteur</h2>
+					<h2>Création d'un contrat</h2>
 				</div>
 			</div>
 		</header>
 
 		<div class="row mb-2">
 			<div class="col text-right returnButton">
-				<a href="{{ path('admin.contract.form.param') }}" class="btn btn-outline-secondary btn-sm">Retour au paramétrage du formulaire</a>
+				<a href="{{ path('admin.contracts') }}" class="btn btn-outline-secondary btn-sm">Retour à la gestion des contrats</a>
 			</div>
 		</div>
 
 		<section id="createForm">
-			{% include 'back/admin_grower_form.html.twig' with { button: 'Créer' } %}
+			{% include 'back/admin_contracts/admin_contract_form.html.twig' with { button: 'Créer' } %}
 		</section>
 	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset('js/adminPage/ContractForm.js') }}"></script>
+	<script type="text/javascript">
+		let selector = "#contract_description";
+	</script>
+	{% include 'back/admin_tinymce_script.html.twig' %}
 {% endblock %}

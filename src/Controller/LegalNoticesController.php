@@ -13,7 +13,7 @@ class LegalNoticesController extends AbstractController
 	 */
     public function showLegalNotices()
     {
-        return $this->render('front/legal_notices.html.twig');
+        return $this->render('front/legal_notices/legal_notices.html.twig');
     }
 
     /**
@@ -21,6 +21,6 @@ class LegalNoticesController extends AbstractController
      */
     public function showSiteMap()
     {
-        return $this->render('front/site_map.html.twig');
+        return $this->render('front/legal_notices/site_map.html.twig');
     }
 }
