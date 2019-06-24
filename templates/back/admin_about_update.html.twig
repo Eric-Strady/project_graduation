@@ -3,6 +3,8 @@
 {% block title %}AMAP Pré-vert - Modification page à propos{% endblock %}
 
 {% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin_main.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_forms.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -19,12 +21,12 @@
 			</div>
 		</header>
 
-		<section class="mt-4" id="updateForm">
+		<section id="updateForm">
 			{{ form_start(form) }}
 				{{ form_widget(form) }}
-				<div class="row mt-4">
+				<div class="row submitButton">
 					<div class="col-lg-12 text-center">
-						<button type="submit" class="btn btn-primary">Modifier</button>
+						<button type="submit" class="btn btn-primary btn-lg">Modifier</button>
 					</div>
 				</div>
 			{{ form_end(form )}}

@@ -5,6 +5,7 @@
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/admin_main.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin_lists.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_forms.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -21,7 +22,7 @@
 			</div>
 		</header>
 
-		<section class="pt-4 pb-4" id="growerCrud">
+		<section id="growerCrud">
 			<div class="row mb-2">
 				<div class="col text-right returnButton">
 					<a href="{{ path('admin.contracts') }}" class="btn btn-outline-secondary btn-sm">Retour à la gestion des contrats</a>
@@ -29,7 +30,7 @@
 			</div>
 			<h3 class="mb-3">Les producteurs</h3>
 			<table class="table table-responsive-sm text-center">
-				<thead class="thead-dark">
+				<thead class="table-primary">
 					<tr>
 						<th>Nom du producteur</th>
 						<th>Gestion du producteur</th>
@@ -37,7 +38,7 @@
 				</thead>
 				<tbody>
 					{% for grower in growers %}
-						<tr>
+						<tr class="table-light">
 							<td>{{ grower.name }}</td>
 							<td>
 								<a href="{{ path('admin.grower.update', {id: grower.id}) }}" class="btn btn-warning">Modifier</a>
@@ -52,10 +53,10 @@
 			</div>
 		</section>
 
-		<section class="pt-4 pb-4" id="foodTypeCrud">
+		<section id="foodTypeCrud">
 			<h3 class="mb-3">Les types d'alimentation</h3>
 			<table class="table table-responsive-sm text-center">
-				<thead class="thead-dark">
+				<thead class="table-primary">
 					<tr>
 						<th>Nom du type d'alimentation</th>
 						<th>Gestion du type d'alimentation</th>
@@ -63,7 +64,7 @@
 				</thead>
 				<tbody>
 					{% for foodType in foodTypes %}
-						<tr>
+						<tr class="table-light">
 							<td>{{ foodType.name }}</td>
 							<td>
 								<a href="{{ path('admin.foodtype.update', {id: foodType.id}) }}" class="btn btn-warning crudActions">Modifier</a>

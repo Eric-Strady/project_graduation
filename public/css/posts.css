@@ -1,27 +1,18 @@
-/* GENERAL */
-
 /* FILTERS */
 
 #filters {
 	margin-top: 60px;
 	padding-top: 1rem;
 	background-color: grey;
+	box-shadow: 2px 2px 10px black;
 }
 
 /* POSTS LIST */
-
-.card-img-top {
-	height: 230px;
-}
 
 #postsCrud form {
 	display: inline-block;
 }
 
-/* MEDIA */
-
-@media all and (max-width : 992px) {
-}
-
-@media all and (max-width : 576px) {
+#postsSection {
+	margin-bottom: 100px;
 }

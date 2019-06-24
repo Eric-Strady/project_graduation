@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/admin_main.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_forms.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -20,7 +21,7 @@
 			</div>
 		</header>
 
-		<div class="row mb-2">
+		<div class="row returnButton">
 			<div class="col text-right returnButton">
 				<a href="{{ path('admin.contract.form.param') }}" class="btn btn-outline-secondary btn-sm">Retour au paramétrage du formulaire</a>
 			</div>

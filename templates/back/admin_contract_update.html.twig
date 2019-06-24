@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/admin_main.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_forms.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -21,12 +22,12 @@
 		</header>
 
 		<div class="row mb-2">
-			<div class="col text-right">
+			<div class="col text-right returnButton">
 				<a href="{{ path('admin.contracts') }}" class="btn btn-outline-secondary btn-sm">Retour à la gestion des contrats</a>
 			</div>
 		</div>
 
-		<section class="mt-4 mb-4" id="updateForm">
+		<section id="updateForm">
 			{% include 'back/admin_contract_form.html.twig' with { button: 'Modifier' } %}
 		</section>
 	</div>

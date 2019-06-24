@@ -1,0 +1,16 @@
+/* FORMS */
+.returnButton {
+	margin-top: 60px;
+}
+
+.submitButton {
+	margin-top: 30px;
+}
+
+#createForm, #updateForm, #foodTypeCrud, #postsCrud {
+	margin-bottom: 100px;
+}
+
+#foodTypeCrud {
+	margin-top: 50px;
+}

@@ -22,9 +22,9 @@
 			<div class="row justify-content-center text-center mt-4">
 				<div class="col-lg-10">
 					{% if contract.imageName %}
-						<img src="{{ vich_uploader_asset(contract, 'image_file') | imagine_filter('large') }}" alt="Image contrat {{ contract.name }}" id="contractImage">
+						<img src="{{ vich_uploader_asset(contract, 'image_file') | imagine_filter('large') }}" alt="Image contrat {{ contract.name }}" id="contractImage" class="imageRadius">
 					{% else %}
-						<img src="{{ asset('images/vegetables_basket.jpg' | imagine_filter('large')) }}" alt="Panier de légumes" id="contractImage">
+						<img src="{{ asset('images/vegetables_basket.jpg' | imagine_filter('large')) }}" alt="Panier de légumes" id="contractImage" class="imageRadius">
 					{% endif %}
 				</div>
 			</div>
@@ -36,15 +36,15 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-8">
 					<table class="table table-responsive-sm text-center">
-						<thead>
-							<tr class="table-info">
+						<thead class="table-primary">
+							<tr>
 								<th>Produits</th>
 								<th>Prix</th>
 							</tr>
 						</thead>
 						<tbody>
 							{% for product in contract.products %}
-								<tr>
+								<tr class="table-light">
 									<td>{{ product.name }}</td>
 									<td>{% if product.fixedPrice %} {{ product.fixedPrice }}€ {% else %} De {{ product.minPrice }}€ à {{ product.maxPrice }}€ {% endif %}</td>
 								</tr>

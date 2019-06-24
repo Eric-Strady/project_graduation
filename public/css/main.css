@@ -1,19 +1,64 @@
-/* HEADER */
+/* BODY */
+body {
+	background-image: url('../images/bg_wc_maroon.jpg');
+	background-position: center;
+	background-size: cover;
+}
 
+/* HEADER */
 header {
-	margin-top: 100px;
+	padding-top: 100px;
+}
+
+/* SECTIONS */
+.spaceAround {
+ 	margin-top: 60px;
+ 	margin-bottom: 100px;
+}
+
+/* LINKS */
+a {
+	color: #2F8EF5;
+}
+
+a:hover {
+	color: #0051A8;
+	text-decoration: none;
+}
+
+/* IMAGES */
+.imageRadius {
+	border: 10px solid white;
+}
+
+/* BUTTONS */
+.roundedButton {
+	background-color: #F5AC2E;
+	border: 1px solid #F5AC2E;
+	border-radius: 20px;
+	color: white;
+}
+
+.roundedButton:hover {
+	color: white;
+	background-color: #FFBD4A;
+	border: 1px solid #FFBD4A;
+}
+
+.roundedButton:focus{
+	box-shadow: none;
+}
+
+/* CARD */
+.card {
+	box-shadow: 0px 0px 3px black;
+}
+
+.card-img-top {
+	height: 230px;
 }
 
 /* RECAPTCHA */
-
 .g-recaptcha {
 	display: inline-block;
-}
-
-/* MEDIA */
-
-@media all and (max-width : 992px) {
-}
-
-@media all and (max-width : 576px) {
 }

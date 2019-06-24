@@ -11,18 +11,18 @@
 		<div class="row text-center" id="fullSizeHeader">
 			<div class="col-lg-12 mt-auto mb-auto">
 				<h1>AMAP Pré-vert</h1>
-				<a href="#contracts" class="btn btn-primary anchor"><span>Découvrir</span></a>
+				<a href="#contracts" class="btn btn-lg anchor roundedButton"><span>Découvrir</span></a>
 			</div>
 		</div>
 	</header>
 
-	<section class="container-fluid" id="contracts">
+	<section class="container-fluid spaceAround" id="contracts">
 		<h2>Les contrats</h2>
 		<div class="container mt-5">
 				<div class="row justify-content-center text-center" id="contractsName">
 				{% for contract in contracts %}
-					<div class="col-lg-2 col-md-4 mb-2">
-						<button class="btn">Contrat {{ contract.name }}</button>
+					<div class="col-lg-3 col-md-4 mb-2">
+						<button class="btn btn-lg roundedButton">Contrat {{ contract.name }}</button>
 					</div>
 				{% endfor %}
 			</div>
@@ -38,15 +38,15 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-12 text-center mb-2">
-							<a class="btn btn-primary" href="{{ path('contract.show', {id: contract.id}) }}">En savoir plus</a>
+							<a class="btn btn-lg roundedButton" href="{{ path('contract.show', {id: contract.id}) }}">En savoir plus</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-12 text-center mb-2 contractThumbnail">
 					{% if contract.imageName %}
-						<img src="{{ vich_uploader_asset(contract, 'image_file') | imagine_filter('medium') }}" alt="Image contrat {{ contract.name }}">
+						<img src="{{ vich_uploader_asset(contract, 'image_file') | imagine_filter('medium') }}" alt="Image contrat {{ contract.name }}" class="imageRadius">
 					{% else %}
-						<img src="{{ asset('images/vegetables_basket.jpg' | imagine_filter('medium')) }}" alt="Panier de légumes">
+						<img src="{{ asset('images/vegetables_basket.jpg' | imagine_filter('medium')) }}" alt="Panier de légumes" class="imageRadius">
 					{% endif %}
 				</div>
 			</div>
@@ -61,20 +61,18 @@
 					<p>Vous ne savez pas quels contrats vous conviendrez le mieux?</p>
 				</div>
 				<div class="col-lg-6 align-self-center">
-					<a href="{{ path('simulator') }}" class="btn btn-primary">Réaliser une simulation</a>
+					<a href="{{ path('simulator') }}" class="btn btn-lg roundedButton">Réaliser une simulation</a>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="container-fluid" id="lastPostsContainer">
-		<div class="container" id="lastPosts">
-			<h2>Les dernières actualités</h2>
-			<div class="row mt-5">
-				{% for post in lastPosts %}
-					{{ include('front/posts_thumbnail.html.twig') }}
-				{% endfor %}
-			</div>
+	<section class="container spaceAround" id="lastPosts">
+		<h2>Les dernières actualités</h2>
+		<div class="row mt-5">
+			{% for post in lastPosts %}
+				{{ include('front/posts_thumbnail.html.twig') }}
+			{% endfor %}
 		</div>
 	</section>
 {% endblock %}

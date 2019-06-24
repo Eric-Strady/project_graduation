@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/admin_main.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_home.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin_lists.css') }}">
 {% endblock %}
 
@@ -21,10 +22,10 @@
 			</div>
 		</header>
 
-		<section class="pt-4 pb-4" id="contractsTimeLeft">
+		<section id="contractsTimeLeft">
 			<h3 class="mb-3">Les contrats</h3>
-			<table class="table table-responsive-sm text-center mt-4 mb-4">
-				<thead class="thead-light">
+			<table class="table table-responsive-sm text-center mt-4">
+				<thead class="table-primary">
 					<tr>
 						<th>Nom du contrat</th>
 						<th>Temps restant (en jours)</th>
@@ -33,7 +34,7 @@
 				</thead>
 				<tbody>
 					{% for contract in contracts %}
-						<tr>
+						<tr class="table-light">
 							<td>Contrat {{ contract.name }}</td>
 							<td>{{ days_diff(contract.endingSeasonAt) }}</td>
 							<td>
@@ -45,7 +46,7 @@
 			</table>
 		</section>
 
-		<section class="pt-4 pb-4" id="keyNumbers">
+		<section id="keyNumbers">
 			<h3 class="mb-3">Chiffres clés</h3>
 			<div class="row justify-content-center text-center mt-4 mb-4">
 				<div class="col-lg-3 col-md-3" id="nbContracts">

@@ -4,6 +4,7 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/admin_main.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_forms.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -30,8 +31,6 @@
 			{% include 'back/admin_contract_form.html.twig' with { button: 'Créer' } %}
 		</section>
 	</div>
-	
-
 {% endblock %}
 
 {% block javascripts %}

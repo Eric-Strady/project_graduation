@@ -1,3 +1,10 @@
+/* SECTIONS */
+.spaceAround {
+ 	margin-top: 60px;
+ 	margin-bottom: 100px;
+}
+
+/* MEDIA */
 @media all and (max-width : 576px) {
 	nav {
 		justify-content: center!important;

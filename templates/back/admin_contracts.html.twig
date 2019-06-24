@@ -21,7 +21,7 @@
 			</div>
 		</header>
 
-		<section class="pt-4 pb-4" id="contractCrud">
+		<section class="spaceAround" id="contractCrud">
 			<div class="row mb-2">
 				<div class="col text-right returnButton">
 					<a href="{{ path('admin.contract.form.param') }}" class="btn btn-outline-secondary btn-sm">Paramétrer le formulaire</a>
@@ -29,7 +29,7 @@
 			</div>
 			
 			<table class="table table-responsive-sm text-center">
-				<thead class="thead-dark">
+				<thead class="table-primary">
 					<tr>
 						<th>Nom du contrat</th>
 						<th>Gestion du contrat</th>
@@ -37,7 +37,7 @@
 				</thead>
 				<tbody>
 					{% for contract in contracts %}
-						<tr>
+						<tr class="table-light">
 							<td>Contrat {{ contract.name }}</td>
 							<td>
 								<a href="{{ path('contract.show', {id: contract.id}) }}" class="btn btn-success crudActions">Visualiser</a>

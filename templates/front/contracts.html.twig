@@ -15,9 +15,9 @@
 		</div>
 	</header>
 
-	<section class="container-fluid" id="contractsList">
+	<section class="container-fluid spaceAround" id="contractsList">
 		{% for key, contract in contracts %}
-			<div class="row justify-content-center mb-2 contractSummary">
+			<div class="row justify-content-center mb-4 contractSummary">
 				<div class="col-lg-6 col-md-12 text-justify align-self-center summary {% if key is odd %} order-last {% endif %}">
 					<div class="row justify-content-center">
 						<div class="col-lg-10">
@@ -27,15 +27,15 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-12 text-center mb-2">
-							<a class="btn btn-primary" href="{{ path('contract.show', {id: contract.id}) }}">En savoir plus</a>
+							<a class="btn btn-lg roundedButton" href="{{ path('contract.show', {id: contract.id}) }}">En savoir plus</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-12 text-center mb-2 contractThumbnail">
 					{% if contract.imageName %}
-						<img src="{{ vich_uploader_asset(post, 'image_file') | imagine_filter('medium') }}" alt="Image contrat {{ contract.name }}">
+						<img src="{{ vich_uploader_asset(post, 'image_file') | imagine_filter('medium') }}" alt="Image contrat {{ contract.name }}" class="imageRadius">
 					{% else %}
-						<img src="{{ asset('images/vegetables_basket.jpg' | imagine_filter('medium')) }}" alt="Panier de légumes">
+						<img src="{{ asset('images/vegetables_basket.jpg' | imagine_filter('medium')) }}" alt="Panier de légumes" class="imageRadius">
 					{% endif %}
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 /* NAV */
 
 .navbar {
-	background-color: rgba(255,209,36,0.5);
+	background-color: rgba(255,255,255,0.5);
 	-webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
@@ -10,24 +10,35 @@
 }
 
 .fullOpacity {
-	background-color: rgba(255,209,36);
+	background-color: white;
 }
 
 .nav-item {
+	border-top: 2px solid white;
 	border-bottom: 2px solid white;
 	margin-right: 1rem;
 }
 
 .nav-item:hover {
-	border-color: orange;
+	border-color: #F5AC2E;
 }
 
 /* MEDIA */
 
 @media all and (max-width : 992px) {
+	.navbar {
+		background-color: white;
+	}
+
 	.nav-item {
 		text-align: center;
+		border-top: none;
 		border-bottom: none;
+	}
+
+	.nav-link:hover {
+		color: #F5AC2E!important;
+		font-weight: bold!important;	
 	}
 }
 

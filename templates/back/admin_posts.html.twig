@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="{{ asset('css/posts.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin_main.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/admin_lists.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin_forms.css') }}">
 {% endblock %}
 
 {% block nav %}
@@ -24,9 +25,9 @@
 
 		{{ include('front/post_filter.html.twig') }}
 
-		<section class="mt-4 mb-4" id="postsCrud">
+		<section id="postsCrud">
 			<table class="table table-responsive-sm text-center">
-				<thead class="thead-dark">
+				<thead class="table-primary">
 					<tr>
 						<th>Titre</th>
 						<th>Catégorie</th>
@@ -37,7 +38,7 @@
 				</thead>
 				<tbody>
 					{% for post in posts %}
-						<tr>
+						<tr class="table-light">
 							<td>{{ post.title }}</td>
 							<td>{{ post.category.name }}</td>
 							<td>{{ post.createdAt|date("d/m/Y") }}</td>
