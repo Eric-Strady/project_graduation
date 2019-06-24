@@ -15,4 +15,12 @@ class LegalNoticesController extends AbstractController
     {
         return $this->render('front/legal_notices.html.twig');
     }
+
+    /**
+     * @Route("/plan_site", name="legal.notices.site.map")
+     */
+    public function showSiteMap()
+    {
+        return $this->render('front/site_map.html.twig');
+    }
 }

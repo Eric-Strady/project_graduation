@@ -7,6 +7,7 @@
 		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet">
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 		<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/nav.css') }}">
@@ -54,10 +55,8 @@
 		{% block body %}{% endblock %}
 
 		{% block footer %}
-			<footer class="footer mt-3 mb-3">
-				<div class="container text-center">
-					<span class="text-muted">&copy; AMAP Pré-vert</span>
-				</div>
+			<footer class="footer pt-3 pb-3 text-center">
+				<span class="text-muted">&copy; AMAP Pré-vert | <a href="{{ path('legal.notices') }}">Mentions légales</a> | <a href="{{ path('legal.notices.site.map') }}">Plan du site</a></span>
 			</footer>
 		{% endblock %}
 
