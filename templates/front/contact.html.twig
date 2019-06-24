@@ -16,7 +16,7 @@
 			</div>
 		</header>
 
-		<section class="mt-5">
+		<section class="mt-5 mb-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-8">
 					{% for message in app.flashes('success') %}
@@ -51,14 +51,6 @@
 			</div>
 		</section>
 	</div>
-{% endblock %}
-
-{% block footer %}
-	<footer class="footer mt-3 mb-3 fixed-bottom">
-		<div class="container text-center">
-			<span class="text-muted">&copy; AMAP Pré-vert</span>
-		</div>
-	</footer>
 {% endblock %}
 
 {% block javascripts %}
