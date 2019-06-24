@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AMAP Pré-vert - Mentions légales{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <header>
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <h2>Mentions légales</h2>
+                </div>
+            </div>
+        </header>
+
+        <section class="mt-5">
+            <div class="row justify-content-center text-justify">
+                <div class="col-lg-12">
+                    {{ include('front/legal_notices_content.html.twig') }}
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
