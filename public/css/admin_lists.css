@@ -1,12 +1,12 @@
-/* GENERAL */
+/* FORMS */
 
-/* LISTS */
-
-form {
+#contractCrud form, #growerCrud form, #foodTypeCrud form, #postsCrud form {
 	display: inline-block;
 }
 
-#contractsCrud table thead tr th, #growerCrud table thead tr th, #foodTypeCrud table thead tr th{
+/* LISTS */
+
+#contractCrud table thead tr th, #growerCrud table thead tr th, #foodTypeCrud table thead tr th{
 	width: 50%;
 }
 
