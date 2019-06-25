@@ -19,10 +19,10 @@
 	<section class="container-fluid" id="contracts">
 		<h2>Les contrats</h2>
 		<div class="container mt-5">
-				<div class="row justify-content-center text-center" id="contractsName">
+				<div class="row text-center" id="contractsName">
 				{% for contract in contracts %}
-					<div class="col-lg-3 col-md-4 mb-2">
-						<button class="btn btn-lg roundedButton">Contrat {{ contract.name }}</button>
+					<div class="col-lg-4 col-md-4 mb-2">
+						<button class="btn btn-lg roundedButton contractButton">Contrat {{ contract.name }}</button>
 					</div>
 				{% endfor %}
 			</div>
