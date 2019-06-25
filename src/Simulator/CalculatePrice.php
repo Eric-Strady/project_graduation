@@ -38,7 +38,7 @@ class CalculatePrice
     	$this->setMultiplicator();
     	$this->setPrice();
 
-    	return $this->price;
+    	return round($this->price);
     }
 
     private function setFamilyIndex() {
