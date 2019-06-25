@@ -2,7 +2,6 @@
     font-family: 'aliceregular';
     src: url('../fonts/Alice-Regular-webfont.eot');
     src: url('../fonts/Alice-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Alice-Regular-webfont.woff2') format('woff2'),
          url('../fonts/Alice-Regular-webfont.woff') format('woff'),
          url('../fonts/Alice-Regular-webfont.ttf') format('truetype'),
          url('../fonts/Alice-Regular-webfont.svg#aliceregular') format('svg');
@@ -14,7 +13,6 @@
     font-family: 'archisticobold';
     src: url('../fonts/Archistico_Bold-webfont.eot');
     src: url('../fonts/Archistico_Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Archistico_Bold-webfont.woff2') format('woff2'),
          url('../fonts/Archistico_Bold-webfont.woff') format('woff'),
          url('../fonts/Archistico_Bold-webfont.ttf') format('truetype'),
          url('../fonts/Archistico_Bold-webfont.svg#archisticobold') format('svg');
@@ -26,7 +24,6 @@
     font-family: 'sorts_mill_goudyregular';
     src: url('../fonts/GoudyStM-webfont.eot');
     src: url('../fonts/GoudyStM-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/GoudyStM-webfont.woff2') format('woff2'),
          url('../fonts/GoudyStM-webfont.woff') format('woff'),
          url('../fonts/GoudyStM-webfont.ttf') format('truetype'),
          url('../fonts/GoudyStM-webfont.svg#sorts_mill_goudyregular') format('svg');
