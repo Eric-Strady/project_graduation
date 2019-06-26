@@ -1,4 +1,10 @@
 /* MEDIA */
+@media all and (max-width : 992px) {
+	.crudActions {
+		margin-bottom: 10px;
+	}
+}
+
 @media all and (max-width : 576px) {
 	nav {
 		justify-content: center!important;
@@ -10,10 +16,6 @@
 
 	h3 {
 		text-align: center;
-	}
-
-	.crudActions {
-		margin-bottom: 10px;
 	}
 
 	.returnButton, .addButton, h3 {
