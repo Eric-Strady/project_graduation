@@ -1,14 +1,16 @@
 {{ form_start(form) }}
 	<fieldset>
 		<legend>Détails du contrat</legend>
-		{{ form_row(form.name) }}
+		<div class="row">
+			<div class="col-lg-6">{{ form_row(form.name) }}</div>
+			<div class="col-lg-6">{{ form_row(form.image_file) }}</div>
+		</div>
 		<div class="row">
 			<div class="col-lg-6">{{ form_row(form.starting_season_at) }}</div>
 			<div class="col-lg-6">{{ form_row(form.ending_season_at) }}</div>
 		</div>
 		{{ form_row(form.summary) }}
 		{{ form_row(form.description) }}
-		{{ form_row(form.image_file) }}
 	</fieldset>
 	
 	<fieldset>

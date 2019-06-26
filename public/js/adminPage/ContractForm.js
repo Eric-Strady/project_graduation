@@ -6,7 +6,9 @@ class ContractForm {
 		this.tableBodyElt = domElt.tableBodyElt;
 		this.tableBodyRowElt = domElt.tableBodyRowElt;
 		this.selectElt = domElt.selectElt;
+		this.imageInput = domElt.imageInput;
 		this.handleEmbeddedProductForm();
+		this.removeImageStyle();
 	}
 
 	handleEmbeddedProductForm() {
@@ -148,6 +150,12 @@ class ContractForm {
 	customizeSelectBox() {
 		$(this.selectElt).siblings('select').select2();
 	}
+
+	removeImageStyle() {
+		$(this.imageInput).removeClass('custom-file-input');
+		let $label = $(this.imageInput).siblings('label');
+		$label.removeClass('custom-file-label');
+	}
 }
 
 $(function() {
@@ -157,7 +165,8 @@ $(function() {
 		tableElt: 'table',
 		tableBodyElt: 'tbody',
 		tableBodyRowElt: 'tbody tr',
-		selectElt: '.foodTypes'
+		selectElt: '.foodTypes',
+		imageInput: '#contract_image_file'
 	}
 	const contractForm = new ContractForm(domElt);
 });
