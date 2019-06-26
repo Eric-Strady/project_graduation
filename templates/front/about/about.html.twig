@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}AMAP Pré-vert - A propos{% endblock %}
+{% block title %}AMAP Pré-Vert - A propos{% endblock %}
 
 {% block stylesheets %}
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/about.css') }}">
@@ -98,7 +98,7 @@
 	<script type="text/javascript">
 		let latitude = {{ about.amapGpsLat }};
 		let longitude = {{ about.amapGpsLng }};
-		let markerTitle = "AMAP Pré-vert";
+		let markerTitle = "AMAP Pré-Vert";
 	</script>
 	{% include 'map/openStreetMap.html.twig' %}
 {% endblock %}
