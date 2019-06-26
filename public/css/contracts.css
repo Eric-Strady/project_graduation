@@ -1,11 +1,9 @@
 /* CONTRACTS LIST */
-
 .contractThumbnail img{
 	width: 100%;
 }
 
 /* MEDIA */
-
 @media all and (max-width : 992px) {
     .contractSummary {
 		flex-wrap: wrap-reverse;

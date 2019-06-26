@@ -50,7 +50,12 @@ a:hover {
 }
 
 /* CARD */
+.postThumbnail {
+	height: auto;
+}
+
 .card {
+	height: 100%;
 	box-shadow: 0px 0px 3px black;
 }
 

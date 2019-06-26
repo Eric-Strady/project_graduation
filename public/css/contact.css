@@ -1,5 +1,4 @@
 /* CONTACT */
-
 #contactArea {
 	background-color: rgba(0,0,0,0.1);
 	padding: 30px;
@@ -12,10 +11,6 @@ textarea {
 }
 
 /* MEDIA */
-
-@media all and (max-width : 992px) {
-}
-
 @media all and (max-width : 576px) {
 	#contactArea {
 		margin-left: 15px;

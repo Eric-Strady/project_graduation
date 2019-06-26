@@ -61,7 +61,7 @@ p, a, button, label, th, td {
     font-size: 1.1em;
 }
 
-.alert {
+.alert, .categoryBadge {
     font-family: aliceregular, "Times New Roman", Arial, sans-serif;
     font-weight: bold;
 }

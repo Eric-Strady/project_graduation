@@ -1,11 +1,9 @@
 /* GENERAL */
-
 h2 {
 	text-align: center;
 }
 
 /* HEADER */
-
 header {
 	margin-top: 0px;
 	padding-top: 0px;
@@ -21,7 +19,6 @@ header {
 }
 
 /* CONTRACT SECTION */
-
 .contractButton {
 	width: 60%;
 	height: 100%;
@@ -46,7 +43,6 @@ header {
 }
 
 /* SIMULATOR BANNER SECTION */
-
 #simulatorBanner {
 	color: black;
 	font-weight: bold;
@@ -62,7 +58,6 @@ header {
 }
 
 /* MEDIA */
-
 @media all and (max-width : 992px) {
     .contractSummary {
 		flex-wrap: wrap-reverse;
