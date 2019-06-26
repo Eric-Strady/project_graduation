@@ -1,4 +1,4 @@
-<div class="col-lg-4 col-md-6 text-center mb-2">
+<div class="col-lg-4 col-md-6 text-center mb-2 postThumbnail">
 	<div class="card">
 		{% if post.imageName %}
 			<a href="{{ path('post.show', {id: post.id}) }}">
@@ -11,9 +11,9 @@
 		{% endif %}
 		<div class="card-body">
 			<h5 class="card-title">{{ post.title }}</h5>
-			<p class="card-text">Publié le {{ post.createdAt|date("d/m/Y") }}</p>
 		</div>
 		<div class="card-footer text-center">
+			<p>Publié le {{ post.createdAt|date("d/m/Y") }}</p>
 			<a href="{{ path('post.show', {id: post.id}) }}" class="btn roundedButton">Lire la suite</a>
 		</div>
 	</div>

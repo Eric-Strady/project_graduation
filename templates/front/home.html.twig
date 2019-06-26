@@ -21,7 +21,7 @@
 		<div class="container mt-5">
 				<div class="row text-center" id="contractsName">
 				{% for contract in contracts %}
-					<div class="col-lg-4 col-md-4 mb-2">
+					<div class="col-lg-4 col-md-4 mb-4">
 						<button class="btn btn-lg roundedButton contractButton">Contrat {{ contract.name }}</button>
 					</div>
 				{% endfor %}
@@ -58,7 +58,7 @@
 			<div class="row text-center">
 				<div class="col-lg-6">
 					<h3>Découvrez notre simulateur !</h3>
-					<p>Vous ne savez pas quels contrats vous conviendrez le mieux?</p>
+					<p>Vous ne savez pas quels contrats vous conviendra le mieux?</p>
 				</div>
 				<div class="col-lg-6 align-self-center">
 					<a href="{{ path('simulator') }}" class="btn btn-lg roundedButton">Réaliser une simulation</a>
