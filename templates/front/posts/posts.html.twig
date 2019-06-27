@@ -29,16 +29,16 @@
 					{{ knp_pagination_render(posts) }}
 				</div>
 			{% else %}
-			<div class="row justify-content-center mt-2 mb-2">
-				<div class="col-lg-10 pt-4 pb-4" id="noPost">
-					<div class="row justify-content-center pt-2 pb-3">
-						<div class="col-lg-6 text-center pt-3" id="noPostMessage">
-							<p>Aucun article ne correspond à votre recherche!<br>
-							Merci de modifier votre recherche ou de prendre <a href="{{ path('contact') }}">contact</a> avec nous.</p>
+				<div class="row justify-content-center mt-2 mb-2">
+					<div class="col-lg-10 pt-4 pb-4" id="noPost">
+						<div class="row justify-content-center pt-2 pb-3">
+							<div class="col-lg-6 text-center pt-3" id="noPostMessage">
+								<p>Aucun article ne correspond à votre recherche!<br>
+								Merci de modifier votre recherche ou de prendre <a href="{{ path('contact') }}">contact</a> avec nous.</p>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 			{% endif %}
 		</section>
 	</div>
