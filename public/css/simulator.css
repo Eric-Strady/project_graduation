@@ -1,4 +1,23 @@
+/* MANUAL */
+#rules {
+	margin-top: 30px;
+	margin-bottom: 60px;
+}
+
+#rules span {
+	display: block;
+	font-style: italic;
+}
+
+.boldTitle {
+	font-weight: bold;
+}
+
 /* SIMULATOR */
+#simulatorContainer {
+	margin-bottom: 100px;
+}
+
 .errorSimulator {
 	border-color: red;
 }
@@ -24,8 +43,4 @@
 	color: #2F8EF5;
 	font-size: 1.5em;
 	font-weight: bold;
-}
-
-#result {
-	margin-bottom: 100px;
 }

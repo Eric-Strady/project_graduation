@@ -27,6 +27,7 @@ class SimulatorController extends AbstractController
     public function index(Request $request, Mailer $mailer)
     {
         $contracts = $this->getDoctrine()->getRepository(Contract::class)->findAll();
+        $about = $this->getDoctrine()->getRepository(About::class)->findAbout();
 
     	$simulator = new Simulator();
     	$form = $this->createForm(SimulatorType::class, $simulator);
@@ -57,7 +58,8 @@ class SimulatorController extends AbstractController
 
         return $this->render('front/simulator/simulator.html.twig', [
             'form' => $form->createView(),
-            'contracts' => $contracts
+            'contracts' => $contracts,
+            'about' => $about
         ]);
     }
 

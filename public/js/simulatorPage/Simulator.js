@@ -1,5 +1,7 @@
 class Simulator {
 	constructor(domElt) {
+		this.manualButton = domElt.manualButton;
+		this.rulesElt = domElt.rulesElt;
 		this.inputNbAdult = domElt.inputNbAdult;
 		this.inputNbChild = domElt.inputNbChild;
 		this.selectedFoodTypes = domElt.selectedFoodTypes;
@@ -30,6 +32,7 @@ class Simulator {
 		    placeholder: "Sélectionnez un ou plusieurs type d'alimentation"
 		});
 		$(this.inputEmail).attr('placeholder', 'Votre adresse e-mail');
+		$(this.rulesElt).hide();
 		$(this.noContractElt).hide();
 		$(this.secondStepContainer).hide();
 		$(this.resultContainer).hide();
@@ -38,6 +41,10 @@ class Simulator {
 
 	handleEvents() {
 		let self = this;
+		$(this.manualButton).click(function(e) {
+			e.preventDefault();
+			$(self.rulesElt).fadeToggle(500);
+		});
 		$(this.nextStepButton).click(function(e) {
 			e.preventDefault();
 			let isFirstStepDataValid = self.checkFirstStepData();
@@ -261,6 +268,8 @@ class Simulator {
 
 $(function() {
 	let domElt = {
+		manualButton: '#manualButton',
+		rulesElt: '#rules',
 		inputNbAdult: '#simulator_nb_adult',
 		inputNbChild: '#simulator_nb_child',
 		selectedFoodTypes: '#simulator_food_type',

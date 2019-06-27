@@ -56,7 +56,7 @@ h3, h4, legend {
 	font-size: 1.5em;
 }
 
-p, a, button, label, th, td {
+p, a, button, label, th, td, #rules {
 	font-family: aliceregular, "Times New Roman", Arial, sans-serif;
     font-size: 1.1em;
 }
