@@ -14,3 +14,11 @@
 #postsSection {
 	margin-bottom: 100px;
 }
+
+#noPost {
+	background-color: rgba(0,0,0,0.1);
+}
+
+#noPostMessage {
+	background-color: #FFBD4A;
+}

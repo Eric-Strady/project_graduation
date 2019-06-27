@@ -19,14 +19,27 @@
 		{{ include('front/posts/post_filter.html.twig') }}
 
 		<section id="postsSection">
-			<div class="row">
-				{% for post in posts %}
-					{{ include('front/posts/posts_thumbnail.html.twig') }}
-				{% endfor %}
+			{% if posts|length is not same as (0) %}
+				<div class="row">
+					{% for post in posts %}
+						{{ include('front/posts/posts_thumbnail.html.twig') }}
+					{% endfor %}
+				</div>
+				<div class="row justify-content-center mt-4 mb-4" id="pagination">
+					{{ knp_pagination_render(posts) }}
+				</div>
+			{% else %}
+			<div class="row justify-content-center mt-2 mb-2">
+				<div class="col-lg-10 pt-4 pb-4" id="noPost">
+					<div class="row justify-content-center pt-2 pb-3">
+						<div class="col-lg-6 text-center pt-3" id="noPostMessage">
+							<p>Aucun article ne correspond à votre recherche!<br>
+							Merci de modifier votre recherche ou de prendre <a href="{{ path('contact') }}">contact</a> avec nous.</p>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="row justify-content-center mt-4 mb-4" id="pagination">
-				{{ knp_pagination_render(posts) }}
-			</div>
+			{% endif %}
 		</section>
 	</div>
 {% endblock %}

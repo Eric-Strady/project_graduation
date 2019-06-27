@@ -26,39 +26,52 @@
 		{{ include('front/posts/post_filter.html.twig') }}
 
 		<section id="postsCrud">
-			<table class="table table-responsive-sm text-center">
-				<thead class="table-primary">
-					<tr>
-						<th>Titre</th>
-						<th>Catégorie</th>
-						<th>Date de publication</th>
-						<th>Date de modification</th>
-						<th>Gestion de l'article</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for post in posts %}
-						<tr class="table-light">
-							<td>{{ post.title }}</td>
-							<td>{{ post.category.name }}</td>
-							<td>{{ post.createdAt|date("d/m/Y") }}</td>
-							<td>{% if post.updatedAt is not empty %} {{ post.updatedAt|date("d/m/Y") }} {% else %} - {% endif %}</td>
-							<td>
-								<a href="{{ path('post.show', {id: post.id}) }}" class="btn btn-success crudActions">Visualiser</a>
-								<a href="{{ path('admin.post.update', {id: post.id}) }}" class="btn btn-warning crudActions">Modifier</a>
-								<form method="POST" action="{{ path('admin.post.delete', {id: post.id}) }}" onsubmit="return confirm('Souhaitez-vous vraiment supprimer cette article?')">
-									<input type="hidden" name="_method" value="delete">
-									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
-									<button class="btn btn-danger crudActions">Supprimer</button>
-								</form>
-							</td>
+			{% if posts|length is not same as (0) %}
+				<table class="table table-responsive-sm text-center">
+					<thead class="table-primary">
+						<tr>
+							<th>Titre</th>
+							<th>Catégorie</th>
+							<th>Date de publication</th>
+							<th>Date de modification</th>
+							<th>Gestion de l'article</th>
 						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-			<div class="row justify-content-center" id="pagination">
-				{{ knp_pagination_render(posts) }}
-			</div>
+					</thead>
+					<tbody>
+						{% for post in posts %}
+							<tr class="table-light">
+								<td>{{ post.title }}</td>
+								<td>{{ post.category.name }}</td>
+								<td>{{ post.createdAt|date("d/m/Y") }}</td>
+								<td>{% if post.updatedAt is not empty %} {{ post.updatedAt|date("d/m/Y") }} {% else %} - {% endif %}</td>
+								<td>
+									<a href="{{ path('post.show', {id: post.id}) }}" class="btn btn-success crudActions">Visualiser</a>
+									<a href="{{ path('admin.post.update', {id: post.id}) }}" class="btn btn-warning crudActions">Modifier</a>
+									<form method="POST" action="{{ path('admin.post.delete', {id: post.id}) }}" onsubmit="return confirm('Souhaitez-vous vraiment supprimer cette article?')">
+										<input type="hidden" name="_method" value="delete">
+										<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
+										<button class="btn btn-danger crudActions">Supprimer</button>
+									</form>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<div class="row justify-content-center" id="pagination">
+					{{ knp_pagination_render(posts) }}
+				</div>
+			{% else %}
+				<div class="row justify-content-center mt-2 mb-2">
+					<div class="col-lg-10 pt-4 pb-4" id="noPost">
+						<div class="row justify-content-center pt-2 pb-3">
+							<div class="col-lg-6 text-center pt-3" id="noPostMessage">
+								<p>Aucun article ne correspond à votre recherche!<br>
+								Merci de modifier votre recherche ou de prendre <a href="{{ path('contact') }}">contact</a> avec nous.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endif %}
 			<div class="text-left addButton">
 				<a href="{{ path('admin.post.create') }}" class="btn btn-primary">Ajouter un nouvel article</a>
 			</div>
