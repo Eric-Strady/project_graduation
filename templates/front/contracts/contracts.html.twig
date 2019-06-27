@@ -33,9 +33,9 @@
 				</div>
 				<div class="col-lg-4 col-md-12 text-center mb-2 contractThumbnail">
 					{% if contract.imageName %}
-						<img src="{{ vich_uploader_asset(post, 'image_file') | imagine_filter('medium') }}" alt="Image contrat {{ contract.name }}" class="imageRadius">
+						<img src="{{ vich_uploader_asset(contract, 'image_file') | imagine_filter('medium') }}" alt="Image contrat {{ contract.name }}" class="imageRadius">
 					{% else %}
-						<img src="{{ asset('images/vegetables_basket.jpg' | imagine_filter('medium')) }}" alt="Panier de légumes" class="imageRadius">
+						<img src="{{ asset('images/panneau_amap.jpg' | imagine_filter('medium')) }}" alt="Panneau AMAP" class="imageRadius">
 					{% endif %}
 				</div>
 			</div>
