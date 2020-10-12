@@ -22,7 +22,7 @@ class AboutController extends AbstractController
     }
 
     /**
-     * @Route("/à-propos", name="about")
+     * @Route("/a-propos", name="about")
      */
     public function index()
     {
